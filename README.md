@@ -10,16 +10,25 @@ A Java [language server](https://github.com/Microsoft/vscode-languageserver-prot
 
 ## Installation (other editors)
 
-### Vim (with vim-lsc)
+### Vim (with vim-lsc or ale)
 
 - Checkout this repository
+- Build `mvn package -Dmaven.test.skip=true`
 - Run `./scripts/link_mac.sh`
-- Add the vim plugin [natebosch/vim-lsc](https://github.com/natebosch/vim-lsc) to your vimrc
-- Add vim-lsc configuration:
-  ```vimrc
-  let g:lsc_server_commands = {'java': '<path-to-java-language-server>/java-language-server/dist/mac/bin/launcher --quiet'}
-  ```
-- See the [vim-lsc README](https://github.com/natebosch/vim-lsc/blob/master/README.md) for other configuration options.
+- Add a vim plugin
+  - vim-lsc
+    - Add the vim plugin [natebosch/vim-lsc](https://github.com/natebosch/vim-lsc) to your vimrc
+    - Add vim-lsc configuration:
+      ```vimrc
+      let g:lsc_server_commands = {'java': '<path-to-java-language-server>/dist/lang_server_mac.sh --quiet'}
+      ```
+    - See the [vim-lsc README](https://github.com/natebosch/vim-lsc/blob/master/README.md) for other configuration options.
+  - ale
+    - Add the ale plugin [dense-analysis/ale](https://github.com/dense-analysis/ale).
+    - Add lsp [config](https://github.com/dense-analysis/ale/blob/master/doc/ale-java.txt):
+      ```vimrc
+      let g:ale_java_javalsp_executable="<path-to-java-language-server>/dist/lang_server_mac.sh"
+      ```
 
 Note: This tool is not compatible with [vim-lsp](https://github.com/prabirshrestha/vim-lsp) as it only supports LSPv2.0.
 

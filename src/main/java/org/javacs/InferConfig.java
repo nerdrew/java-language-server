@@ -241,6 +241,25 @@ class InferConfig {
     private Set<Path> bazelClasspath() {
         try {
             // Run bazel as a subprocess
+            String[] executionRootCommand = {"bazel", "info", "execution_root"};
+            LOG.info("Running " + String.join(" ", executionRootCommand) + " ...");
+            var executionRootProcess =
+                    new ProcessBuilder()
+                            .command(executionRootCommand)
+                            .directory(workspaceRoot.toFile())
+                            .redirectError(ProcessBuilder.Redirect.INHERIT)
+                            .start();
+            var executionRoot = Path.of(new String(executionRootProcess.getInputStream().readAllBytes()).trim());
+            // Wait for process to exit
+            var executionRootResult = executionRootProcess.waitFor();
+            if (executionRootResult != 0) {
+                LOG.severe("`" + String.join(" ", executionRootCommand) + "` returned " + executionRootResult);
+                return Set.of();
+            } else {
+                LOG.info("Found bazel info execution_root '" + executionRoot + "'");
+            }
+
+            // Run bazel as a subprocess
             String[] command = {
                 "bazel",
                 "aquery",
@@ -292,8 +311,8 @@ class InferConfig {
                     continue;
                 }
                 var relative = artifact.getExecPath();
-                var absolute = workspaceRoot.resolve(relative);
-                LOG.info("...found bazel dependency " + relative);
+                var absolute = executionRoot.resolve(relative);
+                LOG.info("...found bazel dependency " + absolute);
                 classpath.add(absolute);
             }
             return classpath;
