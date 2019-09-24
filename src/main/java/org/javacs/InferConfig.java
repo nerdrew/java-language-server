@@ -22,12 +22,15 @@ class InferConfig {
     private final Path mavenHome;
     /** Location of the gradle cache, usually ~/.gradle */
     private final Path gradleHome;
+    /** Relative path from Bazel WORKSPACE file to workspaceRoot */
+    private final String bazelTarget;
 
     InferConfig(Path workspaceRoot, Collection<String> externalDependencies, Path mavenHome, Path gradleHome) {
         this.workspaceRoot = workspaceRoot;
         this.externalDependencies = externalDependencies;
         this.mavenHome = mavenHome;
         this.gradleHome = gradleHome;
+        this.bazelTarget = findBazelTarget(workspaceRoot);
     }
 
     InferConfig(Path workspaceRoot, Collection<String> externalDependencies) {
@@ -70,7 +73,7 @@ class InferConfig {
         }
 
         // Bazel
-        if (Files.exists(workspaceRoot.resolve("WORKSPACE"))) {
+        if (bazelTarget != null) {
             return bazelClasspath();
         }
 
@@ -101,7 +104,7 @@ class InferConfig {
         }
 
         // Bazel
-        if (Files.exists(workspaceRoot.resolve("WORKSPACE"))) {
+        if (bazelTarget != null) {
             return bazelDeps("srcjar");
             // TODO proto source jars
         }
@@ -264,7 +267,9 @@ class InferConfig {
                 "bazel",
                 "aquery",
                 "--output=proto",
-                "mnemonic(Javac, kind(java_library, ...) union kind(java_test, ...) union kind(java_binary, ...))"
+                String.format(
+                        "mnemonic(Javac, kind(java_library, //%s...) union kind(java_test, //%s...) union kind(java_binary, //%s...))",
+                        bazelTarget, bazelTarget, bazelTarget)
             };
             var output = Files.createTempFile("java-language-server-bazel-output", ".txt");
             LOG.info("Running " + String.join(" ", command) + " ...");
@@ -324,7 +329,7 @@ class InferConfig {
     private Set<Path> bazelDeps(String labelsFilter) {
         try {
             // Run bazel as a subprocess
-            var query = "labels(" + labelsFilter + ", deps(...))";
+            var query = "labels(" + labelsFilter + String.format(", deps(//%s...))", bazelTarget);
             String[] command = {"bazel", "query", query, "--output", "location"};
             var output = Files.createTempFile("java-language-server-bazel-output", ".txt");
             LOG.info("Running " + String.join(" ", command) + " ...");
@@ -374,5 +379,27 @@ class InferConfig {
             return NOT_FOUND;
         }
         return path;
+    }
+
+    private static String findBazelTarget(Path workspaceRoot) {
+        Path current = workspaceRoot;
+
+        while (current != null) {
+            Path workspace = current.resolve("WORKSPACE");
+            if (Files.exists(workspace)) {
+                String bazelTarget =
+                        current.toAbsolutePath()
+                                .relativize(current.toAbsolutePath().resolve(workspaceRoot.toAbsolutePath()))
+                                .toString();
+                if (bazelTarget.length() > 0) {
+                    bazelTarget = bazelTarget + "/";
+                }
+                return bazelTarget;
+            }
+
+            current = current.getParent();
+        }
+
+        return null;
     }
 }

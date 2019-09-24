@@ -20,6 +20,17 @@ public class InferBazelConfigTest {
     }
 
     @Test
+    public void bazelClassPathSubdir() {
+        InferConfig bazelSubdir =
+                new InferConfig(
+                        Paths.get("src/test/examples/bazel-project/hello"),
+                        Collections.emptySet(),
+                        Paths.get("nowhere"),
+                        Paths.get("nowhere"));
+        assertThat(bazelSubdir.classPath(), contains(hasToString(endsWith("guava-18.0-ijar.jar"))));
+    }
+
+    @Test
     public void bazelDocPath() {
         assertThat(bazel.buildDocPath(), contains(hasToString(endsWith("guava-18.0-sources.jar"))));
     }
