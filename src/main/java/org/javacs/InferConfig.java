@@ -251,12 +251,12 @@ class InferConfig {
         return null;
     }
 
-    private boolean buildProtos(Path bazelWorkspaceRoot) {
-        var targets = bazelQuery(bazelWorkspaceRoot, "java_proto_library");
+    private boolean buildProtos() {
+        var targets = bazelQuery("java_proto_library");
         if (targets.size() == 0) {
             return false;
         }
-        bazelDryRunBuild(bazelWorkspaceRoot, targets);
+        bazelDryRunBuild(targets);
         return true;
     }
 
@@ -264,15 +264,14 @@ class InferConfig {
         var absolute = new HashSet<Path>();
 
         // Add protos
-        if (buildProtos(bazelWorkspaceRoot)) {
-            for (var relative : bazelAQuery(bazelWorkspaceRoot, "Javac", "--output", "proto_library")) {
+        if (buildProtos()) {
+            for (var relative : bazelAQuery("Javac", "--output", "proto_library")) {
                 absolute.add(bazelWorkspaceRoot.resolve(relative));
             }
         }
 
         // Add rest of classpath
-        for (var relative :
-                bazelAQuery(bazelWorkspaceRoot, "Javac", "--classpath", "java_library", "java_test", "java_binary")) {
+        for (var relative : bazelAQuery("Javac", "--classpath", "java_library", "java_test", "java_binary")) {
             absolute.add(bazelWorkspaceRoot.resolve(relative));
         }
         return absolute;
@@ -280,16 +279,14 @@ class InferConfig {
 
     private Set<Path> bazelSourcepath(Path bazelWorkspaceRoot) {
         var absolute = new HashSet<Path>();
-        var outputBase = bazelOutputBase(bazelWorkspaceRoot);
-        for (var relative :
-                bazelAQuery(
-                        bazelWorkspaceRoot, "JavaSourceJar", "--sources", "java_library", "java_test", "java_binary")) {
+        var outputBase = bazelOutputBase();
+        for (var relative : bazelAQuery("JavaSourceJar", "--sources", "java_library", "java_test", "java_binary")) {
             absolute.add(outputBase.resolve(relative));
         }
 
         // Add proto source files
-        if (buildProtos(bazelWorkspaceRoot)) {
-            for (var relative : bazelAQuery(bazelWorkspaceRoot, "Javac", "--source_jars", "proto_library")) {
+        if (buildProtos()) {
+            for (var relative : bazelAQuery("Javac", "--source_jars", "proto_library")) {
                 absolute.add(bazelWorkspaceRoot.resolve(relative));
             }
         }
@@ -297,12 +294,12 @@ class InferConfig {
         return absolute;
     }
 
-    private Path bazelOutputBase(Path bazelWorkspaceRoot) {
+    private Path bazelOutputBase() {
         // Run bazel as a subprocess
         String[] command = {
             "bazel", "info", "output_base",
         };
-        var output = fork(bazelWorkspaceRoot, command);
+        var output = fork(command);
         if (output == NOT_FOUND) {
             return NOT_FOUND;
         }
@@ -315,7 +312,7 @@ class InferConfig {
         }
     }
 
-    private void bazelDryRunBuild(Path bazelWorkspaceRoot, Set<String> targets) {
+    private void bazelDryRunBuild(Set<String> targets) {
         var command = new ArrayList<String>();
         command.add("bazel");
         command.add("build");
@@ -323,16 +320,16 @@ class InferConfig {
         command.addAll(targets);
         String[] c = new String[command.size()];
         c = command.toArray(c);
-        var output = fork(bazelWorkspaceRoot, c);
+        var output = fork(c);
         if (output == NOT_FOUND) {
             return;
         }
         return;
     }
 
-    private Set<String> bazelQuery(Path bazelWorkspaceRoot, String filterKind) {
+    private Set<String> bazelQuery(String filterKind) {
         String[] command = {"bazel", "query", "kind(" + filterKind + ",//...)"};
-        var output = fork(bazelWorkspaceRoot, command);
+        var output = fork(command);
         if (output == NOT_FOUND) {
             return Set.of();
         }
@@ -354,8 +351,7 @@ class InferConfig {
         }
     }
 
-    private Set<String> bazelAQuery(
-            Path bazelWorkspaceRoot, String filterMnemonic, String filterArgument, String... kinds) {
+    private Set<String> bazelAQuery(String filterMnemonic, String filterArgument, String... kinds) {
         String kindUnion = "";
         for (var kind : kinds) {
             if (kindUnion.length() > 0) {
@@ -372,7 +368,7 @@ class InferConfig {
             "--allow_analysis_failures",
             "mnemonic(" + filterMnemonic + ", " + kindUnion + ")"
         };
-        var output = fork(bazelWorkspaceRoot, command);
+        var output = fork(command);
         if (output == NOT_FOUND) {
             return Set.of();
         }
@@ -474,7 +470,7 @@ class InferConfig {
         throw new RuntimeException();
     }
 
-    private static Path fork(Path workspaceRoot, String[] command) {
+    private Path fork(String[] command) {
         try {
             LOG.info("Running " + String.join(" ", command) + " ...");
             var output = Files.createTempFile("java-language-server-bazel-output", ".proto");
