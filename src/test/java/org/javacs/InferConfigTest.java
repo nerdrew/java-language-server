@@ -36,6 +36,12 @@ public class InferConfigTest {
     }
 
     @Test
+    public void bazelClassPathSubdir() {
+        InferConfig bazelSubdir = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"), Set.of());
+        assertThat(bazelSubdir.classPath(), contains(hasToString(endsWith("guava-18.0.jar"))));
+    }
+
+    @Test
     public void mavenDocPath() {
         assertThat(
                 both.buildDocPath(),
