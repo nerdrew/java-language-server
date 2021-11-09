@@ -25,7 +25,7 @@ if [ ! -e dist/mac/bin/java ]; then
 fi
 
 # Compile sources
-if [ ! -e src/main/java/com/google/devtools/build/lib/analysis/AnalysisProtos.java ]; then
+if [ ! -e src/main/java/com/google/devtools/build/lib/analysis/AnalysisProtosV2.java ]; then
     ./scripts/gen_proto.sh
 fi
 
