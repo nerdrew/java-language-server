@@ -80,28 +80,28 @@ class JavaLanguageServer extends LanguageServer {
     private JavaCompilerService createCompiler() {
         Objects.requireNonNull(workspaceRoot, "Can't create compiler because workspaceRoot has not been initialized");
 
-        javaReportProgress(new JavaStartProgressParams(progressToken, "Configure javac"));
-        javaReportProgress(new JavaReportProgressParams(progressToken, "Finding source roots"));
+        javaReportProgress(JavaProgressParams.begin(progressToken, "Configure javac"));
+        javaReportProgress(JavaProgressParams.report(progressToken, "Finding source roots"));
 
         var externalDependencies = externalDependencies();
         var classPath = classPath();
         var addExports = addExports();
         // If classpath is specified by the user, don't infer anything
         if (!classPath.isEmpty()) {
-            javaReportProgress(new JavaEndProgressParams(progressToken, "Done"));
+            javaReportProgress(JavaProgressParams.end(progressToken, "Done"));
             return new JavaCompilerService(classPath, docPath(), addExports);
         }
         // Otherwise, combine inference with user-specified external dependencies
         else {
             var infer = new InferConfig(workspaceRoot, externalDependencies);
 
-            javaReportProgress(new JavaReportProgressParams(progressToken, "Inferring class path"));
+            javaReportProgress(JavaProgressParams.report(progressToken, "Inferring class path"));
             classPath = infer.classPath();
 
-            javaReportProgress(new JavaReportProgressParams(progressToken, "Inferring doc path"));
+            javaReportProgress(JavaProgressParams.report(progressToken, "Inferring doc path"));
             var docPath = infer.buildDocPath();
 
-            javaReportProgress(new JavaEndProgressParams(progressToken, "Done"));
+            javaReportProgress(JavaProgressParams.end(progressToken, "Done"));
             return new JavaCompilerService(classPath, docPath, addExports);
         }
     }
