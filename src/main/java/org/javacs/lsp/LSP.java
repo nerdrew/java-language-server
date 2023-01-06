@@ -127,6 +127,7 @@ public class LSP {
         }
         var jsonText = toJson(params);
         var messageText = String.format("{\"jsonrpc\":\"2.0\",\"method\":\"%s\",\"params\":%s}", method, jsonText);
+        LOG.info(String.format("notifyClient: %s", messageText));
         writeClient(client, messageText);
     }
 
