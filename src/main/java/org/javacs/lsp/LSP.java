@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -155,7 +156,7 @@ public class LSP {
             params.method = method;
             params.registerOptions = options;
 
-            notifyClient(send, "client/registerCapability", params);
+            notifyClient(send, "client/registerCapability", new RegisterCapabilityParams(List.of(params)));
         }
 
         @Override
