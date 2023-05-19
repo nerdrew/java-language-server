@@ -159,190 +159,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private ActionGraphContainer(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    artifacts_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact>();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                artifacts_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 18:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                                    actions_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action>();
-                                    mutable_bitField0_ |= 0x00000002;
-                                }
-                                actions_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action.parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 26:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                                    targets_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target>();
-                                    mutable_bitField0_ |= 0x00000004;
-                                }
-                                targets_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target.parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 34:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                                    depSetOfFiles_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .DepSetOfFiles>();
-                                    mutable_bitField0_ |= 0x00000008;
-                                }
-                                depSetOfFiles_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 42:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000010) != 0)) {
-                                    configuration_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .Configuration>();
-                                    mutable_bitField0_ |= 0x00000010;
-                                }
-                                configuration_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 50:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000020) != 0)) {
-                                    aspectDescriptors_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .AspectDescriptor>();
-                                    mutable_bitField0_ |= 0x00000020;
-                                }
-                                aspectDescriptors_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 58:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000040) != 0)) {
-                                    ruleClasses_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .RuleClass>();
-                                    mutable_bitField0_ |= 0x00000040;
-                                }
-                                ruleClasses_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 66:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000080) != 0)) {
-                                    pathFragments_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .PathFragment>();
-                                    mutable_bitField0_ |= 0x00000080;
-                                }
-                                pathFragments_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    artifacts_ = java.util.Collections.unmodifiableList(artifacts_);
-                }
-                if (((mutable_bitField0_ & 0x00000002) != 0)) {
-                    actions_ = java.util.Collections.unmodifiableList(actions_);
-                }
-                if (((mutable_bitField0_ & 0x00000004) != 0)) {
-                    targets_ = java.util.Collections.unmodifiableList(targets_);
-                }
-                if (((mutable_bitField0_ & 0x00000008) != 0)) {
-                    depSetOfFiles_ = java.util.Collections.unmodifiableList(depSetOfFiles_);
-                }
-                if (((mutable_bitField0_ & 0x00000010) != 0)) {
-                    configuration_ = java.util.Collections.unmodifiableList(configuration_);
-                }
-                if (((mutable_bitField0_ & 0x00000020) != 0)) {
-                    aspectDescriptors_ = java.util.Collections.unmodifiableList(aspectDescriptors_);
-                }
-                if (((mutable_bitField0_ & 0x00000040) != 0)) {
-                    ruleClasses_ = java.util.Collections.unmodifiableList(ruleClasses_);
-                }
-                if (((mutable_bitField0_ & 0x00000080) != 0)) {
-                    pathFragments_ = java.util.Collections.unmodifiableList(pathFragments_);
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_ActionGraphContainer_descriptor;
@@ -357,6 +173,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ARTIFACTS_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact> artifacts_;
         /** <code>repeated .analysis.Artifact artifacts = 1;</code> */
         @java.lang.Override
@@ -387,6 +205,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ACTIONS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action> actions_;
         /** <code>repeated .analysis.Action actions = 2;</code> */
         @java.lang.Override
@@ -416,6 +236,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int TARGETS_FIELD_NUMBER = 3;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target> targets_;
         /** <code>repeated .analysis.Target targets = 3;</code> */
         @java.lang.Override
@@ -445,6 +267,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int DEP_SET_OF_FILES_FIELD_NUMBER = 4;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles> depSetOfFiles_;
         /** <code>repeated .analysis.DepSetOfFiles dep_set_of_files = 4;</code> */
         @java.lang.Override
@@ -476,6 +300,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int CONFIGURATION_FIELD_NUMBER = 5;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration> configuration_;
         /** <code>repeated .analysis.Configuration configuration = 5;</code> */
         @java.lang.Override
@@ -507,6 +333,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ASPECT_DESCRIPTORS_FIELD_NUMBER = 6;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor>
                 aspectDescriptors_;
         /** <code>repeated .analysis.AspectDescriptor aspect_descriptors = 6;</code> */
@@ -541,6 +369,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int RULE_CLASSES_FIELD_NUMBER = 7;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass> ruleClasses_;
         /** <code>repeated .analysis.RuleClass rule_classes = 7;</code> */
         @java.lang.Override
@@ -571,6 +401,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PATH_FRAGMENTS_FIELD_NUMBER = 8;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment> pathFragments_;
         /** <code>repeated .analysis.PathFragment path_fragments = 8;</code> */
         @java.lang.Override
@@ -639,7 +471,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < pathFragments_.size(); i++) {
                 output.writeMessage(8, pathFragments_.get(i));
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -672,7 +504,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < pathFragments_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, pathFragments_.get(i));
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -696,7 +528,7 @@ public final class AnalysisProtosV2 {
             if (!getAspectDescriptorsList().equals(other.getAspectDescriptorsList())) return false;
             if (!getRuleClassesList().equals(other.getRuleClassesList())) return false;
             if (!getPathFragmentsList().equals(other.getPathFragmentsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -739,7 +571,7 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + PATH_FRAGMENTS_FIELD_NUMBER;
                 hash = (53 * hash) + getPathFragmentsList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -864,79 +696,72 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                    getArtifactsFieldBuilder();
-                    getActionsFieldBuilder();
-                    getTargetsFieldBuilder();
-                    getDepSetOfFilesFieldBuilder();
-                    getConfigurationFieldBuilder();
-                    getAspectDescriptorsFieldBuilder();
-                    getRuleClassesFieldBuilder();
-                    getPathFragmentsFieldBuilder();
-                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (artifactsBuilder_ == null) {
                     artifacts_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
                 } else {
+                    artifacts_ = null;
                     artifactsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000001);
                 if (actionsBuilder_ == null) {
                     actions_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000002);
                 } else {
+                    actions_ = null;
                     actionsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000002);
                 if (targetsBuilder_ == null) {
                     targets_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000004);
                 } else {
+                    targets_ = null;
                     targetsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000004);
                 if (depSetOfFilesBuilder_ == null) {
                     depSetOfFiles_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000008);
                 } else {
+                    depSetOfFiles_ = null;
                     depSetOfFilesBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000008);
                 if (configurationBuilder_ == null) {
                     configuration_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000010);
                 } else {
+                    configuration_ = null;
                     configurationBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000010);
                 if (aspectDescriptorsBuilder_ == null) {
                     aspectDescriptors_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
                 } else {
+                    aspectDescriptors_ = null;
                     aspectDescriptorsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000020);
                 if (ruleClassesBuilder_ == null) {
                     ruleClasses_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000040);
                 } else {
+                    ruleClasses_ = null;
                     ruleClassesBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000040);
                 if (pathFragmentsBuilder_ == null) {
                     pathFragments_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000080);
                 } else {
+                    pathFragments_ = null;
                     pathFragmentsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000080);
                 return this;
             }
 
@@ -966,7 +791,16 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer(this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer result) {
                 if (artifactsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         artifacts_ = java.util.Collections.unmodifiableList(artifacts_);
@@ -1039,8 +873,11 @@ public final class AnalysisProtosV2 {
                 } else {
                     result.pathFragments_ = pathFragmentsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
@@ -1307,7 +1144,7 @@ public final class AnalysisProtosV2 {
                         }
                     }
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -1322,19 +1159,151 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (artifactsBuilder_ == null) {
+                                        ensureArtifactsIsMutable();
+                                        artifacts_.add(m);
+                                    } else {
+                                        artifactsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 10
+                            case 18:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (actionsBuilder_ == null) {
+                                        ensureActionsIsMutable();
+                                        actions_.add(m);
+                                    } else {
+                                        actionsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 18
+                            case 26:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (targetsBuilder_ == null) {
+                                        ensureTargetsIsMutable();
+                                        targets_.add(m);
+                                    } else {
+                                        targetsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 26
+                            case 34:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
+                                                            .DepSetOfFiles.parser(),
+                                                    extensionRegistry);
+                                    if (depSetOfFilesBuilder_ == null) {
+                                        ensureDepSetOfFilesIsMutable();
+                                        depSetOfFiles_.add(m);
+                                    } else {
+                                        depSetOfFilesBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 34
+                            case 42:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
+                                                            .Configuration.parser(),
+                                                    extensionRegistry);
+                                    if (configurationBuilder_ == null) {
+                                        ensureConfigurationIsMutable();
+                                        configuration_.add(m);
+                                    } else {
+                                        configurationBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 42
+                            case 50:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
+                                                            .AspectDescriptor.parser(),
+                                                    extensionRegistry);
+                                    if (aspectDescriptorsBuilder_ == null) {
+                                        ensureAspectDescriptorsIsMutable();
+                                        aspectDescriptors_.add(m);
+                                    } else {
+                                        aspectDescriptorsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 50
+                            case 58:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (ruleClassesBuilder_ == null) {
+                                        ensureRuleClassesIsMutable();
+                                        ruleClasses_.add(m);
+                                    } else {
+                                        ruleClassesBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 58
+                            case 66:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (pathFragmentsBuilder_ == null) {
+                                        ensurePathFragmentsIsMutable();
+                                        pathFragments_.add(m);
+                                    } else {
+                                        pathFragmentsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 66
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.ActionGraphContainer)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -3156,7 +3125,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new ActionGraphContainer(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -3256,57 +3236,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private Artifact(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 16:
-                            {
-                                pathFragmentId_ = input.readUInt32();
-                                break;
-                            }
-                        case 24:
-                            {
-                                isTreeArtifact_ = input.readBool();
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2.internal_static_analysis_Artifact_descriptor;
         }
@@ -3320,7 +3249,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -3339,7 +3268,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PATH_FRAGMENT_ID_FIELD_NUMBER = 2;
-        private int pathFragmentId_;
+        private int pathFragmentId_ = 0;
         /**
          *
          *
@@ -3358,7 +3287,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int IS_TREE_ARTIFACT_FIELD_NUMBER = 3;
-        private boolean isTreeArtifact_;
+        private boolean isTreeArtifact_ = false;
         /**
          *
          *
@@ -3399,7 +3328,7 @@ public final class AnalysisProtosV2 {
             if (isTreeArtifact_ != false) {
                 output.writeBool(3, isTreeArtifact_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -3417,7 +3346,7 @@ public final class AnalysisProtosV2 {
             if (isTreeArtifact_ != false) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, isTreeArtifact_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -3436,7 +3365,7 @@ public final class AnalysisProtosV2 {
             if (getId() != other.getId()) return false;
             if (getPathFragmentId() != other.getPathFragmentId()) return false;
             if (getIsTreeArtifact() != other.getIsTreeArtifact()) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -3453,7 +3382,7 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getPathFragmentId();
             hash = (37 * hash) + IS_TREE_ARTIFACT_FIELD_NUMBER;
             hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsTreeArtifact());
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -3576,28 +3505,19 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 pathFragmentId_ = 0;
-
                 isTreeArtifact_ = false;
-
                 return this;
             }
 
@@ -3625,11 +3545,24 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact(this);
-                result.id_ = id_;
-                result.pathFragmentId_ = pathFragmentId_;
-                result.isTreeArtifact_ = isTreeArtifact_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.pathFragmentId_ = pathFragmentId_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.isTreeArtifact_ = isTreeArtifact_;
+                }
             }
 
             @java.lang.Override
@@ -3686,7 +3619,7 @@ public final class AnalysisProtosV2 {
                 if (other.getIsTreeArtifact() != false) {
                     setIsTreeArtifact(other.getIsTreeArtifact());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -3701,20 +3634,53 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 16:
+                                {
+                                    pathFragmentId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 16
+                            case 24:
+                                {
+                                    isTreeArtifact_ = input.readBool();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 24
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.Artifact) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private int id_;
             /**
@@ -3749,6 +3715,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -3765,7 +3732,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -3804,6 +3771,7 @@ public final class AnalysisProtosV2 {
             public Builder setPathFragmentId(int value) {
 
                 pathFragmentId_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -3820,7 +3788,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearPathFragmentId() {
-
+                bitField0_ = (bitField0_ & ~0x00000002);
                 pathFragmentId_ = 0;
                 onChanged();
                 return this;
@@ -3859,6 +3827,7 @@ public final class AnalysisProtosV2 {
             public Builder setIsTreeArtifact(boolean value) {
 
                 isTreeArtifact_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -3875,7 +3844,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearIsTreeArtifact() {
-
+                bitField0_ = (bitField0_ & ~0x00000004);
                 isTreeArtifact_ = false;
                 onChanged();
                 return this;
@@ -3912,7 +3881,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new Artifact(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -4509,6 +4489,33 @@ public final class AnalysisProtosV2 {
          */
         com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePairOrBuilder getSubstitutionsOrBuilder(
                 int index);
+
+        /**
+         *
+         *
+         * <pre>
+         * The contents of the file for the actions.write() action
+         * (guarded by the --include_file_write_contents flag).
+         * </pre>
+         *
+         * <code>string file_contents = 17;</code>
+         *
+         * @return The fileContents.
+         */
+        java.lang.String getFileContents();
+        /**
+         *
+         *
+         * <pre>
+         * The contents of the file for the actions.write() action
+         * (guarded by the --include_file_write_contents flag).
+         * </pre>
+         *
+         * <code>string file_contents = 17;</code>
+         *
+         * @return The bytes for fileContents.
+         */
+        com.google.protobuf.ByteString getFileContentsBytes();
     }
     /**
      *
@@ -4543,6 +4550,7 @@ public final class AnalysisProtosV2 {
             executionPlatform_ = "";
             templateContent_ = "";
             substitutions_ = java.util.Collections.emptyList();
+            fileContents_ = "";
         }
 
         @java.lang.Override
@@ -4554,258 +4562,6 @@ public final class AnalysisProtosV2 {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private Action(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                targetId_ = input.readUInt32();
-                                break;
-                            }
-                        case 16:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    aspectDescriptorIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                aspectDescriptorIds_.addInt(input.readUInt32());
-                                break;
-                            }
-                        case 18:
-                            {
-                                int length = input.readRawVarint32();
-                                int limit = input.pushLimit(length);
-                                if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                                    aspectDescriptorIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                while (input.getBytesUntilLimit() > 0) {
-                                    aspectDescriptorIds_.addInt(input.readUInt32());
-                                }
-                                input.popLimit(limit);
-                                break;
-                            }
-                        case 26:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                actionKey_ = s;
-                                break;
-                            }
-                        case 34:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                mnemonic_ = s;
-                                break;
-                            }
-                        case 40:
-                            {
-                                configurationId_ = input.readUInt32();
-                                break;
-                            }
-                        case 50:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-                                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                                    arguments_ = new com.google.protobuf.LazyStringArrayList();
-                                    mutable_bitField0_ |= 0x00000002;
-                                }
-                                arguments_.add(s);
-                                break;
-                            }
-                        case 58:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
-                                    environmentVariables_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .KeyValuePair>();
-                                    mutable_bitField0_ |= 0x00000004;
-                                }
-                                environmentVariables_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 64:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-                                    inputDepSetIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000008;
-                                }
-                                inputDepSetIds_.addInt(input.readUInt32());
-                                break;
-                            }
-                        case 66:
-                            {
-                                int length = input.readRawVarint32();
-                                int limit = input.pushLimit(length);
-                                if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
-                                    inputDepSetIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000008;
-                                }
-                                while (input.getBytesUntilLimit() > 0) {
-                                    inputDepSetIds_.addInt(input.readUInt32());
-                                }
-                                input.popLimit(limit);
-                                break;
-                            }
-                        case 72:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000010) != 0)) {
-                                    outputIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000010;
-                                }
-                                outputIds_.addInt(input.readUInt32());
-                                break;
-                            }
-                        case 74:
-                            {
-                                int length = input.readRawVarint32();
-                                int limit = input.pushLimit(length);
-                                if (!((mutable_bitField0_ & 0x00000010) != 0) && input.getBytesUntilLimit() > 0) {
-                                    outputIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000010;
-                                }
-                                while (input.getBytesUntilLimit() > 0) {
-                                    outputIds_.addInt(input.readUInt32());
-                                }
-                                input.popLimit(limit);
-                                break;
-                            }
-                        case 80:
-                            {
-                                discoversInputs_ = input.readBool();
-                                break;
-                            }
-                        case 90:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000020) != 0)) {
-                                    executionInfo_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .KeyValuePair>();
-                                    mutable_bitField0_ |= 0x00000020;
-                                }
-                                executionInfo_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 98:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000040) != 0)) {
-                                    paramFiles_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .ParamFile>();
-                                    mutable_bitField0_ |= 0x00000040;
-                                }
-                                paramFiles_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        case 104:
-                            {
-                                primaryOutputId_ = input.readUInt32();
-                                break;
-                            }
-                        case 114:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                executionPlatform_ = s;
-                                break;
-                            }
-                        case 122:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                templateContent_ = s;
-                                break;
-                            }
-                        case 130:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000080) != 0)) {
-                                    substitutions_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .KeyValuePair>();
-                                    mutable_bitField0_ |= 0x00000080;
-                                }
-                                substitutions_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    aspectDescriptorIds_.makeImmutable(); // C
-                }
-                if (((mutable_bitField0_ & 0x00000002) != 0)) {
-                    arguments_ = arguments_.getUnmodifiableView();
-                }
-                if (((mutable_bitField0_ & 0x00000004) != 0)) {
-                    environmentVariables_ = java.util.Collections.unmodifiableList(environmentVariables_);
-                }
-                if (((mutable_bitField0_ & 0x00000008) != 0)) {
-                    inputDepSetIds_.makeImmutable(); // C
-                }
-                if (((mutable_bitField0_ & 0x00000010) != 0)) {
-                    outputIds_.makeImmutable(); // C
-                }
-                if (((mutable_bitField0_ & 0x00000020) != 0)) {
-                    executionInfo_ = java.util.Collections.unmodifiableList(executionInfo_);
-                }
-                if (((mutable_bitField0_ & 0x00000040) != 0)) {
-                    paramFiles_ = java.util.Collections.unmodifiableList(paramFiles_);
-                }
-                if (((mutable_bitField0_ & 0x00000080) != 0)) {
-                    substitutions_ = java.util.Collections.unmodifiableList(substitutions_);
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -4821,7 +4577,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int TARGET_ID_FIELD_NUMBER = 1;
-        private int targetId_;
+        private int targetId_ = 0;
         /**
          *
          *
@@ -4839,6 +4595,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ASPECT_DESCRIPTOR_IDS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.Internal.IntList aspectDescriptorIds_;
         /**
          *
@@ -4897,7 +4655,9 @@ public final class AnalysisProtosV2 {
         private int aspectDescriptorIdsMemoizedSerializedSize = -1;
 
         public static final int ACTION_KEY_FIELD_NUMBER = 3;
-        private volatile java.lang.Object actionKey_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object actionKey_ = "";
         /**
          *
          *
@@ -4949,7 +4709,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int MNEMONIC_FIELD_NUMBER = 4;
-        private volatile java.lang.Object mnemonic_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object mnemonic_ = "";
         /**
          *
          *
@@ -4997,7 +4759,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int CONFIGURATION_ID_FIELD_NUMBER = 5;
-        private int configurationId_;
+        private int configurationId_ = 0;
         /**
          *
          *
@@ -5015,6 +4777,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ARGUMENTS_FIELD_NUMBER = 6;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.LazyStringList arguments_;
         /**
          *
@@ -5080,6 +4844,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ENVIRONMENT_VARIABLES_FIELD_NUMBER = 7;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair>
                 environmentVariables_;
         /**
@@ -5152,6 +4918,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int INPUT_DEP_SET_IDS_FIELD_NUMBER = 8;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.Internal.IntList inputDepSetIds_;
         /**
          *
@@ -5204,6 +4972,8 @@ public final class AnalysisProtosV2 {
         private int inputDepSetIdsMemoizedSerializedSize = -1;
 
         public static final int OUTPUT_IDS_FIELD_NUMBER = 9;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.Internal.IntList outputIds_;
         /**
          *
@@ -5256,7 +5026,7 @@ public final class AnalysisProtosV2 {
         private int outputIdsMemoizedSerializedSize = -1;
 
         public static final int DISCOVERS_INPUTS_FIELD_NUMBER = 10;
-        private boolean discoversInputs_;
+        private boolean discoversInputs_ = false;
         /**
          *
          *
@@ -5274,6 +5044,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int EXECUTION_INFO_FIELD_NUMBER = 11;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair> executionInfo_;
         /**
          *
@@ -5355,6 +5127,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PARAM_FILES_FIELD_NUMBER = 12;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile> paramFiles_;
         /**
          *
@@ -5425,7 +5199,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PRIMARY_OUTPUT_ID_FIELD_NUMBER = 13;
-        private int primaryOutputId_;
+        private int primaryOutputId_ = 0;
         /**
          *
          *
@@ -5443,7 +5217,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int EXECUTION_PLATFORM_FIELD_NUMBER = 14;
-        private volatile java.lang.Object executionPlatform_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object executionPlatform_ = "";
         /**
          *
          *
@@ -5493,7 +5269,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int TEMPLATE_CONTENT_FIELD_NUMBER = 15;
-        private volatile java.lang.Object templateContent_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object templateContent_ = "";
         /**
          *
          *
@@ -5541,6 +5319,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int SUBSTITUTIONS_FIELD_NUMBER = 16;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair> substitutions_;
         /**
          *
@@ -5621,6 +5401,58 @@ public final class AnalysisProtosV2 {
             return substitutions_.get(index);
         }
 
+        public static final int FILE_CONTENTS_FIELD_NUMBER = 17;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object fileContents_ = "";
+        /**
+         *
+         *
+         * <pre>
+         * The contents of the file for the actions.write() action
+         * (guarded by the --include_file_write_contents flag).
+         * </pre>
+         *
+         * <code>string file_contents = 17;</code>
+         *
+         * @return The fileContents.
+         */
+        @java.lang.Override
+        public java.lang.String getFileContents() {
+            java.lang.Object ref = fileContents_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                fileContents_ = s;
+                return s;
+            }
+        }
+        /**
+         *
+         *
+         * <pre>
+         * The contents of the file for the actions.write() action
+         * (guarded by the --include_file_write_contents flag).
+         * </pre>
+         *
+         * <code>string file_contents = 17;</code>
+         *
+         * @return The bytes for fileContents.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getFileContentsBytes() {
+            java.lang.Object ref = fileContents_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                fileContents_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -5696,7 +5528,10 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < substitutions_.size(); i++) {
                 output.writeMessage(16, substitutions_.get(i));
             }
-            unknownFields.writeTo(output);
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fileContents_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 17, fileContents_);
+            }
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -5787,7 +5622,10 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < substitutions_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(16, substitutions_.get(i));
             }
-            size += unknownFields.getSerializedSize();
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fileContents_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, fileContents_);
+            }
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -5819,7 +5657,8 @@ public final class AnalysisProtosV2 {
             if (!getExecutionPlatform().equals(other.getExecutionPlatform())) return false;
             if (!getTemplateContent().equals(other.getTemplateContent())) return false;
             if (!getSubstitutionsList().equals(other.getSubstitutionsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getFileContents().equals(other.getFileContents())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -5878,7 +5717,9 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + SUBSTITUTIONS_FIELD_NUMBER;
                 hash = (53 * hash) + getSubstitutionsList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (37 * hash) + FILE_CONTENTS_FIELD_NUMBER;
+            hash = (53 * hash) + getFileContents().hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -6001,75 +5842,58 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                    getEnvironmentVariablesFieldBuilder();
-                    getExecutionInfoFieldBuilder();
-                    getParamFilesFieldBuilder();
-                    getSubstitutionsFieldBuilder();
-                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 targetId_ = 0;
-
                 aspectDescriptorIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000001);
                 actionKey_ = "";
-
                 mnemonic_ = "";
-
                 configurationId_ = 0;
-
                 arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000020);
                 if (environmentVariablesBuilder_ == null) {
                     environmentVariables_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000004);
                 } else {
+                    environmentVariables_ = null;
                     environmentVariablesBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000040);
                 inputDepSetIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000008);
                 outputIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000010);
                 discoversInputs_ = false;
-
                 if (executionInfoBuilder_ == null) {
                     executionInfo_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
                 } else {
+                    executionInfo_ = null;
                     executionInfoBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000400);
                 if (paramFilesBuilder_ == null) {
                     paramFiles_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000040);
                 } else {
+                    paramFiles_ = null;
                     paramFilesBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000800);
                 primaryOutputId_ = 0;
-
                 executionPlatform_ = "";
-
                 templateContent_ = "";
-
                 if (substitutionsBuilder_ == null) {
                     substitutions_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000080);
                 } else {
+                    substitutions_ = null;
                     substitutionsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00008000);
+                fileContents_ = "";
                 return this;
             }
 
@@ -6097,73 +5921,103 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action(this);
-                int from_bitField0_ = bitField0_;
-                result.targetId_ = targetId_;
-                if (((bitField0_ & 0x00000001) != 0)) {
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action result) {
+                if (((bitField0_ & 0x00000002) != 0)) {
                     aspectDescriptorIds_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000002);
                 }
                 result.aspectDescriptorIds_ = aspectDescriptorIds_;
-                result.actionKey_ = actionKey_;
-                result.mnemonic_ = mnemonic_;
-                result.configurationId_ = configurationId_;
-                if (((bitField0_ & 0x00000002) != 0)) {
+                if (((bitField0_ & 0x00000020) != 0)) {
                     arguments_ = arguments_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000002);
+                    bitField0_ = (bitField0_ & ~0x00000020);
                 }
                 result.arguments_ = arguments_;
                 if (environmentVariablesBuilder_ == null) {
-                    if (((bitField0_ & 0x00000004) != 0)) {
+                    if (((bitField0_ & 0x00000040) != 0)) {
                         environmentVariables_ = java.util.Collections.unmodifiableList(environmentVariables_);
-                        bitField0_ = (bitField0_ & ~0x00000004);
+                        bitField0_ = (bitField0_ & ~0x00000040);
                     }
                     result.environmentVariables_ = environmentVariables_;
                 } else {
                     result.environmentVariables_ = environmentVariablesBuilder_.build();
                 }
-                if (((bitField0_ & 0x00000008) != 0)) {
+                if (((bitField0_ & 0x00000080) != 0)) {
                     inputDepSetIds_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000008);
+                    bitField0_ = (bitField0_ & ~0x00000080);
                 }
                 result.inputDepSetIds_ = inputDepSetIds_;
-                if (((bitField0_ & 0x00000010) != 0)) {
+                if (((bitField0_ & 0x00000100) != 0)) {
                     outputIds_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000010);
+                    bitField0_ = (bitField0_ & ~0x00000100);
                 }
                 result.outputIds_ = outputIds_;
-                result.discoversInputs_ = discoversInputs_;
                 if (executionInfoBuilder_ == null) {
-                    if (((bitField0_ & 0x00000020) != 0)) {
+                    if (((bitField0_ & 0x00000400) != 0)) {
                         executionInfo_ = java.util.Collections.unmodifiableList(executionInfo_);
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        bitField0_ = (bitField0_ & ~0x00000400);
                     }
                     result.executionInfo_ = executionInfo_;
                 } else {
                     result.executionInfo_ = executionInfoBuilder_.build();
                 }
                 if (paramFilesBuilder_ == null) {
-                    if (((bitField0_ & 0x00000040) != 0)) {
+                    if (((bitField0_ & 0x00000800) != 0)) {
                         paramFiles_ = java.util.Collections.unmodifiableList(paramFiles_);
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        bitField0_ = (bitField0_ & ~0x00000800);
                     }
                     result.paramFiles_ = paramFiles_;
                 } else {
                     result.paramFiles_ = paramFilesBuilder_.build();
                 }
-                result.primaryOutputId_ = primaryOutputId_;
-                result.executionPlatform_ = executionPlatform_;
-                result.templateContent_ = templateContent_;
                 if (substitutionsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000080) != 0)) {
+                    if (((bitField0_ & 0x00008000) != 0)) {
                         substitutions_ = java.util.Collections.unmodifiableList(substitutions_);
-                        bitField0_ = (bitField0_ & ~0x00000080);
+                        bitField0_ = (bitField0_ & ~0x00008000);
                     }
                     result.substitutions_ = substitutions_;
                 } else {
                     result.substitutions_ = substitutionsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.targetId_ = targetId_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.actionKey_ = actionKey_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.mnemonic_ = mnemonic_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.configurationId_ = configurationId_;
+                }
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.discoversInputs_ = discoversInputs_;
+                }
+                if (((from_bitField0_ & 0x00001000) != 0)) {
+                    result.primaryOutputId_ = primaryOutputId_;
+                }
+                if (((from_bitField0_ & 0x00002000) != 0)) {
+                    result.executionPlatform_ = executionPlatform_;
+                }
+                if (((from_bitField0_ & 0x00004000) != 0)) {
+                    result.templateContent_ = templateContent_;
+                }
+                if (((from_bitField0_ & 0x00010000) != 0)) {
+                    result.fileContents_ = fileContents_;
+                }
             }
 
             @java.lang.Override
@@ -6217,7 +6071,7 @@ public final class AnalysisProtosV2 {
                 if (!other.aspectDescriptorIds_.isEmpty()) {
                     if (aspectDescriptorIds_.isEmpty()) {
                         aspectDescriptorIds_ = other.aspectDescriptorIds_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     } else {
                         ensureAspectDescriptorIdsIsMutable();
                         aspectDescriptorIds_.addAll(other.aspectDescriptorIds_);
@@ -6226,10 +6080,12 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getActionKey().isEmpty()) {
                     actionKey_ = other.actionKey_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getMnemonic().isEmpty()) {
                     mnemonic_ = other.mnemonic_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
                 if (other.getConfigurationId() != 0) {
@@ -6238,7 +6094,7 @@ public final class AnalysisProtosV2 {
                 if (!other.arguments_.isEmpty()) {
                     if (arguments_.isEmpty()) {
                         arguments_ = other.arguments_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ = (bitField0_ & ~0x00000020);
                     } else {
                         ensureArgumentsIsMutable();
                         arguments_.addAll(other.arguments_);
@@ -6249,7 +6105,7 @@ public final class AnalysisProtosV2 {
                     if (!other.environmentVariables_.isEmpty()) {
                         if (environmentVariables_.isEmpty()) {
                             environmentVariables_ = other.environmentVariables_;
-                            bitField0_ = (bitField0_ & ~0x00000004);
+                            bitField0_ = (bitField0_ & ~0x00000040);
                         } else {
                             ensureEnvironmentVariablesIsMutable();
                             environmentVariables_.addAll(other.environmentVariables_);
@@ -6262,7 +6118,7 @@ public final class AnalysisProtosV2 {
                             environmentVariablesBuilder_.dispose();
                             environmentVariablesBuilder_ = null;
                             environmentVariables_ = other.environmentVariables_;
-                            bitField0_ = (bitField0_ & ~0x00000004);
+                            bitField0_ = (bitField0_ & ~0x00000040);
                             environmentVariablesBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getEnvironmentVariablesFieldBuilder()
@@ -6275,7 +6131,7 @@ public final class AnalysisProtosV2 {
                 if (!other.inputDepSetIds_.isEmpty()) {
                     if (inputDepSetIds_.isEmpty()) {
                         inputDepSetIds_ = other.inputDepSetIds_;
-                        bitField0_ = (bitField0_ & ~0x00000008);
+                        bitField0_ = (bitField0_ & ~0x00000080);
                     } else {
                         ensureInputDepSetIdsIsMutable();
                         inputDepSetIds_.addAll(other.inputDepSetIds_);
@@ -6285,7 +6141,7 @@ public final class AnalysisProtosV2 {
                 if (!other.outputIds_.isEmpty()) {
                     if (outputIds_.isEmpty()) {
                         outputIds_ = other.outputIds_;
-                        bitField0_ = (bitField0_ & ~0x00000010);
+                        bitField0_ = (bitField0_ & ~0x00000100);
                     } else {
                         ensureOutputIdsIsMutable();
                         outputIds_.addAll(other.outputIds_);
@@ -6299,7 +6155,7 @@ public final class AnalysisProtosV2 {
                     if (!other.executionInfo_.isEmpty()) {
                         if (executionInfo_.isEmpty()) {
                             executionInfo_ = other.executionInfo_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000400);
                         } else {
                             ensureExecutionInfoIsMutable();
                             executionInfo_.addAll(other.executionInfo_);
@@ -6312,7 +6168,7 @@ public final class AnalysisProtosV2 {
                             executionInfoBuilder_.dispose();
                             executionInfoBuilder_ = null;
                             executionInfo_ = other.executionInfo_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000400);
                             executionInfoBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getExecutionInfoFieldBuilder()
@@ -6326,7 +6182,7 @@ public final class AnalysisProtosV2 {
                     if (!other.paramFiles_.isEmpty()) {
                         if (paramFiles_.isEmpty()) {
                             paramFiles_ = other.paramFiles_;
-                            bitField0_ = (bitField0_ & ~0x00000040);
+                            bitField0_ = (bitField0_ & ~0x00000800);
                         } else {
                             ensureParamFilesIsMutable();
                             paramFiles_.addAll(other.paramFiles_);
@@ -6339,7 +6195,7 @@ public final class AnalysisProtosV2 {
                             paramFilesBuilder_.dispose();
                             paramFilesBuilder_ = null;
                             paramFiles_ = other.paramFiles_;
-                            bitField0_ = (bitField0_ & ~0x00000040);
+                            bitField0_ = (bitField0_ & ~0x00000800);
                             paramFilesBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getParamFilesFieldBuilder()
@@ -6354,17 +6210,19 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getExecutionPlatform().isEmpty()) {
                     executionPlatform_ = other.executionPlatform_;
+                    bitField0_ |= 0x00002000;
                     onChanged();
                 }
                 if (!other.getTemplateContent().isEmpty()) {
                     templateContent_ = other.templateContent_;
+                    bitField0_ |= 0x00004000;
                     onChanged();
                 }
                 if (substitutionsBuilder_ == null) {
                     if (!other.substitutions_.isEmpty()) {
                         if (substitutions_.isEmpty()) {
                             substitutions_ = other.substitutions_;
-                            bitField0_ = (bitField0_ & ~0x00000080);
+                            bitField0_ = (bitField0_ & ~0x00008000);
                         } else {
                             ensureSubstitutionsIsMutable();
                             substitutions_.addAll(other.substitutions_);
@@ -6377,7 +6235,7 @@ public final class AnalysisProtosV2 {
                             substitutionsBuilder_.dispose();
                             substitutionsBuilder_ = null;
                             substitutions_ = other.substitutions_;
-                            bitField0_ = (bitField0_ & ~0x00000080);
+                            bitField0_ = (bitField0_ & ~0x00008000);
                             substitutionsBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getSubstitutionsFieldBuilder()
@@ -6387,7 +6245,12 @@ public final class AnalysisProtosV2 {
                         }
                     }
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                if (!other.getFileContents().isEmpty()) {
+                    fileContents_ = other.fileContents_;
+                    bitField0_ |= 0x00010000;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -6402,18 +6265,206 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    targetId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 16:
+                                {
+                                    int v = input.readUInt32();
+                                    ensureAspectDescriptorIdsIsMutable();
+                                    aspectDescriptorIds_.addInt(v);
+                                    break;
+                                } // case 16
+                            case 18:
+                                {
+                                    int length = input.readRawVarint32();
+                                    int limit = input.pushLimit(length);
+                                    ensureAspectDescriptorIdsIsMutable();
+                                    while (input.getBytesUntilLimit() > 0) {
+                                        aspectDescriptorIds_.addInt(input.readUInt32());
+                                    }
+                                    input.popLimit(limit);
+                                    break;
+                                } // case 18
+                            case 26:
+                                {
+                                    actionKey_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 26
+                            case 34:
+                                {
+                                    mnemonic_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000008;
+                                    break;
+                                } // case 34
+                            case 40:
+                                {
+                                    configurationId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000010;
+                                    break;
+                                } // case 40
+                            case 50:
+                                {
+                                    java.lang.String s = input.readStringRequireUtf8();
+                                    ensureArgumentsIsMutable();
+                                    arguments_.add(s);
+                                    break;
+                                } // case 50
+                            case 58:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (environmentVariablesBuilder_ == null) {
+                                        ensureEnvironmentVariablesIsMutable();
+                                        environmentVariables_.add(m);
+                                    } else {
+                                        environmentVariablesBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 58
+                            case 64:
+                                {
+                                    int v = input.readUInt32();
+                                    ensureInputDepSetIdsIsMutable();
+                                    inputDepSetIds_.addInt(v);
+                                    break;
+                                } // case 64
+                            case 66:
+                                {
+                                    int length = input.readRawVarint32();
+                                    int limit = input.pushLimit(length);
+                                    ensureInputDepSetIdsIsMutable();
+                                    while (input.getBytesUntilLimit() > 0) {
+                                        inputDepSetIds_.addInt(input.readUInt32());
+                                    }
+                                    input.popLimit(limit);
+                                    break;
+                                } // case 66
+                            case 72:
+                                {
+                                    int v = input.readUInt32();
+                                    ensureOutputIdsIsMutable();
+                                    outputIds_.addInt(v);
+                                    break;
+                                } // case 72
+                            case 74:
+                                {
+                                    int length = input.readRawVarint32();
+                                    int limit = input.pushLimit(length);
+                                    ensureOutputIdsIsMutable();
+                                    while (input.getBytesUntilLimit() > 0) {
+                                        outputIds_.addInt(input.readUInt32());
+                                    }
+                                    input.popLimit(limit);
+                                    break;
+                                } // case 74
+                            case 80:
+                                {
+                                    discoversInputs_ = input.readBool();
+                                    bitField0_ |= 0x00000200;
+                                    break;
+                                } // case 80
+                            case 90:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (executionInfoBuilder_ == null) {
+                                        ensureExecutionInfoIsMutable();
+                                        executionInfo_.add(m);
+                                    } else {
+                                        executionInfoBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 90
+                            case 98:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (paramFilesBuilder_ == null) {
+                                        ensureParamFilesIsMutable();
+                                        paramFiles_.add(m);
+                                    } else {
+                                        paramFilesBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 98
+                            case 104:
+                                {
+                                    primaryOutputId_ = input.readUInt32();
+                                    bitField0_ |= 0x00001000;
+                                    break;
+                                } // case 104
+                            case 114:
+                                {
+                                    executionPlatform_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00002000;
+                                    break;
+                                } // case 114
+                            case 122:
+                                {
+                                    templateContent_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00004000;
+                                    break;
+                                } // case 122
+                            case 130:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (substitutionsBuilder_ == null) {
+                                        ensureSubstitutionsIsMutable();
+                                        substitutions_.add(m);
+                                    } else {
+                                        substitutionsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 130
+                            case 138:
+                                {
+                                    fileContents_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00010000;
+                                    break;
+                                } // case 138
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.Action) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -6450,6 +6501,7 @@ public final class AnalysisProtosV2 {
             public Builder setTargetId(int value) {
 
                 targetId_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -6465,7 +6517,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearTargetId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 targetId_ = 0;
                 onChanged();
                 return this;
@@ -6474,9 +6526,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.Internal.IntList aspectDescriptorIds_ = emptyIntList();
 
             private void ensureAspectDescriptorIdsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     aspectDescriptorIds_ = mutableCopy(aspectDescriptorIds_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
             /**
@@ -6494,7 +6546,7 @@ public final class AnalysisProtosV2 {
              * @return A list containing the aspectDescriptorIds.
              */
             public java.util.List<java.lang.Integer> getAspectDescriptorIdsList() {
-                return ((bitField0_ & 0x00000001) != 0)
+                return ((bitField0_ & 0x00000002) != 0)
                         ? java.util.Collections.unmodifiableList(aspectDescriptorIds_)
                         : aspectDescriptorIds_;
             }
@@ -6550,6 +6602,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder setAspectDescriptorIds(int index, int value) {
+
                 ensureAspectDescriptorIdsIsMutable();
                 aspectDescriptorIds_.setInt(index, value);
                 onChanged();
@@ -6571,6 +6624,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder addAspectDescriptorIds(int value) {
+
                 ensureAspectDescriptorIdsIsMutable();
                 aspectDescriptorIds_.addInt(value);
                 onChanged();
@@ -6613,7 +6667,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearAspectDescriptorIds() {
                 aspectDescriptorIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -6685,8 +6739,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 actionKey_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -6704,8 +6758,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearActionKey() {
-
                 actionKey_ = getDefaultInstance().getActionKey();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -6728,8 +6782,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 actionKey_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -6795,8 +6849,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 mnemonic_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -6812,8 +6866,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearMnemonic() {
-
                 mnemonic_ = getDefaultInstance().getMnemonic();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -6834,8 +6888,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 mnemonic_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -6871,6 +6925,7 @@ public final class AnalysisProtosV2 {
             public Builder setConfigurationId(int value) {
 
                 configurationId_ = value;
+                bitField0_ |= 0x00000010;
                 onChanged();
                 return this;
             }
@@ -6886,7 +6941,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearConfigurationId() {
-
+                bitField0_ = (bitField0_ & ~0x00000010);
                 configurationId_ = 0;
                 onChanged();
                 return this;
@@ -6895,9 +6950,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.LazyStringList arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
 
             private void ensureArgumentsIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!((bitField0_ & 0x00000020) != 0)) {
                     arguments_ = new com.google.protobuf.LazyStringArrayList(arguments_);
-                    bitField0_ |= 0x00000002;
+                    bitField0_ |= 0x00000020;
                 }
             }
             /**
@@ -7040,7 +7095,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearArguments() {
                 arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000020);
                 onChanged();
                 return this;
             }
@@ -7072,12 +7127,12 @@ public final class AnalysisProtosV2 {
                     environmentVariables_ = java.util.Collections.emptyList();
 
             private void ensureEnvironmentVariablesIsMutable() {
-                if (!((bitField0_ & 0x00000004) != 0)) {
+                if (!((bitField0_ & 0x00000040) != 0)) {
                     environmentVariables_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair>(
                                     environmentVariables_);
-                    bitField0_ |= 0x00000004;
+                    bitField0_ |= 0x00000040;
                 }
             }
 
@@ -7301,7 +7356,7 @@ public final class AnalysisProtosV2 {
             public Builder clearEnvironmentVariables() {
                 if (environmentVariablesBuilder_ == null) {
                     environmentVariables_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000004);
+                    bitField0_ = (bitField0_ & ~0x00000040);
                     onChanged();
                 } else {
                     environmentVariablesBuilder_.clear();
@@ -7434,7 +7489,7 @@ public final class AnalysisProtosV2 {
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair.Builder,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePairOrBuilder>(
                                     environmentVariables_,
-                                    ((bitField0_ & 0x00000004) != 0),
+                                    ((bitField0_ & 0x00000040) != 0),
                                     getParentForChildren(),
                                     isClean());
                     environmentVariables_ = null;
@@ -7445,9 +7500,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.Internal.IntList inputDepSetIds_ = emptyIntList();
 
             private void ensureInputDepSetIdsIsMutable() {
-                if (!((bitField0_ & 0x00000008) != 0)) {
+                if (!((bitField0_ & 0x00000080) != 0)) {
                     inputDepSetIds_ = mutableCopy(inputDepSetIds_);
-                    bitField0_ |= 0x00000008;
+                    bitField0_ |= 0x00000080;
                 }
             }
             /**
@@ -7463,7 +7518,7 @@ public final class AnalysisProtosV2 {
              * @return A list containing the inputDepSetIds.
              */
             public java.util.List<java.lang.Integer> getInputDepSetIdsList() {
-                return ((bitField0_ & 0x00000008) != 0)
+                return ((bitField0_ & 0x00000080) != 0)
                         ? java.util.Collections.unmodifiableList(inputDepSetIds_)
                         : inputDepSetIds_;
             }
@@ -7513,6 +7568,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder setInputDepSetIds(int index, int value) {
+
                 ensureInputDepSetIdsIsMutable();
                 inputDepSetIds_.setInt(index, value);
                 onChanged();
@@ -7532,6 +7588,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder addInputDepSetIds(int value) {
+
                 ensureInputDepSetIdsIsMutable();
                 inputDepSetIds_.addInt(value);
                 onChanged();
@@ -7570,7 +7627,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearInputDepSetIds() {
                 inputDepSetIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000008);
+                bitField0_ = (bitField0_ & ~0x00000080);
                 onChanged();
                 return this;
             }
@@ -7578,9 +7635,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.Internal.IntList outputIds_ = emptyIntList();
 
             private void ensureOutputIdsIsMutable() {
-                if (!((bitField0_ & 0x00000010) != 0)) {
+                if (!((bitField0_ & 0x00000100) != 0)) {
                     outputIds_ = mutableCopy(outputIds_);
-                    bitField0_ |= 0x00000010;
+                    bitField0_ |= 0x00000100;
                 }
             }
             /**
@@ -7596,7 +7653,7 @@ public final class AnalysisProtosV2 {
              * @return A list containing the outputIds.
              */
             public java.util.List<java.lang.Integer> getOutputIdsList() {
-                return ((bitField0_ & 0x00000010) != 0)
+                return ((bitField0_ & 0x00000100) != 0)
                         ? java.util.Collections.unmodifiableList(outputIds_)
                         : outputIds_;
             }
@@ -7646,6 +7703,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder setOutputIds(int index, int value) {
+
                 ensureOutputIdsIsMutable();
                 outputIds_.setInt(index, value);
                 onChanged();
@@ -7665,6 +7723,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder addOutputIds(int value) {
+
                 ensureOutputIdsIsMutable();
                 outputIds_.addInt(value);
                 onChanged();
@@ -7703,7 +7762,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearOutputIds() {
                 outputIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000100);
                 onChanged();
                 return this;
             }
@@ -7739,6 +7798,7 @@ public final class AnalysisProtosV2 {
             public Builder setDiscoversInputs(boolean value) {
 
                 discoversInputs_ = value;
+                bitField0_ |= 0x00000200;
                 onChanged();
                 return this;
             }
@@ -7754,7 +7814,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearDiscoversInputs() {
-
+                bitField0_ = (bitField0_ & ~0x00000200);
                 discoversInputs_ = false;
                 onChanged();
                 return this;
@@ -7764,12 +7824,12 @@ public final class AnalysisProtosV2 {
                     executionInfo_ = java.util.Collections.emptyList();
 
             private void ensureExecutionInfoIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
+                if (!((bitField0_ & 0x00000400) != 0)) {
                     executionInfo_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair>(
                                     executionInfo_);
-                    bitField0_ |= 0x00000020;
+                    bitField0_ |= 0x00000400;
                 }
             }
 
@@ -8014,7 +8074,7 @@ public final class AnalysisProtosV2 {
             public Builder clearExecutionInfo() {
                 if (executionInfoBuilder_ == null) {
                     executionInfo_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    bitField0_ = (bitField0_ & ~0x00000400);
                     onChanged();
                 } else {
                     executionInfoBuilder_.clear();
@@ -8161,7 +8221,7 @@ public final class AnalysisProtosV2 {
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair.Builder,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePairOrBuilder>(
                                     executionInfo_,
-                                    ((bitField0_ & 0x00000020) != 0),
+                                    ((bitField0_ & 0x00000400) != 0),
                                     getParentForChildren(),
                                     isClean());
                     executionInfo_ = null;
@@ -8173,11 +8233,11 @@ public final class AnalysisProtosV2 {
                     java.util.Collections.emptyList();
 
             private void ensureParamFilesIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
+                if (!((bitField0_ & 0x00000800) != 0)) {
                     paramFiles_ =
                             new java.util.ArrayList<com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile>(
                                     paramFiles_);
-                    bitField0_ |= 0x00000040;
+                    bitField0_ |= 0x00000800;
                 }
             }
 
@@ -8399,7 +8459,7 @@ public final class AnalysisProtosV2 {
             public Builder clearParamFiles() {
                 if (paramFilesBuilder_ == null) {
                     paramFiles_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    bitField0_ = (bitField0_ & ~0x00000800);
                     onChanged();
                 } else {
                     paramFilesBuilder_.clear();
@@ -8527,7 +8587,7 @@ public final class AnalysisProtosV2 {
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile.Builder,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFileOrBuilder>(
-                                    paramFiles_, ((bitField0_ & 0x00000040) != 0), getParentForChildren(), isClean());
+                                    paramFiles_, ((bitField0_ & 0x00000800) != 0), getParentForChildren(), isClean());
                     paramFiles_ = null;
                 }
                 return paramFilesBuilder_;
@@ -8564,6 +8624,7 @@ public final class AnalysisProtosV2 {
             public Builder setPrimaryOutputId(int value) {
 
                 primaryOutputId_ = value;
+                bitField0_ |= 0x00001000;
                 onChanged();
                 return this;
             }
@@ -8579,7 +8640,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearPrimaryOutputId() {
-
+                bitField0_ = (bitField0_ & ~0x00001000);
                 primaryOutputId_ = 0;
                 onChanged();
                 return this;
@@ -8649,8 +8710,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 executionPlatform_ = value;
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -8667,8 +8728,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearExecutionPlatform() {
-
                 executionPlatform_ = getDefaultInstance().getExecutionPlatform();
+                bitField0_ = (bitField0_ & ~0x00002000);
                 onChanged();
                 return this;
             }
@@ -8690,8 +8751,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 executionPlatform_ = value;
+                bitField0_ |= 0x00002000;
                 onChanged();
                 return this;
             }
@@ -8757,8 +8818,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 templateContent_ = value;
+                bitField0_ |= 0x00004000;
                 onChanged();
                 return this;
             }
@@ -8774,8 +8835,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearTemplateContent() {
-
                 templateContent_ = getDefaultInstance().getTemplateContent();
+                bitField0_ = (bitField0_ & ~0x00004000);
                 onChanged();
                 return this;
             }
@@ -8796,8 +8857,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 templateContent_ = value;
+                bitField0_ |= 0x00004000;
                 onChanged();
                 return this;
             }
@@ -8806,12 +8867,12 @@ public final class AnalysisProtosV2 {
                     substitutions_ = java.util.Collections.emptyList();
 
             private void ensureSubstitutionsIsMutable() {
-                if (!((bitField0_ & 0x00000080) != 0)) {
+                if (!((bitField0_ & 0x00008000) != 0)) {
                     substitutions_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair>(
                                     substitutions_);
-                    bitField0_ |= 0x00000080;
+                    bitField0_ |= 0x00008000;
                 }
             }
 
@@ -9056,7 +9117,7 @@ public final class AnalysisProtosV2 {
             public Builder clearSubstitutions() {
                 if (substitutionsBuilder_ == null) {
                     substitutions_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000080);
+                    bitField0_ = (bitField0_ & ~0x00008000);
                     onChanged();
                 } else {
                     substitutionsBuilder_.clear();
@@ -9203,12 +9264,123 @@ public final class AnalysisProtosV2 {
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair.Builder,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePairOrBuilder>(
                                     substitutions_,
-                                    ((bitField0_ & 0x00000080) != 0),
+                                    ((bitField0_ & 0x00008000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     substitutions_ = null;
                 }
                 return substitutionsBuilder_;
+            }
+
+            private java.lang.Object fileContents_ = "";
+            /**
+             *
+             *
+             * <pre>
+             * The contents of the file for the actions.write() action
+             * (guarded by the --include_file_write_contents flag).
+             * </pre>
+             *
+             * <code>string file_contents = 17;</code>
+             *
+             * @return The fileContents.
+             */
+            public java.lang.String getFileContents() {
+                java.lang.Object ref = fileContents_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    fileContents_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The contents of the file for the actions.write() action
+             * (guarded by the --include_file_write_contents flag).
+             * </pre>
+             *
+             * <code>string file_contents = 17;</code>
+             *
+             * @return The bytes for fileContents.
+             */
+            public com.google.protobuf.ByteString getFileContentsBytes() {
+                java.lang.Object ref = fileContents_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    fileContents_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The contents of the file for the actions.write() action
+             * (guarded by the --include_file_write_contents flag).
+             * </pre>
+             *
+             * <code>string file_contents = 17;</code>
+             *
+             * @param value The fileContents to set.
+             * @return This builder for chaining.
+             */
+            public Builder setFileContents(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                fileContents_ = value;
+                bitField0_ |= 0x00010000;
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The contents of the file for the actions.write() action
+             * (guarded by the --include_file_write_contents flag).
+             * </pre>
+             *
+             * <code>string file_contents = 17;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearFileContents() {
+                fileContents_ = getDefaultInstance().getFileContents();
+                bitField0_ = (bitField0_ & ~0x00010000);
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The contents of the file for the actions.write() action
+             * (guarded by the --include_file_write_contents flag).
+             * </pre>
+             *
+             * <code>string file_contents = 17;</code>
+             *
+             * @param value The bytes for fileContents to set.
+             * @return This builder for chaining.
+             */
+            public Builder setFileContentsBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                fileContents_ = value;
+                bitField0_ |= 0x00010000;
+                onChanged();
+                return this;
             }
 
             @java.lang.Override
@@ -9242,7 +9414,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new Action(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -9353,59 +9536,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private Target(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                label_ = s;
-                                break;
-                            }
-                        case 24:
-                            {
-                                ruleClassId_ = input.readUInt32();
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2.internal_static_analysis_Target_descriptor;
         }
@@ -9419,7 +9549,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -9438,7 +9568,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int LABEL_FIELD_NUMBER = 2;
-        private volatile java.lang.Object label_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object label_ = "";
         /**
          *
          *
@@ -9486,7 +9618,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int RULE_CLASS_ID_FIELD_NUMBER = 3;
-        private int ruleClassId_;
+        private int ruleClassId_ = 0;
         /**
          *
          *
@@ -9526,7 +9658,7 @@ public final class AnalysisProtosV2 {
             if (ruleClassId_ != 0) {
                 output.writeUInt32(3, ruleClassId_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -9544,7 +9676,7 @@ public final class AnalysisProtosV2 {
             if (ruleClassId_ != 0) {
                 size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, ruleClassId_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -9563,7 +9695,7 @@ public final class AnalysisProtosV2 {
             if (getId() != other.getId()) return false;
             if (!getLabel().equals(other.getLabel())) return false;
             if (getRuleClassId() != other.getRuleClassId()) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -9580,7 +9712,7 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getLabel().hashCode();
             hash = (37 * hash) + RULE_CLASS_ID_FIELD_NUMBER;
             hash = (53 * hash) + getRuleClassId();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -9703,28 +9835,19 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 label_ = "";
-
                 ruleClassId_ = 0;
-
                 return this;
             }
 
@@ -9752,11 +9875,24 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target(this);
-                result.id_ = id_;
-                result.label_ = label_;
-                result.ruleClassId_ = ruleClassId_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.label_ = label_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.ruleClassId_ = ruleClassId_;
+                }
             }
 
             @java.lang.Override
@@ -9809,12 +9945,13 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getLabel().isEmpty()) {
                     label_ = other.label_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.getRuleClassId() != 0) {
                     setRuleClassId(other.getRuleClassId());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -9829,20 +9966,53 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 18:
+                                {
+                                    label_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            case 24:
+                                {
+                                    ruleClassId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 24
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.Target) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private int id_;
             /**
@@ -9877,6 +10047,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -9893,7 +10064,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -9960,8 +10131,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 label_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -9977,8 +10148,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearLabel() {
-
                 label_ = getDefaultInstance().getLabel();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -9999,8 +10170,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 label_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -10036,6 +10207,7 @@ public final class AnalysisProtosV2 {
             public Builder setRuleClassId(int value) {
 
                 ruleClassId_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -10051,7 +10223,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearRuleClassId() {
-
+                bitField0_ = (bitField0_ & ~0x00000004);
                 ruleClassId_ = 0;
                 onChanged();
                 return this;
@@ -10088,7 +10260,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new Target(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -10177,54 +10360,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private RuleClass(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                name_ = s;
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_RuleClass_descriptor;
@@ -10239,7 +10374,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -10258,7 +10393,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int NAME_FIELD_NUMBER = 2;
-        private volatile java.lang.Object name_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object name_ = "";
         /**
          *
          *
@@ -10325,7 +10462,7 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -10340,7 +10477,7 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -10358,7 +10495,7 @@ public final class AnalysisProtosV2 {
 
             if (getId() != other.getId()) return false;
             if (!getName().equals(other.getName())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -10373,7 +10510,7 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getId();
             hash = (37 * hash) + NAME_FIELD_NUMBER;
             hash = (53 * hash) + getName().hashCode();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -10487,26 +10624,18 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 name_ = "";
-
                 return this;
             }
 
@@ -10534,10 +10663,21 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass(this);
-                result.id_ = id_;
-                result.name_ = name_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.name_ = name_;
+                }
             }
 
             @java.lang.Override
@@ -10590,9 +10730,10 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -10607,21 +10748,47 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 18:
+                                {
+                                    name_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.RuleClass)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private int id_;
             /**
@@ -10656,6 +10823,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -10672,7 +10840,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -10739,8 +10907,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 name_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -10756,8 +10924,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearName() {
-
                 name_ = getDefaultInstance().getName();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -10778,8 +10946,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 name_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -10815,7 +10983,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new RuleClass(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -10979,74 +11158,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private AspectDescriptor(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                name_ = s;
-                                break;
-                            }
-                        case 26:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    parameters_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .KeyValuePair>();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                parameters_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    parameters_ = java.util.Collections.unmodifiableList(parameters_);
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_AspectDescriptor_descriptor;
@@ -11061,7 +11172,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -11080,7 +11191,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int NAME_FIELD_NUMBER = 2;
-        private volatile java.lang.Object name_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object name_ = "";
         /**
          *
          *
@@ -11132,6 +11245,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PARAMETERS_FIELD_NUMBER = 3;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair> parameters_;
         /**
          *
@@ -11235,7 +11350,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < parameters_.size(); i++) {
                 output.writeMessage(3, parameters_.get(i));
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -11253,7 +11368,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < parameters_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, parameters_.get(i));
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -11272,7 +11387,7 @@ public final class AnalysisProtosV2 {
             if (getId() != other.getId()) return false;
             if (!getName().equals(other.getName())) return false;
             if (!getParametersList().equals(other.getParametersList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -11291,7 +11406,7 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + PARAMETERS_FIELD_NUMBER;
                 hash = (53 * hash) + getParametersList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -11414,34 +11529,25 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                    getParametersFieldBuilder();
-                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 name_ = "";
-
                 if (parametersBuilder_ == null) {
                     parameters_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
                 } else {
+                    parameters_ = null;
                     parametersBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000004);
                 return this;
             }
 
@@ -11470,20 +11576,36 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor(this);
-                int from_bitField0_ = bitField0_;
-                result.id_ = id_;
-                result.name_ = name_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor result) {
                 if (parametersBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) != 0)) {
+                    if (((bitField0_ & 0x00000004) != 0)) {
                         parameters_ = java.util.Collections.unmodifiableList(parameters_);
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000004);
                     }
                     result.parameters_ = parameters_;
                 } else {
                     result.parameters_ = parametersBuilder_.build();
                 }
-                onBuilt();
-                return result;
+            }
+
+            private void buildPartial0(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.name_ = name_;
+                }
             }
 
             @java.lang.Override
@@ -11537,13 +11659,14 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (parametersBuilder_ == null) {
                     if (!other.parameters_.isEmpty()) {
                         if (parameters_.isEmpty()) {
                             parameters_ = other.parameters_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000004);
                         } else {
                             ensureParametersIsMutable();
                             parameters_.addAll(other.parameters_);
@@ -11556,7 +11679,7 @@ public final class AnalysisProtosV2 {
                             parametersBuilder_.dispose();
                             parametersBuilder_ = null;
                             parameters_ = other.parameters_;
-                            bitField0_ = (bitField0_ & ~0x00000001);
+                            bitField0_ = (bitField0_ & ~0x00000004);
                             parametersBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getParametersFieldBuilder()
@@ -11566,7 +11689,7 @@ public final class AnalysisProtosV2 {
                         }
                     }
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -11581,19 +11704,58 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 18:
+                                {
+                                    name_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            case 26:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair
+                                                            .parser(),
+                                                    extensionRegistry);
+                                    if (parametersBuilder_ == null) {
+                                        ensureParametersIsMutable();
+                                        parameters_.add(m);
+                                    } else {
+                                        parametersBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 26
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.AspectDescriptor)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -11632,6 +11794,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -11648,7 +11811,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -11721,8 +11884,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 name_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -11740,8 +11903,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearName() {
-
                 name_ = getDefaultInstance().getName();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -11764,8 +11927,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 name_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -11774,11 +11937,11 @@ public final class AnalysisProtosV2 {
                     java.util.Collections.emptyList();
 
             private void ensureParametersIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000004) != 0)) {
                     parameters_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair>(parameters_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000004;
                 }
             }
 
@@ -12022,7 +12185,7 @@ public final class AnalysisProtosV2 {
             public Builder clearParameters() {
                 if (parametersBuilder_ == null) {
                     parameters_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                    bitField0_ = (bitField0_ & ~0x00000004);
                     onChanged();
                 } else {
                     parametersBuilder_.clear();
@@ -12167,7 +12330,7 @@ public final class AnalysisProtosV2 {
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair.Builder,
                                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePairOrBuilder>(
-                                    parameters_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+                                    parameters_, ((bitField0_ & 0x00000004) != 0), getParentForChildren(), isClean());
                     parameters_ = null;
                 }
                 return parametersBuilder_;
@@ -12204,7 +12367,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new AspectDescriptor(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -12345,100 +12519,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private DepSetOfFiles(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 16:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    transitiveDepSetIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                transitiveDepSetIds_.addInt(input.readUInt32());
-                                break;
-                            }
-                        case 18:
-                            {
-                                int length = input.readRawVarint32();
-                                int limit = input.pushLimit(length);
-                                if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-                                    transitiveDepSetIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                while (input.getBytesUntilLimit() > 0) {
-                                    transitiveDepSetIds_.addInt(input.readUInt32());
-                                }
-                                input.popLimit(limit);
-                                break;
-                            }
-                        case 24:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                                    directArtifactIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000002;
-                                }
-                                directArtifactIds_.addInt(input.readUInt32());
-                                break;
-                            }
-                        case 26:
-                            {
-                                int length = input.readRawVarint32();
-                                int limit = input.pushLimit(length);
-                                if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
-                                    directArtifactIds_ = newIntList();
-                                    mutable_bitField0_ |= 0x00000002;
-                                }
-                                while (input.getBytesUntilLimit() > 0) {
-                                    directArtifactIds_.addInt(input.readUInt32());
-                                }
-                                input.popLimit(limit);
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    transitiveDepSetIds_.makeImmutable(); // C
-                }
-                if (((mutable_bitField0_ & 0x00000002) != 0)) {
-                    directArtifactIds_.makeImmutable(); // C
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_DepSetOfFiles_descriptor;
@@ -12453,7 +12533,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -12472,6 +12552,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int TRANSITIVE_DEP_SET_IDS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.Internal.IntList transitiveDepSetIds_;
         /**
          *
@@ -12521,6 +12603,8 @@ public final class AnalysisProtosV2 {
         private int transitiveDepSetIdsMemoizedSerializedSize = -1;
 
         public static final int DIRECT_ARTIFACT_IDS_FIELD_NUMBER = 3;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.Internal.IntList directArtifactIds_;
         /**
          *
@@ -12601,7 +12685,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < directArtifactIds_.size(); i++) {
                 output.writeUInt32NoTag(directArtifactIds_.getInt(i));
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -12640,7 +12724,7 @@ public final class AnalysisProtosV2 {
                 }
                 directArtifactIdsMemoizedSerializedSize = dataSize;
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -12659,7 +12743,7 @@ public final class AnalysisProtosV2 {
             if (getId() != other.getId()) return false;
             if (!getTransitiveDepSetIdsList().equals(other.getTransitiveDepSetIdsList())) return false;
             if (!getDirectArtifactIdsList().equals(other.getDirectArtifactIdsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -12680,7 +12764,7 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + DIRECT_ARTIFACT_IDS_FIELD_NUMBER;
                 hash = (53 * hash) + getDirectArtifactIdsList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -12795,28 +12879,19 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 transitiveDepSetIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000001);
                 directArtifactIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -12844,20 +12919,33 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles(this);
-                int from_bitField0_ = bitField0_;
-                result.id_ = id_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    transitiveDepSetIds_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.transitiveDepSetIds_ = transitiveDepSetIds_;
-                if (((bitField0_ & 0x00000002) != 0)) {
-                    directArtifactIds_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                }
-                result.directArtifactIds_ = directArtifactIds_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles result) {
+                if (((bitField0_ & 0x00000002) != 0)) {
+                    transitiveDepSetIds_.makeImmutable();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                }
+                result.transitiveDepSetIds_ = transitiveDepSetIds_;
+                if (((bitField0_ & 0x00000004) != 0)) {
+                    directArtifactIds_.makeImmutable();
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                }
+                result.directArtifactIds_ = directArtifactIds_;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
             }
 
             @java.lang.Override
@@ -12911,7 +12999,7 @@ public final class AnalysisProtosV2 {
                 if (!other.transitiveDepSetIds_.isEmpty()) {
                     if (transitiveDepSetIds_.isEmpty()) {
                         transitiveDepSetIds_ = other.transitiveDepSetIds_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     } else {
                         ensureTransitiveDepSetIdsIsMutable();
                         transitiveDepSetIds_.addAll(other.transitiveDepSetIds_);
@@ -12921,14 +13009,14 @@ public final class AnalysisProtosV2 {
                 if (!other.directArtifactIds_.isEmpty()) {
                     if (directArtifactIds_.isEmpty()) {
                         directArtifactIds_ = other.directArtifactIds_;
-                        bitField0_ = (bitField0_ & ~0x00000002);
+                        bitField0_ = (bitField0_ & ~0x00000004);
                     } else {
                         ensureDirectArtifactIdsIsMutable();
                         directArtifactIds_.addAll(other.directArtifactIds_);
                     }
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -12943,19 +13031,73 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 16:
+                                {
+                                    int v = input.readUInt32();
+                                    ensureTransitiveDepSetIdsIsMutable();
+                                    transitiveDepSetIds_.addInt(v);
+                                    break;
+                                } // case 16
+                            case 18:
+                                {
+                                    int length = input.readRawVarint32();
+                                    int limit = input.pushLimit(length);
+                                    ensureTransitiveDepSetIdsIsMutable();
+                                    while (input.getBytesUntilLimit() > 0) {
+                                        transitiveDepSetIds_.addInt(input.readUInt32());
+                                    }
+                                    input.popLimit(limit);
+                                    break;
+                                } // case 18
+                            case 24:
+                                {
+                                    int v = input.readUInt32();
+                                    ensureDirectArtifactIdsIsMutable();
+                                    directArtifactIds_.addInt(v);
+                                    break;
+                                } // case 24
+                            case 26:
+                                {
+                                    int length = input.readRawVarint32();
+                                    int limit = input.pushLimit(length);
+                                    ensureDirectArtifactIdsIsMutable();
+                                    while (input.getBytesUntilLimit() > 0) {
+                                        directArtifactIds_.addInt(input.readUInt32());
+                                    }
+                                    input.popLimit(limit);
+                                    break;
+                                } // case 26
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.DepSetOfFiles)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -12994,6 +13136,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -13010,7 +13153,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -13019,9 +13162,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.Internal.IntList transitiveDepSetIds_ = emptyIntList();
 
             private void ensureTransitiveDepSetIdsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     transitiveDepSetIds_ = mutableCopy(transitiveDepSetIds_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
             /**
@@ -13036,7 +13179,7 @@ public final class AnalysisProtosV2 {
              * @return A list containing the transitiveDepSetIds.
              */
             public java.util.List<java.lang.Integer> getTransitiveDepSetIdsList() {
-                return ((bitField0_ & 0x00000001) != 0)
+                return ((bitField0_ & 0x00000002) != 0)
                         ? java.util.Collections.unmodifiableList(transitiveDepSetIds_)
                         : transitiveDepSetIds_;
             }
@@ -13083,6 +13226,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder setTransitiveDepSetIds(int index, int value) {
+
                 ensureTransitiveDepSetIdsIsMutable();
                 transitiveDepSetIds_.setInt(index, value);
                 onChanged();
@@ -13101,6 +13245,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder addTransitiveDepSetIds(int value) {
+
                 ensureTransitiveDepSetIdsIsMutable();
                 transitiveDepSetIds_.addInt(value);
                 onChanged();
@@ -13137,7 +13282,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearTransitiveDepSetIds() {
                 transitiveDepSetIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -13145,9 +13290,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.Internal.IntList directArtifactIds_ = emptyIntList();
 
             private void ensureDirectArtifactIdsIsMutable() {
-                if (!((bitField0_ & 0x00000002) != 0)) {
+                if (!((bitField0_ & 0x00000004) != 0)) {
                     directArtifactIds_ = mutableCopy(directArtifactIds_);
-                    bitField0_ |= 0x00000002;
+                    bitField0_ |= 0x00000004;
                 }
             }
             /**
@@ -13162,7 +13307,7 @@ public final class AnalysisProtosV2 {
              * @return A list containing the directArtifactIds.
              */
             public java.util.List<java.lang.Integer> getDirectArtifactIdsList() {
-                return ((bitField0_ & 0x00000002) != 0)
+                return ((bitField0_ & 0x00000004) != 0)
                         ? java.util.Collections.unmodifiableList(directArtifactIds_)
                         : directArtifactIds_;
             }
@@ -13209,6 +13354,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder setDirectArtifactIds(int index, int value) {
+
                 ensureDirectArtifactIdsIsMutable();
                 directArtifactIds_.setInt(index, value);
                 onChanged();
@@ -13227,6 +13373,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder addDirectArtifactIds(int value) {
+
                 ensureDirectArtifactIdsIsMutable();
                 directArtifactIds_.addInt(value);
                 onChanged();
@@ -13263,7 +13410,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearDirectArtifactIds() {
                 directArtifactIds_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -13299,7 +13446,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new DepSetOfFiles(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -13411,6 +13569,19 @@ public final class AnalysisProtosV2 {
          * @return The bytes for checksum.
          */
         com.google.protobuf.ByteString getChecksumBytes();
+
+        /**
+         *
+         *
+         * <pre>
+         * Whether this configuration is used for building tools.
+         * </pre>
+         *
+         * <code>bool is_tool = 5;</code>
+         *
+         * @return The isTool.
+         */
+        boolean getIsTool();
     }
     /** Protobuf type {@code analysis.Configuration} */
     public static final class Configuration extends com.google.protobuf.GeneratedMessageV3
@@ -13440,68 +13611,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private Configuration(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                mnemonic_ = s;
-                                break;
-                            }
-                        case 26:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                platformName_ = s;
-                                break;
-                            }
-                        case 34:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                checksum_ = s;
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_Configuration_descriptor;
@@ -13516,7 +13625,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -13535,7 +13644,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int MNEMONIC_FIELD_NUMBER = 2;
-        private volatile java.lang.Object mnemonic_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object mnemonic_ = "";
         /**
          *
          *
@@ -13583,7 +13694,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PLATFORM_NAME_FIELD_NUMBER = 3;
-        private volatile java.lang.Object platformName_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object platformName_ = "";
         /**
          *
          *
@@ -13631,7 +13744,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int CHECKSUM_FIELD_NUMBER = 4;
-        private volatile java.lang.Object checksum_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object checksum_ = "";
         /**
          *
          *
@@ -13678,6 +13793,24 @@ public final class AnalysisProtosV2 {
             }
         }
 
+        public static final int IS_TOOL_FIELD_NUMBER = 5;
+        private boolean isTool_ = false;
+        /**
+         *
+         *
+         * <pre>
+         * Whether this configuration is used for building tools.
+         * </pre>
+         *
+         * <code>bool is_tool = 5;</code>
+         *
+         * @return The isTool.
+         */
+        @java.lang.Override
+        public boolean getIsTool() {
+            return isTool_;
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -13704,7 +13837,10 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(checksum_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 4, checksum_);
             }
-            unknownFields.writeTo(output);
+            if (isTool_ != false) {
+                output.writeBool(5, isTool_);
+            }
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -13725,7 +13861,10 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(checksum_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, checksum_);
             }
-            size += unknownFields.getSerializedSize();
+            if (isTool_ != false) {
+                size += com.google.protobuf.CodedOutputStream.computeBoolSize(5, isTool_);
+            }
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -13745,7 +13884,8 @@ public final class AnalysisProtosV2 {
             if (!getMnemonic().equals(other.getMnemonic())) return false;
             if (!getPlatformName().equals(other.getPlatformName())) return false;
             if (!getChecksum().equals(other.getChecksum())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (getIsTool() != other.getIsTool()) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -13764,7 +13904,9 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getPlatformName().hashCode();
             hash = (37 * hash) + CHECKSUM_FIELD_NUMBER;
             hash = (53 * hash) + getChecksum().hashCode();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (37 * hash) + IS_TOOL_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsTool());
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -13879,30 +14021,21 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 mnemonic_ = "";
-
                 platformName_ = "";
-
                 checksum_ = "";
-
+                isTool_ = false;
                 return this;
             }
 
@@ -13930,12 +14063,30 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration(this);
-                result.id_ = id_;
-                result.mnemonic_ = mnemonic_;
-                result.platformName_ = platformName_;
-                result.checksum_ = checksum_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.mnemonic_ = mnemonic_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.platformName_ = platformName_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.checksum_ = checksum_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.isTool_ = isTool_;
+                }
             }
 
             @java.lang.Override
@@ -13988,17 +14139,23 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getMnemonic().isEmpty()) {
                     mnemonic_ = other.mnemonic_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (!other.getPlatformName().isEmpty()) {
                     platformName_ = other.platformName_;
+                    bitField0_ |= 0x00000004;
                     onChanged();
                 }
                 if (!other.getChecksum().isEmpty()) {
                     checksum_ = other.checksum_;
+                    bitField0_ |= 0x00000008;
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                if (other.getIsTool() != false) {
+                    setIsTool(other.getIsTool());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -14013,21 +14170,65 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 18:
+                                {
+                                    mnemonic_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            case 26:
+                                {
+                                    platformName_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 26
+                            case 34:
+                                {
+                                    checksum_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000008;
+                                    break;
+                                } // case 34
+                            case 40:
+                                {
+                                    isTool_ = input.readBool();
+                                    bitField0_ |= 0x00000010;
+                                    break;
+                                } // case 40
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private int id_;
             /**
@@ -14062,6 +14263,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -14078,7 +14280,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -14145,8 +14347,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 mnemonic_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -14162,8 +14364,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearMnemonic() {
-
                 mnemonic_ = getDefaultInstance().getMnemonic();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -14184,8 +14386,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 mnemonic_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -14251,8 +14453,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 platformName_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -14268,8 +14470,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearPlatformName() {
-
                 platformName_ = getDefaultInstance().getPlatformName();
+                bitField0_ = (bitField0_ & ~0x00000004);
                 onChanged();
                 return this;
             }
@@ -14290,8 +14492,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 platformName_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -14357,8 +14559,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 checksum_ = value;
+                bitField0_ |= 0x00000008;
                 onChanged();
                 return this;
             }
@@ -14374,8 +14576,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearChecksum() {
-
                 checksum_ = getDefaultInstance().getChecksum();
+                bitField0_ = (bitField0_ & ~0x00000008);
                 onChanged();
                 return this;
             }
@@ -14396,8 +14598,61 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 checksum_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            private boolean isTool_;
+            /**
+             *
+             *
+             * <pre>
+             * Whether this configuration is used for building tools.
+             * </pre>
+             *
+             * <code>bool is_tool = 5;</code>
+             *
+             * @return The isTool.
+             */
+            @java.lang.Override
+            public boolean getIsTool() {
+                return isTool_;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Whether this configuration is used for building tools.
+             * </pre>
+             *
+             * <code>bool is_tool = 5;</code>
+             *
+             * @param value The isTool to set.
+             * @return This builder for chaining.
+             */
+            public Builder setIsTool(boolean value) {
+
+                isTool_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Whether this configuration is used for building tools.
+             * </pre>
+             *
+             * <code>bool is_tool = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearIsTool() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                isTool_ = false;
                 onChanged();
                 return this;
             }
@@ -14433,7 +14688,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new Configuration(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -14534,56 +14800,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private KeyValuePair(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                key_ = s;
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                value_ = s;
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_KeyValuePair_descriptor;
@@ -14598,7 +14814,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int KEY_FIELD_NUMBER = 1;
-        private volatile java.lang.Object key_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object key_ = "";
         /**
          *
          *
@@ -14646,7 +14864,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int VALUE_FIELD_NUMBER = 2;
-        private volatile java.lang.Object value_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object value_ = "";
         /**
          *
          *
@@ -14713,7 +14933,7 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -14728,7 +14948,7 @@ public final class AnalysisProtosV2 {
             if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -14746,7 +14966,7 @@ public final class AnalysisProtosV2 {
 
             if (!getKey().equals(other.getKey())) return false;
             if (!getValue().equals(other.getValue())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -14761,7 +14981,7 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getKey().hashCode();
             hash = (37 * hash) + VALUE_FIELD_NUMBER;
             hash = (53 * hash) + getValue().hashCode();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -14876,26 +15096,18 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 key_ = "";
-
                 value_ = "";
-
                 return this;
             }
 
@@ -14923,10 +15135,21 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair(this);
-                result.key_ = key_;
-                result.value_ = value_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.key_ = key_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.value_ = value_;
+                }
             }
 
             @java.lang.Override
@@ -14976,13 +15199,15 @@ public final class AnalysisProtosV2 {
                     return this;
                 if (!other.getKey().isEmpty()) {
                     key_ = other.key_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.getValue().isEmpty()) {
                     value_ = other.value_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -14997,21 +15222,47 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10:
+                                {
+                                    key_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 10
+                            case 18:
+                                {
+                                    value_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.KeyValuePair)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private java.lang.Object key_ = "";
             /**
@@ -15074,8 +15325,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 key_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -15091,8 +15342,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearKey() {
-
                 key_ = getDefaultInstance().getKey();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -15113,8 +15364,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 key_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -15180,8 +15431,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 value_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15197,8 +15448,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearValue() {
-
                 value_ = getDefaultInstance().getValue();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -15219,8 +15470,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 value_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -15256,7 +15507,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new KeyValuePair(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -15328,36 +15590,56 @@ public final class AnalysisProtosV2 {
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          *
+         * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
          * @return Whether the configuration field is set.
          */
+        @java.lang.Deprecated
         boolean hasConfiguration();
         /**
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          *
+         * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
          * @return The configuration.
          */
+        @java.lang.Deprecated
         com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfiguration();
         /**
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          */
+        @java.lang.Deprecated
         com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder getConfigurationOrBuilder();
+
+        /**
+         *
+         *
+         * <pre>
+         * The id of the configuration this target is configured for. The actual
+         * Configuration message can be found in CqueryResults. If the target doesn't
+         * have a configuration, the value will be 0.
+         * </pre>
+         *
+         * <code>uint32 configuration_id = 3;</code>
+         *
+         * @return The configurationId.
+         */
+        int getConfigurationId();
     }
     /** Protobuf type {@code analysis.ConfiguredTarget} */
     public static final class ConfiguredTarget extends com.google.protobuf.GeneratedMessageV3
@@ -15381,80 +15663,6 @@ public final class AnalysisProtosV2 {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private ConfiguredTarget(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10:
-                            {
-                                com.google.devtools.build.lib.query2.proto.proto2api.Build.Target.Builder subBuilder =
-                                        null;
-                                if (target_ != null) {
-                                    subBuilder = target_.toBuilder();
-                                }
-                                target_ =
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.query2.proto.proto2api.Build.Target
-                                                        .PARSER,
-                                                extensionRegistry);
-                                if (subBuilder != null) {
-                                    subBuilder.mergeFrom(target_);
-                                    target_ = subBuilder.buildPartial();
-                                }
-
-                                break;
-                            }
-                        case 18:
-                            {
-                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder
-                                        subBuilder = null;
-                                if (configuration_ != null) {
-                                    subBuilder = configuration_.toBuilder();
-                                }
-                                configuration_ =
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration
-                                                        .parser(),
-                                                extensionRegistry);
-                                if (subBuilder != null) {
-                                    subBuilder.mergeFrom(configuration_);
-                                    configuration_ = subBuilder.buildPartial();
-                                }
-
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -15524,7 +15732,9 @@ public final class AnalysisProtosV2 {
          */
         @java.lang.Override
         public com.google.devtools.build.lib.query2.proto.proto2api.Build.TargetOrBuilder getTargetOrBuilder() {
-            return getTarget();
+            return target_ == null
+                    ? com.google.devtools.build.lib.query2.proto.proto2api.Build.Target.getDefaultInstance()
+                    : target_;
         }
 
         public static final int CONFIGURATION_FIELD_NUMBER = 2;
@@ -15533,14 +15743,16 @@ public final class AnalysisProtosV2 {
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          *
+         * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
          * @return Whether the configuration field is set.
          */
         @java.lang.Override
+        @java.lang.Deprecated
         public boolean hasConfiguration() {
             return configuration_ != null;
         }
@@ -15548,14 +15760,16 @@ public final class AnalysisProtosV2 {
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          *
+         * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
          * @return The configuration.
          */
         @java.lang.Override
+        @java.lang.Deprecated
         public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfiguration() {
             return configuration_ == null
                     ? com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.getDefaultInstance()
@@ -15565,15 +15779,38 @@ public final class AnalysisProtosV2 {
          *
          *
          * <pre>
-         * The configuration
+         * DEPRECATED. Use configuration_id instead.
          * </pre>
          *
-         * <code>.analysis.Configuration configuration = 2;</code>
+         * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
          */
         @java.lang.Override
+        @java.lang.Deprecated
         public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder
                 getConfigurationOrBuilder() {
-            return getConfiguration();
+            return configuration_ == null
+                    ? com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.getDefaultInstance()
+                    : configuration_;
+        }
+
+        public static final int CONFIGURATION_ID_FIELD_NUMBER = 3;
+        private int configurationId_ = 0;
+        /**
+         *
+         *
+         * <pre>
+         * The id of the configuration this target is configured for. The actual
+         * Configuration message can be found in CqueryResults. If the target doesn't
+         * have a configuration, the value will be 0.
+         * </pre>
+         *
+         * <code>uint32 configuration_id = 3;</code>
+         *
+         * @return The configurationId.
+         */
+        @java.lang.Override
+        public int getConfigurationId() {
+            return configurationId_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -15602,7 +15839,10 @@ public final class AnalysisProtosV2 {
             if (configuration_ != null) {
                 output.writeMessage(2, getConfiguration());
             }
-            unknownFields.writeTo(output);
+            if (configurationId_ != 0) {
+                output.writeUInt32(3, configurationId_);
+            }
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -15617,7 +15857,10 @@ public final class AnalysisProtosV2 {
             if (configuration_ != null) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getConfiguration());
             }
-            size += unknownFields.getSerializedSize();
+            if (configurationId_ != 0) {
+                size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, configurationId_);
+            }
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -15641,7 +15884,8 @@ public final class AnalysisProtosV2 {
             if (hasConfiguration()) {
                 if (!getConfiguration().equals(other.getConfiguration())) return false;
             }
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (getConfigurationId() != other.getConfigurationId()) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -15660,7 +15904,9 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + CONFIGURATION_FIELD_NUMBER;
                 hash = (53 * hash) + getConfiguration().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (37 * hash) + CONFIGURATION_ID_FIELD_NUMBER;
+            hash = (53 * hash) + getConfigurationId();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -15775,34 +16021,27 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                if (targetBuilder_ == null) {
-                    target_ = null;
-                } else {
-                    target_ = null;
+                bitField0_ = 0;
+                target_ = null;
+                if (targetBuilder_ != null) {
+                    targetBuilder_.dispose();
                     targetBuilder_ = null;
                 }
-                if (configurationBuilder_ == null) {
-                    configuration_ = null;
-                } else {
-                    configuration_ = null;
+                configuration_ = null;
+                if (configurationBuilder_ != null) {
+                    configurationBuilder_.dispose();
                     configurationBuilder_ = null;
                 }
+                configurationId_ = 0;
                 return this;
             }
 
@@ -15831,18 +16070,26 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget(this);
-                if (targetBuilder_ == null) {
-                    result.target_ = target_;
-                } else {
-                    result.target_ = targetBuilder_.build();
-                }
-                if (configurationBuilder_ == null) {
-                    result.configuration_ = configuration_;
-                } else {
-                    result.configuration_ = configurationBuilder_.build();
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.target_ = targetBuilder_ == null ? target_ : targetBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.configuration_ =
+                            configurationBuilder_ == null ? configuration_ : configurationBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.configurationId_ = configurationId_;
+                }
             }
 
             @java.lang.Override
@@ -15897,7 +16144,10 @@ public final class AnalysisProtosV2 {
                 if (other.hasConfiguration()) {
                     mergeConfiguration(other.getConfiguration());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                if (other.getConfigurationId() != 0) {
+                    setConfigurationId(other.getConfigurationId());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -15917,21 +16167,53 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10:
+                                {
+                                    input.readMessage(getTargetFieldBuilder().getBuilder(), extensionRegistry);
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 10
+                            case 18:
+                                {
+                                    input.readMessage(getConfigurationFieldBuilder().getBuilder(), extensionRegistry);
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            case 24:
+                                {
+                                    configurationId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 24
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private com.google.devtools.build.lib.query2.proto.proto2api.Build.Target target_;
             private com.google.protobuf.SingleFieldBuilderV3<
@@ -15954,7 +16236,7 @@ public final class AnalysisProtosV2 {
              * @return Whether the target field is set.
              */
             public boolean hasTarget() {
-                return targetBuilder_ != null || target_ != null;
+                return ((bitField0_ & 0x00000001) != 0);
             }
             /**
              *
@@ -15997,11 +16279,11 @@ public final class AnalysisProtosV2 {
                         throw new NullPointerException();
                     }
                     target_ = value;
-                    onChanged();
                 } else {
                     targetBuilder_.setMessage(value);
                 }
-
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
             /**
@@ -16020,11 +16302,11 @@ public final class AnalysisProtosV2 {
                     com.google.devtools.build.lib.query2.proto.proto2api.Build.Target.Builder builderForValue) {
                 if (targetBuilder_ == null) {
                     target_ = builderForValue.build();
-                    onChanged();
                 } else {
                     targetBuilder_.setMessage(builderForValue.build());
                 }
-
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
             /**
@@ -16041,19 +16323,20 @@ public final class AnalysisProtosV2 {
              */
             public Builder mergeTarget(com.google.devtools.build.lib.query2.proto.proto2api.Build.Target value) {
                 if (targetBuilder_ == null) {
-                    if (target_ != null) {
-                        target_ =
-                                com.google.devtools.build.lib.query2.proto.proto2api.Build.Target.newBuilder(target_)
-                                        .mergeFrom(value)
-                                        .buildPartial();
+                    if (((bitField0_ & 0x00000001) != 0)
+                            && target_ != null
+                            && target_
+                                    != com.google.devtools.build.lib.query2.proto.proto2api.Build.Target
+                                            .getDefaultInstance()) {
+                        getTargetBuilder().mergeFrom(value);
                     } else {
                         target_ = value;
                     }
-                    onChanged();
                 } else {
                     targetBuilder_.mergeFrom(value);
                 }
-
+                bitField0_ |= 0x00000001;
+                onChanged();
                 return this;
             }
             /**
@@ -16069,14 +16352,13 @@ public final class AnalysisProtosV2 {
              * <code>.blaze_query.Target target = 1;</code>
              */
             public Builder clearTarget() {
-                if (targetBuilder_ == null) {
-                    target_ = null;
-                    onChanged();
-                } else {
-                    target_ = null;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                target_ = null;
+                if (targetBuilder_ != null) {
+                    targetBuilder_.dispose();
                     targetBuilder_ = null;
                 }
-
+                onChanged();
                 return this;
             }
             /**
@@ -16092,7 +16374,7 @@ public final class AnalysisProtosV2 {
              * <code>.blaze_query.Target target = 1;</code>
              */
             public com.google.devtools.build.lib.query2.proto.proto2api.Build.Target.Builder getTargetBuilder() {
-
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return getTargetFieldBuilder().getBuilder();
             }
@@ -16156,27 +16438,31 @@ public final class AnalysisProtosV2 {
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              *
+             * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
              * @return Whether the configuration field is set.
              */
+            @java.lang.Deprecated
             public boolean hasConfiguration() {
-                return configurationBuilder_ != null || configuration_ != null;
+                return ((bitField0_ & 0x00000002) != 0);
             }
             /**
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              *
+             * @deprecated analysis.ConfiguredTarget.configuration is deprecated. See analysis_v2.proto;l=206
              * @return The configuration.
              */
+            @java.lang.Deprecated
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfiguration() {
                 if (configurationBuilder_ == null) {
                     return configuration_ == null
@@ -16190,11 +16476,12 @@ public final class AnalysisProtosV2 {
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public Builder setConfiguration(
                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration value) {
                 if (configurationBuilder_ == null) {
@@ -16202,93 +16489,96 @@ public final class AnalysisProtosV2 {
                         throw new NullPointerException();
                     }
                     configuration_ = value;
-                    onChanged();
                 } else {
                     configurationBuilder_.setMessage(value);
                 }
-
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
             /**
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public Builder setConfiguration(
                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder builderForValue) {
                 if (configurationBuilder_ == null) {
                     configuration_ = builderForValue.build();
-                    onChanged();
                 } else {
                     configurationBuilder_.setMessage(builderForValue.build());
                 }
-
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
             /**
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public Builder mergeConfiguration(
                     com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration value) {
                 if (configurationBuilder_ == null) {
-                    if (configuration_ != null) {
-                        configuration_ =
-                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.newBuilder(
-                                                configuration_)
-                                        .mergeFrom(value)
-                                        .buildPartial();
+                    if (((bitField0_ & 0x00000002) != 0)
+                            && configuration_ != null
+                            && configuration_
+                                    != com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration
+                                            .getDefaultInstance()) {
+                        getConfigurationBuilder().mergeFrom(value);
                     } else {
                         configuration_ = value;
                     }
-                    onChanged();
                 } else {
                     configurationBuilder_.mergeFrom(value);
                 }
-
+                bitField0_ |= 0x00000002;
+                onChanged();
                 return this;
             }
             /**
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public Builder clearConfiguration() {
-                if (configurationBuilder_ == null) {
-                    configuration_ = null;
-                    onChanged();
-                } else {
-                    configuration_ = null;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                configuration_ = null;
+                if (configurationBuilder_ != null) {
+                    configurationBuilder_.dispose();
                     configurationBuilder_ = null;
                 }
-
+                onChanged();
                 return this;
             }
             /**
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder
                     getConfigurationBuilder() {
-
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return getConfigurationFieldBuilder().getBuilder();
             }
@@ -16296,11 +16586,12 @@ public final class AnalysisProtosV2 {
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
+            @java.lang.Deprecated
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder
                     getConfigurationOrBuilder() {
                 if (configurationBuilder_ != null) {
@@ -16315,10 +16606,10 @@ public final class AnalysisProtosV2 {
              *
              *
              * <pre>
-             * The configuration
+             * DEPRECATED. Use configuration_id instead.
              * </pre>
              *
-             * <code>.analysis.Configuration configuration = 2;</code>
+             * <code>.analysis.Configuration configuration = 2 [deprecated = true];</code>
              */
             private com.google.protobuf.SingleFieldBuilderV3<
                             com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration,
@@ -16335,6 +16626,65 @@ public final class AnalysisProtosV2 {
                     configuration_ = null;
                 }
                 return configurationBuilder_;
+            }
+
+            private int configurationId_;
+            /**
+             *
+             *
+             * <pre>
+             * The id of the configuration this target is configured for. The actual
+             * Configuration message can be found in CqueryResults. If the target doesn't
+             * have a configuration, the value will be 0.
+             * </pre>
+             *
+             * <code>uint32 configuration_id = 3;</code>
+             *
+             * @return The configurationId.
+             */
+            @java.lang.Override
+            public int getConfigurationId() {
+                return configurationId_;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The id of the configuration this target is configured for. The actual
+             * Configuration message can be found in CqueryResults. If the target doesn't
+             * have a configuration, the value will be 0.
+             * </pre>
+             *
+             * <code>uint32 configuration_id = 3;</code>
+             *
+             * @param value The configurationId to set.
+             * @return This builder for chaining.
+             */
+            public Builder setConfigurationId(int value) {
+
+                configurationId_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * The id of the configuration this target is configured for. The actual
+             * Configuration message can be found in CqueryResults. If the target doesn't
+             * have a configuration, the value will be 0.
+             * </pre>
+             *
+             * <code>uint32 configuration_id = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearConfigurationId() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                configurationId_ = 0;
+                onChanged();
+                return this;
             }
 
             @java.lang.Override
@@ -16368,7 +16718,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new ConfiguredTarget(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -16444,6 +16805,59 @@ public final class AnalysisProtosV2 {
          */
         com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTargetOrBuilder getResultsOrBuilder(
                 int index);
+
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration> getConfigurationsList();
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfigurations(int index);
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        int getConfigurationsCount();
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        java.util.List<? extends com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>
+                getConfigurationsOrBuilderList();
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder getConfigurationsOrBuilder(
+                int index);
     }
     /**
      *
@@ -16466,6 +16880,7 @@ public final class AnalysisProtosV2 {
 
         private CqueryResult() {
             results_ = java.util.Collections.emptyList();
+            configurations_ = java.util.Collections.emptyList();
         }
 
         @java.lang.Override
@@ -16477,62 +16892,6 @@ public final class AnalysisProtosV2 {
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
             return this.unknownFields;
-        }
-
-        private CqueryResult(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10:
-                            {
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    results_ =
-                                            new java.util.ArrayList<
-                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
-                                                            .ConfiguredTarget>();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                results_.add(
-                                        input.readMessage(
-                                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget
-                                                        .parser(),
-                                                extensionRegistry));
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    results_ = java.util.Collections.unmodifiableList(results_);
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
         }
 
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
@@ -16549,6 +16908,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int RESULTS_FIELD_NUMBER = 1;
+
+        @SuppressWarnings("serial")
         private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget> results_;
         /**
          *
@@ -16620,6 +16981,79 @@ public final class AnalysisProtosV2 {
             return results_.get(index);
         }
 
+        public static final int CONFIGURATIONS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
+        private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration> configurations_;
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration>
+                getConfigurationsList() {
+            return configurations_;
+        }
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>
+                getConfigurationsOrBuilderList() {
+            return configurations_;
+        }
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        @java.lang.Override
+        public int getConfigurationsCount() {
+            return configurations_.size();
+        }
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        @java.lang.Override
+        public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfigurations(int index) {
+            return configurations_.get(index);
+        }
+        /**
+         *
+         *
+         * <pre>
+         * All the Configurations referenced by results.
+         * </pre>
+         *
+         * <code>repeated .analysis.Configuration configurations = 2;</code>
+         */
+        @java.lang.Override
+        public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder
+                getConfigurationsOrBuilder(int index) {
+            return configurations_.get(index);
+        }
+
         private byte memoizedIsInitialized = -1;
 
         @java.lang.Override
@@ -16643,7 +17077,10 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < results_.size(); i++) {
                 output.writeMessage(1, results_.get(i));
             }
-            unknownFields.writeTo(output);
+            for (int i = 0; i < configurations_.size(); i++) {
+                output.writeMessage(2, configurations_.get(i));
+            }
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -16655,7 +17092,10 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < results_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, results_.get(i));
             }
-            size += unknownFields.getSerializedSize();
+            for (int i = 0; i < configurations_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, configurations_.get(i));
+            }
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -16672,7 +17112,8 @@ public final class AnalysisProtosV2 {
                     (com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult) obj;
 
             if (!getResultsList().equals(other.getResultsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getConfigurationsList().equals(other.getConfigurationsList())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -16687,7 +17128,11 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + RESULTS_FIELD_NUMBER;
                 hash = (53 * hash) + getResultsList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            if (getConfigurationsCount() > 0) {
+                hash = (37 * hash) + CONFIGURATIONS_FIELD_NUMBER;
+                hash = (53 * hash) + getConfigurationsList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -16810,30 +17255,30 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-                    getResultsFieldBuilder();
-                }
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 if (resultsBuilder_ == null) {
                     results_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000001);
                 } else {
+                    results_ = null;
                     resultsBuilder_.clear();
                 }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                if (configurationsBuilder_ == null) {
+                    configurations_ = java.util.Collections.emptyList();
+                } else {
+                    configurations_ = null;
+                    configurationsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -16861,7 +17306,16 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult(this);
-                int from_bitField0_ = bitField0_;
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult result) {
                 if (resultsBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         results_ = java.util.Collections.unmodifiableList(results_);
@@ -16871,8 +17325,19 @@ public final class AnalysisProtosV2 {
                 } else {
                     result.results_ = resultsBuilder_.build();
                 }
-                onBuilt();
-                return result;
+                if (configurationsBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        configurations_ = java.util.Collections.unmodifiableList(configurations_);
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    }
+                    result.configurations_ = configurations_;
+                } else {
+                    result.configurations_ = configurationsBuilder_.build();
+                }
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult result) {
+                int from_bitField0_ = bitField0_;
             }
 
             @java.lang.Override
@@ -16947,7 +17412,34 @@ public final class AnalysisProtosV2 {
                         }
                     }
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                if (configurationsBuilder_ == null) {
+                    if (!other.configurations_.isEmpty()) {
+                        if (configurations_.isEmpty()) {
+                            configurations_ = other.configurations_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                        } else {
+                            ensureConfigurationsIsMutable();
+                            configurations_.addAll(other.configurations_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.configurations_.isEmpty()) {
+                        if (configurationsBuilder_.isEmpty()) {
+                            configurationsBuilder_.dispose();
+                            configurationsBuilder_ = null;
+                            configurations_ = other.configurations_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                            configurationsBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                                            ? getConfigurationsFieldBuilder()
+                                            : null;
+                        } else {
+                            configurationsBuilder_.addAllMessages(other.configurations_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -16967,19 +17459,61 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfiguredTarget m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
+                                                            .ConfiguredTarget.parser(),
+                                                    extensionRegistry);
+                                    if (resultsBuilder_ == null) {
+                                        ensureResultsIsMutable();
+                                        results_.add(m);
+                                    } else {
+                                        resultsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 10
+                            case 18:
+                                {
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration m =
+                                            input.readMessage(
+                                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2
+                                                            .Configuration.parser(),
+                                                    extensionRegistry);
+                                    if (configurationsBuilder_ == null) {
+                                        ensureConfigurationsIsMutable();
+                                        configurations_.add(m);
+                                    } else {
+                                        configurationsBuilder_.addMessage(m);
+                                    }
+                                    break;
+                                } // case 18
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.CqueryResult)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -17354,6 +17888,379 @@ public final class AnalysisProtosV2 {
                 return resultsBuilder_;
             }
 
+            private java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration>
+                    configurations_ = java.util.Collections.emptyList();
+
+            private void ensureConfigurationsIsMutable() {
+                if (!((bitField0_ & 0x00000002) != 0)) {
+                    configurations_ =
+                            new java.util.ArrayList<
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration>(
+                                    configurations_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration,
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder,
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>
+                    configurationsBuilder_;
+
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration>
+                    getConfigurationsList() {
+                if (configurationsBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(configurations_);
+                } else {
+                    return configurationsBuilder_.getMessageList();
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public int getConfigurationsCount() {
+                if (configurationsBuilder_ == null) {
+                    return configurations_.size();
+                } else {
+                    return configurationsBuilder_.getCount();
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration getConfigurations(int index) {
+                if (configurationsBuilder_ == null) {
+                    return configurations_.get(index);
+                } else {
+                    return configurationsBuilder_.getMessage(index);
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder setConfigurations(
+                    int index, com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration value) {
+                if (configurationsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureConfigurationsIsMutable();
+                    configurations_.set(index, value);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder setConfigurations(
+                    int index,
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder builderForValue) {
+                if (configurationsBuilder_ == null) {
+                    ensureConfigurationsIsMutable();
+                    configurations_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    configurationsBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder addConfigurations(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration value) {
+                if (configurationsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureConfigurationsIsMutable();
+                    configurations_.add(value);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.addMessage(value);
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder addConfigurations(
+                    int index, com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration value) {
+                if (configurationsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureConfigurationsIsMutable();
+                    configurations_.add(index, value);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder addConfigurations(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder builderForValue) {
+                if (configurationsBuilder_ == null) {
+                    ensureConfigurationsIsMutable();
+                    configurations_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    configurationsBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder addConfigurations(
+                    int index,
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder builderForValue) {
+                if (configurationsBuilder_ == null) {
+                    ensureConfigurationsIsMutable();
+                    configurations_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    configurationsBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder addAllConfigurations(
+                    java.lang.Iterable<? extends com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration>
+                            values) {
+                if (configurationsBuilder_ == null) {
+                    ensureConfigurationsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, configurations_);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder clearConfigurations() {
+                if (configurationsBuilder_ == null) {
+                    configurations_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.clear();
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public Builder removeConfigurations(int index) {
+                if (configurationsBuilder_ == null) {
+                    ensureConfigurationsIsMutable();
+                    configurations_.remove(index);
+                    onChanged();
+                } else {
+                    configurationsBuilder_.remove(index);
+                }
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder
+                    getConfigurationsBuilder(int index) {
+                return getConfigurationsFieldBuilder().getBuilder(index);
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder
+                    getConfigurationsOrBuilder(int index) {
+                if (configurationsBuilder_ == null) {
+                    return configurations_.get(index);
+                } else {
+                    return configurationsBuilder_.getMessageOrBuilder(index);
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public java.util.List<
+                            ? extends com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>
+                    getConfigurationsOrBuilderList() {
+                if (configurationsBuilder_ != null) {
+                    return configurationsBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(configurations_);
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder
+                    addConfigurationsBuilder() {
+                return getConfigurationsFieldBuilder()
+                        .addBuilder(
+                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration
+                                        .getDefaultInstance());
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder
+                    addConfigurationsBuilder(int index) {
+                return getConfigurationsFieldBuilder()
+                        .addBuilder(
+                                index,
+                                com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration
+                                        .getDefaultInstance());
+            }
+            /**
+             *
+             *
+             * <pre>
+             * All the Configurations referenced by results.
+             * </pre>
+             *
+             * <code>repeated .analysis.Configuration configurations = 2;</code>
+             */
+            public java.util.List<com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder>
+                    getConfigurationsBuilderList() {
+                return getConfigurationsFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration,
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder,
+                            com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>
+                    getConfigurationsFieldBuilder() {
+                if (configurationsBuilder_ == null) {
+                    configurationsBuilder_ =
+                            new com.google.protobuf.RepeatedFieldBuilderV3<
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration,
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.Configuration.Builder,
+                                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ConfigurationOrBuilder>(
+                                    configurations_,
+                                    ((bitField0_ & 0x00000002) != 0),
+                                    getParentForChildren(),
+                                    isClean());
+                    configurations_ = null;
+                }
+                return configurationsBuilder_;
+            }
+
             @java.lang.Override
             public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.setUnknownFields(unknownFields);
@@ -17385,7 +18292,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new CqueryResult(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -17524,63 +18442,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private ParamFile(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 10:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                execPath_ = s;
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                                    arguments_ = new com.google.protobuf.LazyStringArrayList();
-                                    mutable_bitField0_ |= 0x00000001;
-                                }
-                                arguments_.add(s);
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                if (((mutable_bitField0_ & 0x00000001) != 0)) {
-                    arguments_ = arguments_.getUnmodifiableView();
-                }
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_ParamFile_descriptor;
@@ -17595,7 +18456,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int EXEC_PATH_FIELD_NUMBER = 1;
-        private volatile java.lang.Object execPath_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object execPath_ = "";
         /**
          *
          *
@@ -17643,6 +18506,8 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ARGUMENTS_FIELD_NUMBER = 2;
+
+        @SuppressWarnings("serial")
         private com.google.protobuf.LazyStringList arguments_;
         /**
          *
@@ -17727,7 +18592,7 @@ public final class AnalysisProtosV2 {
             for (int i = 0; i < arguments_.size(); i++) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, arguments_.getRaw(i));
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -17747,7 +18612,7 @@ public final class AnalysisProtosV2 {
                 size += dataSize;
                 size += 1 * getArgumentsList().size();
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -17765,7 +18630,7 @@ public final class AnalysisProtosV2 {
 
             if (!getExecPath().equals(other.getExecPath())) return false;
             if (!getArgumentsList().equals(other.getArgumentsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -17782,7 +18647,7 @@ public final class AnalysisProtosV2 {
                 hash = (37 * hash) + ARGUMENTS_FIELD_NUMBER;
                 hash = (53 * hash) + getArgumentsList().hashCode();
             }
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -17904,26 +18769,19 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 execPath_ = "";
-
                 arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -17951,15 +18809,28 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile(this);
-                int from_bitField0_ = bitField0_;
-                result.execPath_ = execPath_;
-                if (((bitField0_ & 0x00000001) != 0)) {
-                    arguments_ = arguments_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000001);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
                 }
-                result.arguments_ = arguments_;
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartialRepeatedFields(
+                    com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile result) {
+                if (((bitField0_ & 0x00000002) != 0)) {
+                    arguments_ = arguments_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                }
+                result.arguments_ = arguments_;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.execPath_ = execPath_;
+                }
             }
 
             @java.lang.Override
@@ -18009,19 +18880,20 @@ public final class AnalysisProtosV2 {
                     return this;
                 if (!other.getExecPath().isEmpty()) {
                     execPath_ = other.execPath_;
+                    bitField0_ |= 0x00000001;
                     onChanged();
                 }
                 if (!other.arguments_.isEmpty()) {
                     if (arguments_.isEmpty()) {
                         arguments_ = other.arguments_;
-                        bitField0_ = (bitField0_ & ~0x00000001);
+                        bitField0_ = (bitField0_ & ~0x00000002);
                     } else {
                         ensureArgumentsIsMutable();
                         arguments_.addAll(other.arguments_);
                     }
                     onChanged();
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -18036,19 +18908,44 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10:
+                                {
+                                    execPath_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 10
+                            case 18:
+                                {
+                                    java.lang.String s = input.readStringRequireUtf8();
+                                    ensureArgumentsIsMutable();
+                                    arguments_.add(s);
+                                    break;
+                                } // case 18
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.ParamFile)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
 
@@ -18115,8 +19012,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 execPath_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -18132,8 +19029,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearExecPath() {
-
                 execPath_ = getDefaultInstance().getExecPath();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 onChanged();
                 return this;
             }
@@ -18154,8 +19051,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 execPath_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -18163,9 +19060,9 @@ public final class AnalysisProtosV2 {
             private com.google.protobuf.LazyStringList arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
 
             private void ensureArgumentsIsMutable() {
-                if (!((bitField0_ & 0x00000001) != 0)) {
+                if (!((bitField0_ & 0x00000002) != 0)) {
                     arguments_ = new com.google.protobuf.LazyStringArrayList(arguments_);
-                    bitField0_ |= 0x00000001;
+                    bitField0_ |= 0x00000002;
                 }
             }
             /**
@@ -18308,7 +19205,7 @@ public final class AnalysisProtosV2 {
              */
             public Builder clearArguments() {
                 arguments_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -18367,7 +19264,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new ParamFile(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -18476,59 +19384,6 @@ public final class AnalysisProtosV2 {
             return this.unknownFields;
         }
 
-        private PathFragment(
-                com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8:
-                            {
-                                id_ = input.readUInt32();
-                                break;
-                            }
-                        case 18:
-                            {
-                                java.lang.String s = input.readStringRequireUtf8();
-
-                                label_ = s;
-                                break;
-                            }
-                        case 24:
-                            {
-                                parentId_ = input.readUInt32();
-                                break;
-                            }
-                        default:
-                            {
-                                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-
         public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
             return com.google.devtools.build.lib.analysis.AnalysisProtosV2
                     .internal_static_analysis_PathFragment_descriptor;
@@ -18543,7 +19398,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int ID_FIELD_NUMBER = 1;
-        private int id_;
+        private int id_ = 0;
         /**
          *
          *
@@ -18561,7 +19416,9 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int LABEL_FIELD_NUMBER = 2;
-        private volatile java.lang.Object label_;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object label_ = "";
         /**
          *
          *
@@ -18609,7 +19466,7 @@ public final class AnalysisProtosV2 {
         }
 
         public static final int PARENT_ID_FIELD_NUMBER = 3;
-        private int parentId_;
+        private int parentId_ = 0;
         /**
          *
          *
@@ -18649,7 +19506,7 @@ public final class AnalysisProtosV2 {
             if (parentId_ != 0) {
                 output.writeUInt32(3, parentId_);
             }
-            unknownFields.writeTo(output);
+            getUnknownFields().writeTo(output);
         }
 
         @java.lang.Override
@@ -18667,7 +19524,7 @@ public final class AnalysisProtosV2 {
             if (parentId_ != 0) {
                 size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, parentId_);
             }
-            size += unknownFields.getSerializedSize();
+            size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
             return size;
         }
@@ -18686,7 +19543,7 @@ public final class AnalysisProtosV2 {
             if (getId() != other.getId()) return false;
             if (!getLabel().equals(other.getLabel())) return false;
             if (getParentId() != other.getParentId()) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
             return true;
         }
 
@@ -18703,7 +19560,7 @@ public final class AnalysisProtosV2 {
             hash = (53 * hash) + getLabel().hashCode();
             hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
             hash = (53 * hash) + getParentId();
-            hash = (29 * hash) + unknownFields.hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
             memoizedHashCode = hash;
             return hash;
         }
@@ -18826,28 +19683,19 @@ public final class AnalysisProtosV2 {
             }
 
             // Construct using com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
+            private Builder() {}
 
             private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
             }
 
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                bitField0_ = 0;
                 id_ = 0;
-
                 label_ = "";
-
                 parentId_ = 0;
-
                 return this;
             }
 
@@ -18875,11 +19723,24 @@ public final class AnalysisProtosV2 {
             public com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment buildPartial() {
                 com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment result =
                         new com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment(this);
-                result.id_ = id_;
-                result.label_ = label_;
-                result.parentId_ = parentId_;
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
                 onBuilt();
                 return result;
+            }
+
+            private void buildPartial0(com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.id_ = id_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.label_ = label_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.parentId_ = parentId_;
+                }
             }
 
             @java.lang.Override
@@ -18932,12 +19793,13 @@ public final class AnalysisProtosV2 {
                 }
                 if (!other.getLabel().isEmpty()) {
                     label_ = other.label_;
+                    bitField0_ |= 0x00000002;
                     onChanged();
                 }
                 if (other.getParentId() != 0) {
                     setParentId(other.getParentId());
                 }
-                this.mergeUnknownFields(other.unknownFields);
+                this.mergeUnknownFields(other.getUnknownFields());
                 onChanged();
                 return this;
             }
@@ -18952,21 +19814,53 @@ public final class AnalysisProtosV2 {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment parsedMessage = null;
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
                 try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8:
+                                {
+                                    id_ = input.readUInt32();
+                                    bitField0_ |= 0x00000001;
+                                    break;
+                                } // case 8
+                            case 18:
+                                {
+                                    label_ = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000002;
+                                    break;
+                                } // case 18
+                            case 24:
+                                {
+                                    parentId_ = input.readUInt32();
+                                    bitField0_ |= 0x00000004;
+                                    break;
+                                } // case 24
+                            default:
+                                {
+                                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                        done = true; // was an endgroup tag
+                                    }
+                                    break;
+                                } // default:
+                        } // switch (tag)
+                    } // while (!done)
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage =
-                            (com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment)
-                                    e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
+                    onChanged();
+                } // finally
                 return this;
             }
+
+            private int bitField0_;
 
             private int id_;
             /**
@@ -18999,6 +19893,7 @@ public final class AnalysisProtosV2 {
             public Builder setId(int value) {
 
                 id_ = value;
+                bitField0_ |= 0x00000001;
                 onChanged();
                 return this;
             }
@@ -19014,7 +19909,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearId() {
-
+                bitField0_ = (bitField0_ & ~0x00000001);
                 id_ = 0;
                 onChanged();
                 return this;
@@ -19081,8 +19976,8 @@ public final class AnalysisProtosV2 {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-
                 label_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -19098,8 +19993,8 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearLabel() {
-
                 label_ = getDefaultInstance().getLabel();
+                bitField0_ = (bitField0_ & ~0x00000002);
                 onChanged();
                 return this;
             }
@@ -19120,8 +20015,8 @@ public final class AnalysisProtosV2 {
                     throw new NullPointerException();
                 }
                 checkByteStringIsUtf8(value);
-
                 label_ = value;
+                bitField0_ |= 0x00000002;
                 onChanged();
                 return this;
             }
@@ -19157,6 +20052,7 @@ public final class AnalysisProtosV2 {
             public Builder setParentId(int value) {
 
                 parentId_ = value;
+                bitField0_ |= 0x00000004;
                 onChanged();
                 return this;
             }
@@ -19172,7 +20068,7 @@ public final class AnalysisProtosV2 {
              * @return This builder for chaining.
              */
             public Builder clearParentId() {
-
+                bitField0_ = (bitField0_ & ~0x00000004);
                 parentId_ = 0;
                 onChanged();
                 return this;
@@ -19209,7 +20105,18 @@ public final class AnalysisProtosV2 {
                             com.google.protobuf.CodedInputStream input,
                             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                             throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new PathFragment(input, extensionRegistry);
+                        Builder builder = newBuilder();
+                        try {
+                            builder.mergeFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            throw e.setUnfinishedMessage(builder.buildPartial());
+                        } catch (com.google.protobuf.UninitializedMessageException e) {
+                            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                        } catch (java.io.IOException e) {
+                            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                                    .setUnfinishedMessage(builder.buildPartial());
+                        }
+                        return builder.buildPartial();
                     }
                 };
 
@@ -19291,7 +20198,7 @@ public final class AnalysisProtosV2 {
                     + "ysis.RuleClass\022.\n\016path_fragments\030\010 \003(\0132\026"
                     + ".analysis.PathFragment\"J\n\010Artifact\022\n\n\002id"
                     + "\030\001 \001(\r\022\030\n\020path_fragment_id\030\002 \001(\r\022\030\n\020is_t"
-                    + "ree_artifact\030\003 \001(\010\"\347\003\n\006Action\022\021\n\ttarget_"
+                    + "ree_artifact\030\003 \001(\010\"\376\003\n\006Action\022\021\n\ttarget_"
                     + "id\030\001 \001(\r\022\035\n\025aspect_descriptor_ids\030\002 \003(\r\022"
                     + "\022\n\naction_key\030\003 \001(\t\022\020\n\010mnemonic\030\004 \001(\t\022\030\n"
                     + "\020configuration_id\030\005 \001(\r\022\021\n\targuments\030\006 \003"
@@ -19303,22 +20210,25 @@ public final class AnalysisProtosV2 {
                     + "\023.analysis.ParamFile\022\031\n\021primary_output_i"
                     + "d\030\r \001(\r\022\032\n\022execution_platform\030\016 \001(\t\022\030\n\020t"
                     + "emplate_content\030\017 \001(\t\022-\n\rsubstitutions\030\020"
-                    + " \003(\0132\026.analysis.KeyValuePair\":\n\006Target\022\n"
-                    + "\n\002id\030\001 \001(\r\022\r\n\005label\030\002 \001(\t\022\025\n\rrule_class_"
-                    + "id\030\003 \001(\r\"%\n\tRuleClass\022\n\n\002id\030\001 \001(\r\022\014\n\004nam"
-                    + "e\030\002 \001(\t\"X\n\020AspectDescriptor\022\n\n\002id\030\001 \001(\r\022"
-                    + "\014\n\004name\030\002 \001(\t\022*\n\nparameters\030\003 \003(\0132\026.anal"
-                    + "ysis.KeyValuePair\"X\n\rDepSetOfFiles\022\n\n\002id"
-                    + "\030\001 \001(\r\022\036\n\026transitive_dep_set_ids\030\002 \003(\r\022\033"
-                    + "\n\023direct_artifact_ids\030\003 \003(\r\"V\n\rConfigura"
-                    + "tion\022\n\n\002id\030\001 \001(\r\022\020\n\010mnemonic\030\002 \001(\t\022\025\n\rpl"
-                    + "atform_name\030\003 \001(\t\022\020\n\010checksum\030\004 \001(\t\"*\n\014K"
+                    + " \003(\0132\026.analysis.KeyValuePair\022\025\n\rfile_con"
+                    + "tents\030\021 \001(\t\":\n\006Target\022\n\n\002id\030\001 \001(\r\022\r\n\005lab"
+                    + "el\030\002 \001(\t\022\025\n\rrule_class_id\030\003 \001(\r\"%\n\tRuleC"
+                    + "lass\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\"X\n\020Aspect"
+                    + "Descriptor\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022*\n\n"
+                    + "parameters\030\003 \003(\0132\026.analysis.KeyValuePair"
+                    + "\"X\n\rDepSetOfFiles\022\n\n\002id\030\001 \001(\r\022\036\n\026transit"
+                    + "ive_dep_set_ids\030\002 \003(\r\022\033\n\023direct_artifact"
+                    + "_ids\030\003 \003(\r\"g\n\rConfiguration\022\n\n\002id\030\001 \001(\r\022"
+                    + "\020\n\010mnemonic\030\002 \001(\t\022\025\n\rplatform_name\030\003 \001(\t"
+                    + "\022\020\n\010checksum\030\004 \001(\t\022\017\n\007is_tool\030\005 \001(\010\"*\n\014K"
                     + "eyValuePair\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\""
-                    + "g\n\020ConfiguredTarget\022#\n\006target\030\001 \001(\0132\023.bl"
-                    + "aze_query.Target\022.\n\rconfiguration\030\002 \001(\0132"
-                    + "\027.analysis.Configuration\";\n\014CqueryResult"
-                    + "\022+\n\007results\030\001 \003(\0132\032.analysis.ConfiguredT"
-                    + "arget\"1\n\tParamFile\022\021\n\texec_path\030\001 \001(\t\022\021\n"
+                    + "\205\001\n\020ConfiguredTarget\022#\n\006target\030\001 \001(\0132\023.b"
+                    + "laze_query.Target\0222\n\rconfiguration\030\002 \001(\013"
+                    + "2\027.analysis.ConfigurationB\002\030\001\022\030\n\020configu"
+                    + "ration_id\030\003 \001(\r\"l\n\014CqueryResult\022+\n\007resul"
+                    + "ts\030\001 \003(\0132\032.analysis.ConfiguredTarget\022/\n\016"
+                    + "configurations\030\002 \003(\0132\027.analysis.Configur"
+                    + "ation\"1\n\tParamFile\022\021\n\texec_path\030\001 \001(\t\022\021\n"
                     + "\targuments\030\002 \003(\t\"<\n\014PathFragment\022\n\n\002id\030\001"
                     + " \001(\r\022\r\n\005label\030\002 \001(\t\022\021\n\tparent_id\030\003 \001(\rB:"
                     + "\n&com.google.devtools.build.lib.analysis"
@@ -19372,6 +20282,7 @@ public final class AnalysisProtosV2 {
                             "ExecutionPlatform",
                             "TemplateContent",
                             "Substitutions",
+                            "FileContents",
                         });
         internal_static_analysis_Target_descriptor = getDescriptor().getMessageTypes().get(3);
         internal_static_analysis_Target_fieldAccessorTable =
@@ -19406,7 +20317,7 @@ public final class AnalysisProtosV2 {
                 new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                         internal_static_analysis_Configuration_descriptor,
                         new java.lang.String[] {
-                            "Id", "Mnemonic", "PlatformName", "Checksum",
+                            "Id", "Mnemonic", "PlatformName", "Checksum", "IsTool",
                         });
         internal_static_analysis_KeyValuePair_descriptor = getDescriptor().getMessageTypes().get(8);
         internal_static_analysis_KeyValuePair_fieldAccessorTable =
@@ -19420,14 +20331,14 @@ public final class AnalysisProtosV2 {
                 new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                         internal_static_analysis_ConfiguredTarget_descriptor,
                         new java.lang.String[] {
-                            "Target", "Configuration",
+                            "Target", "Configuration", "ConfigurationId",
                         });
         internal_static_analysis_CqueryResult_descriptor = getDescriptor().getMessageTypes().get(10);
         internal_static_analysis_CqueryResult_fieldAccessorTable =
                 new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                         internal_static_analysis_CqueryResult_descriptor,
                         new java.lang.String[] {
-                            "Results",
+                            "Results", "Configurations",
                         });
         internal_static_analysis_ParamFile_descriptor = getDescriptor().getMessageTypes().get(11);
         internal_static_analysis_ParamFile_fieldAccessorTable =
