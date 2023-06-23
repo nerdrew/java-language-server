@@ -280,9 +280,13 @@ class InferConfig {
     private Set<Path> bazelSourcepath(Path bazelWorkspaceRoot) {
         var absolute = new HashSet<Path>();
         var outputBase = bazelOutputBase();
-        for (var relative : bazelAQuery("JavaSourceJar", "--sources", "java_library", "java_test", "java_binary")) {
+        for (var relative : bazelAQuery("JavaDeployJar", "--sources", "java_library", "java_test", "java_binary")) {
             absolute.add(outputBase.resolve(relative));
         }
+
+        // for (var relative : bazelAQuery("JavaSourceJar", "--sources", "java_library", "java_test", "java_binary")) {
+        //     absolute.add(outputBase.resolve(relative));
+        // }
 
         // Add proto source files
         if (buildProtos()) {
@@ -384,6 +388,12 @@ class InferConfig {
             var containerV1 = AnalysisProtos.ActionGraphContainer.parseFrom(Files.newInputStream(output));
             return readActionGraphFromV1(containerV1, filterArgument);
         } catch (IOException e) {
+            try {
+                LOG.warning("Could not parse proto:\n" + Files.readString(output));
+            } catch (IOException e1) {
+                LOG.warning("Error reading output: " + e1);
+            }
+
             throw new RuntimeException(e);
         }
     }

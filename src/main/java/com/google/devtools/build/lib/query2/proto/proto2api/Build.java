@@ -7426,6 +7426,46 @@ public final class Build {
          *
          *
          * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return Whether the sourceAspectName field is set.
+         */
+        boolean hasSourceAspectName();
+        /**
+         *
+         *
+         * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return The sourceAspectName.
+         */
+        java.lang.String getSourceAspectName();
+        /**
+         *
+         *
+         * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return The bytes for sourceAspectName.
+         */
+        com.google.protobuf.ByteString getSourceAspectNameBytes();
+
+        /**
+         *
+         *
+         * <pre>
          * The type of attribute.  This message is used for all of the different
          * attribute types so the discriminator helps for figuring out what is
          * stored in the message.
@@ -8138,6 +8178,7 @@ public final class Build {
 
         private Attribute() {
             name_ = "";
+            sourceAspectName_ = "";
             type_ = 1;
             stringValue_ = "";
             tristateValue_ = 0;
@@ -16310,6 +16351,76 @@ public final class Build {
             return nodep_;
         }
 
+        public static final int SOURCE_ASPECT_NAME_FIELD_NUMBER = 23;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object sourceAspectName_ = "";
+        /**
+         *
+         *
+         * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return Whether the sourceAspectName field is set.
+         */
+        @java.lang.Override
+        public boolean hasSourceAspectName() {
+            return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         *
+         *
+         * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return The sourceAspectName.
+         */
+        @java.lang.Override
+        public java.lang.String getSourceAspectName() {
+            java.lang.Object ref = sourceAspectName_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    sourceAspectName_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         *
+         *
+         * <pre>
+         * Represents the aspect that this attribute comes from. It is set to an
+         * empty string if it does not come from an aspect.
+         * </pre>
+         *
+         * <code>optional string source_aspect_name = 23;</code>
+         *
+         * @return The bytes for sourceAspectName.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getSourceAspectNameBytes() {
+            java.lang.Object ref = sourceAspectName_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                sourceAspectName_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
         public static final int TYPE_FIELD_NUMBER = 2;
         private int type_ = 1;
         /**
@@ -16327,7 +16438,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasType() {
-            return ((bitField0_ & 0x00000008) != 0);
+            return ((bitField0_ & 0x00000010) != 0);
         }
         /**
          *
@@ -16368,7 +16479,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasIntValue() {
-            return ((bitField0_ & 0x00000010) != 0);
+            return ((bitField0_ & 0x00000020) != 0);
         }
         /**
          *
@@ -16407,7 +16518,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasStringValue() {
-            return ((bitField0_ & 0x00000020) != 0);
+            return ((bitField0_ & 0x00000040) != 0);
         }
         /**
          *
@@ -16476,7 +16587,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasBooleanValue() {
-            return ((bitField0_ & 0x00000040) != 0);
+            return ((bitField0_ & 0x00000080) != 0);
         }
         /**
          *
@@ -16509,7 +16620,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasTristateValue() {
-            return ((bitField0_ & 0x00000080) != 0);
+            return ((bitField0_ & 0x00000100) != 0);
         }
         /**
          *
@@ -16614,7 +16725,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasLicense() {
-            return ((bitField0_ & 0x00000100) != 0);
+            return ((bitField0_ & 0x00000200) != 0);
         }
         /**
          *
@@ -17180,7 +17291,7 @@ public final class Build {
          */
         @java.lang.Override
         public boolean hasSelectorList() {
-            return ((bitField0_ & 0x00000200) != 0);
+            return ((bitField0_ & 0x00000400) != 0);
         }
         /**
          *
@@ -17320,19 +17431,19 @@ public final class Build {
             if (((bitField0_ & 0x00000001) != 0)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
             }
-            if (((bitField0_ & 0x00000008) != 0)) {
+            if (((bitField0_ & 0x00000010) != 0)) {
                 output.writeEnum(2, type_);
             }
-            if (((bitField0_ & 0x00000010) != 0)) {
+            if (((bitField0_ & 0x00000020) != 0)) {
                 output.writeInt32(3, intValue_);
             }
-            if (((bitField0_ & 0x00000020) != 0)) {
+            if (((bitField0_ & 0x00000040) != 0)) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 5, stringValue_);
             }
             for (int i = 0; i < stringListValue_.size(); i++) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 6, stringListValue_.getRaw(i));
             }
-            if (((bitField0_ & 0x00000100) != 0)) {
+            if (((bitField0_ & 0x00000200) != 0)) {
                 output.writeMessage(7, getLicense());
             }
             for (int i = 0; i < stringDictValue_.size(); i++) {
@@ -17350,10 +17461,10 @@ public final class Build {
             if (((bitField0_ & 0x00000002) != 0)) {
                 output.writeBool(13, explicitlySpecified_);
             }
-            if (((bitField0_ & 0x00000040) != 0)) {
+            if (((bitField0_ & 0x00000080) != 0)) {
                 output.writeBool(14, booleanValue_);
             }
-            if (((bitField0_ & 0x00000080) != 0)) {
+            if (((bitField0_ & 0x00000100) != 0)) {
                 output.writeEnum(15, tristateValue_);
             }
             for (int i = 0; i < intListValue_.size(); i++) {
@@ -17368,11 +17479,14 @@ public final class Build {
             if (((bitField0_ & 0x00000004) != 0)) {
                 output.writeBool(20, nodep_);
             }
-            if (((bitField0_ & 0x00000200) != 0)) {
+            if (((bitField0_ & 0x00000400) != 0)) {
                 output.writeMessage(21, getSelectorList());
             }
             for (int i = 0; i < labelKeyedStringDictValue_.size(); i++) {
                 output.writeMessage(22, labelKeyedStringDictValue_.get(i));
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 23, sourceAspectName_);
             }
             getUnknownFields().writeTo(output);
         }
@@ -17386,13 +17500,13 @@ public final class Build {
             if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
             }
-            if (((bitField0_ & 0x00000008) != 0)) {
+            if (((bitField0_ & 0x00000010) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, type_);
             }
-            if (((bitField0_ & 0x00000010) != 0)) {
+            if (((bitField0_ & 0x00000020) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, intValue_);
             }
-            if (((bitField0_ & 0x00000020) != 0)) {
+            if (((bitField0_ & 0x00000040) != 0)) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, stringValue_);
             }
             {
@@ -17403,7 +17517,7 @@ public final class Build {
                 size += dataSize;
                 size += 1 * getStringListValueList().size();
             }
-            if (((bitField0_ & 0x00000100) != 0)) {
+            if (((bitField0_ & 0x00000200) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(7, getLicense());
             }
             for (int i = 0; i < stringDictValue_.size(); i++) {
@@ -17421,10 +17535,10 @@ public final class Build {
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(13, explicitlySpecified_);
             }
-            if (((bitField0_ & 0x00000040) != 0)) {
+            if (((bitField0_ & 0x00000080) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(14, booleanValue_);
             }
-            if (((bitField0_ & 0x00000080) != 0)) {
+            if (((bitField0_ & 0x00000100) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeEnumSize(15, tristateValue_);
             }
             {
@@ -17451,11 +17565,14 @@ public final class Build {
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeBoolSize(20, nodep_);
             }
-            if (((bitField0_ & 0x00000200) != 0)) {
+            if (((bitField0_ & 0x00000400) != 0)) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(21, getSelectorList());
             }
             for (int i = 0; i < labelKeyedStringDictValue_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream.computeMessageSize(22, labelKeyedStringDictValue_.get(i));
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, sourceAspectName_);
             }
             size += getUnknownFields().getSerializedSize();
             memoizedSize = size;
@@ -17484,6 +17601,10 @@ public final class Build {
             if (hasNodep() != other.hasNodep()) return false;
             if (hasNodep()) {
                 if (getNodep() != other.getNodep()) return false;
+            }
+            if (hasSourceAspectName() != other.hasSourceAspectName()) return false;
+            if (hasSourceAspectName()) {
+                if (!getSourceAspectName().equals(other.getSourceAspectName())) return false;
             }
             if (hasType() != other.hasType()) return false;
             if (hasType()) {
@@ -17545,6 +17666,10 @@ public final class Build {
             if (hasNodep()) {
                 hash = (37 * hash) + NODEP_FIELD_NUMBER;
                 hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getNodep());
+            }
+            if (hasSourceAspectName()) {
+                hash = (37 * hash) + SOURCE_ASPECT_NAME_FIELD_NUMBER;
+                hash = (53 * hash) + getSourceAspectName().hashCode();
             }
             if (hasType()) {
                 hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -17777,13 +17902,14 @@ public final class Build {
                 name_ = "";
                 explicitlySpecified_ = false;
                 nodep_ = false;
+                sourceAspectName_ = "";
                 type_ = 1;
                 intValue_ = 0;
                 stringValue_ = "";
                 booleanValue_ = false;
                 tristateValue_ = 0;
                 stringListValue_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000100);
+                bitField0_ = (bitField0_ & ~0x00000200);
                 license_ = null;
                 if (licenseBuilder_ != null) {
                     licenseBuilder_.dispose();
@@ -17795,28 +17921,28 @@ public final class Build {
                     stringDictValue_ = null;
                     stringDictValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000400);
+                bitField0_ = (bitField0_ & ~0x00000800);
                 if (filesetListValueBuilder_ == null) {
                     filesetListValue_ = java.util.Collections.emptyList();
                 } else {
                     filesetListValue_ = null;
                     filesetListValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00000800);
+                bitField0_ = (bitField0_ & ~0x00001000);
                 if (labelListDictValueBuilder_ == null) {
                     labelListDictValue_ = java.util.Collections.emptyList();
                 } else {
                     labelListDictValue_ = null;
                     labelListDictValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00001000);
+                bitField0_ = (bitField0_ & ~0x00002000);
                 if (stringListDictValueBuilder_ == null) {
                     stringListDictValue_ = java.util.Collections.emptyList();
                 } else {
                     stringListDictValue_ = null;
                     stringListDictValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00002000);
+                bitField0_ = (bitField0_ & ~0x00004000);
                 intListValue_ = emptyIntList();
                 if (labelDictUnaryValueBuilder_ == null) {
                     labelDictUnaryValue_ = java.util.Collections.emptyList();
@@ -17824,14 +17950,14 @@ public final class Build {
                     labelDictUnaryValue_ = null;
                     labelDictUnaryValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00008000);
+                bitField0_ = (bitField0_ & ~0x00010000);
                 if (labelKeyedStringDictValueBuilder_ == null) {
                     labelKeyedStringDictValue_ = java.util.Collections.emptyList();
                 } else {
                     labelKeyedStringDictValue_ = null;
                     labelKeyedStringDictValueBuilder_.clear();
                 }
-                bitField0_ = (bitField0_ & ~0x00010000);
+                bitField0_ = (bitField0_ & ~0x00020000);
                 selectorList_ = null;
                 if (selectorListBuilder_ != null) {
                     selectorListBuilder_.dispose();
@@ -17875,74 +18001,74 @@ public final class Build {
 
             private void buildPartialRepeatedFields(
                     com.google.devtools.build.lib.query2.proto.proto2api.Build.Attribute result) {
-                if (((bitField0_ & 0x00000100) != 0)) {
+                if (((bitField0_ & 0x00000200) != 0)) {
                     stringListValue_ = stringListValue_.getUnmodifiableView();
-                    bitField0_ = (bitField0_ & ~0x00000100);
+                    bitField0_ = (bitField0_ & ~0x00000200);
                 }
                 result.stringListValue_ = stringListValue_;
                 if (stringDictValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00000400) != 0)) {
+                    if (((bitField0_ & 0x00000800) != 0)) {
                         stringDictValue_ = java.util.Collections.unmodifiableList(stringDictValue_);
-                        bitField0_ = (bitField0_ & ~0x00000400);
+                        bitField0_ = (bitField0_ & ~0x00000800);
                     }
                     result.stringDictValue_ = stringDictValue_;
                 } else {
                     result.stringDictValue_ = stringDictValueBuilder_.build();
                 }
                 if (filesetListValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00000800) != 0)) {
+                    if (((bitField0_ & 0x00001000) != 0)) {
                         filesetListValue_ = java.util.Collections.unmodifiableList(filesetListValue_);
-                        bitField0_ = (bitField0_ & ~0x00000800);
+                        bitField0_ = (bitField0_ & ~0x00001000);
                     }
                     result.filesetListValue_ = filesetListValue_;
                 } else {
                     result.filesetListValue_ = filesetListValueBuilder_.build();
                 }
                 if (labelListDictValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00001000) != 0)) {
+                    if (((bitField0_ & 0x00002000) != 0)) {
                         labelListDictValue_ = java.util.Collections.unmodifiableList(labelListDictValue_);
-                        bitField0_ = (bitField0_ & ~0x00001000);
+                        bitField0_ = (bitField0_ & ~0x00002000);
                     }
                     result.labelListDictValue_ = labelListDictValue_;
                 } else {
                     result.labelListDictValue_ = labelListDictValueBuilder_.build();
                 }
                 if (stringListDictValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00002000) != 0)) {
+                    if (((bitField0_ & 0x00004000) != 0)) {
                         stringListDictValue_ = java.util.Collections.unmodifiableList(stringListDictValue_);
-                        bitField0_ = (bitField0_ & ~0x00002000);
+                        bitField0_ = (bitField0_ & ~0x00004000);
                     }
                     result.stringListDictValue_ = stringListDictValue_;
                 } else {
                     result.stringListDictValue_ = stringListDictValueBuilder_.build();
                 }
-                if (((bitField0_ & 0x00004000) != 0)) {
+                if (((bitField0_ & 0x00008000) != 0)) {
                     intListValue_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00004000);
+                    bitField0_ = (bitField0_ & ~0x00008000);
                 }
                 result.intListValue_ = intListValue_;
                 if (labelDictUnaryValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00008000) != 0)) {
+                    if (((bitField0_ & 0x00010000) != 0)) {
                         labelDictUnaryValue_ = java.util.Collections.unmodifiableList(labelDictUnaryValue_);
-                        bitField0_ = (bitField0_ & ~0x00008000);
+                        bitField0_ = (bitField0_ & ~0x00010000);
                     }
                     result.labelDictUnaryValue_ = labelDictUnaryValue_;
                 } else {
                     result.labelDictUnaryValue_ = labelDictUnaryValueBuilder_.build();
                 }
                 if (labelKeyedStringDictValueBuilder_ == null) {
-                    if (((bitField0_ & 0x00010000) != 0)) {
+                    if (((bitField0_ & 0x00020000) != 0)) {
                         labelKeyedStringDictValue_ = java.util.Collections.unmodifiableList(labelKeyedStringDictValue_);
-                        bitField0_ = (bitField0_ & ~0x00010000);
+                        bitField0_ = (bitField0_ & ~0x00020000);
                     }
                     result.labelKeyedStringDictValue_ = labelKeyedStringDictValue_;
                 } else {
                     result.labelKeyedStringDictValue_ = labelKeyedStringDictValueBuilder_.build();
                 }
-                if (((bitField0_ & 0x00040000) != 0)) {
+                if (((bitField0_ & 0x00080000) != 0)) {
                     dEPRECATEDStringDictUnaryValue_ =
                             java.util.Collections.unmodifiableList(dEPRECATEDStringDictUnaryValue_);
-                    bitField0_ = (bitField0_ & ~0x00040000);
+                    bitField0_ = (bitField0_ & ~0x00080000);
                 }
                 result.dEPRECATEDStringDictUnaryValue_ = dEPRECATEDStringDictUnaryValue_;
             }
@@ -17963,32 +18089,36 @@ public final class Build {
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.type_ = type_;
+                    result.sourceAspectName_ = sourceAspectName_;
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.intValue_ = intValue_;
+                    result.type_ = type_;
                     to_bitField0_ |= 0x00000010;
                 }
                 if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.stringValue_ = stringValue_;
+                    result.intValue_ = intValue_;
                     to_bitField0_ |= 0x00000020;
                 }
                 if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.booleanValue_ = booleanValue_;
+                    result.stringValue_ = stringValue_;
                     to_bitField0_ |= 0x00000040;
                 }
                 if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.tristateValue_ = tristateValue_;
+                    result.booleanValue_ = booleanValue_;
                     to_bitField0_ |= 0x00000080;
                 }
-                if (((from_bitField0_ & 0x00000200) != 0)) {
-                    result.license_ = licenseBuilder_ == null ? license_ : licenseBuilder_.build();
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.tristateValue_ = tristateValue_;
                     to_bitField0_ |= 0x00000100;
                 }
-                if (((from_bitField0_ & 0x00020000) != 0)) {
-                    result.selectorList_ = selectorListBuilder_ == null ? selectorList_ : selectorListBuilder_.build();
+                if (((from_bitField0_ & 0x00000400) != 0)) {
+                    result.license_ = licenseBuilder_ == null ? license_ : licenseBuilder_.build();
                     to_bitField0_ |= 0x00000200;
+                }
+                if (((from_bitField0_ & 0x00040000) != 0)) {
+                    result.selectorList_ = selectorListBuilder_ == null ? selectorList_ : selectorListBuilder_.build();
+                    to_bitField0_ |= 0x00000400;
                 }
                 result.bitField0_ |= to_bitField0_;
             }
@@ -18049,6 +18179,11 @@ public final class Build {
                 if (other.hasNodep()) {
                     setNodep(other.getNodep());
                 }
+                if (other.hasSourceAspectName()) {
+                    sourceAspectName_ = other.sourceAspectName_;
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
                 if (other.hasType()) {
                     setType(other.getType());
                 }
@@ -18057,7 +18192,7 @@ public final class Build {
                 }
                 if (other.hasStringValue()) {
                     stringValue_ = other.stringValue_;
-                    bitField0_ |= 0x00000020;
+                    bitField0_ |= 0x00000040;
                     onChanged();
                 }
                 if (other.hasBooleanValue()) {
@@ -18069,7 +18204,7 @@ public final class Build {
                 if (!other.stringListValue_.isEmpty()) {
                     if (stringListValue_.isEmpty()) {
                         stringListValue_ = other.stringListValue_;
-                        bitField0_ = (bitField0_ & ~0x00000100);
+                        bitField0_ = (bitField0_ & ~0x00000200);
                     } else {
                         ensureStringListValueIsMutable();
                         stringListValue_.addAll(other.stringListValue_);
@@ -18083,7 +18218,7 @@ public final class Build {
                     if (!other.stringDictValue_.isEmpty()) {
                         if (stringDictValue_.isEmpty()) {
                             stringDictValue_ = other.stringDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00000400);
+                            bitField0_ = (bitField0_ & ~0x00000800);
                         } else {
                             ensureStringDictValueIsMutable();
                             stringDictValue_.addAll(other.stringDictValue_);
@@ -18096,7 +18231,7 @@ public final class Build {
                             stringDictValueBuilder_.dispose();
                             stringDictValueBuilder_ = null;
                             stringDictValue_ = other.stringDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00000400);
+                            bitField0_ = (bitField0_ & ~0x00000800);
                             stringDictValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getStringDictValueFieldBuilder()
@@ -18110,7 +18245,7 @@ public final class Build {
                     if (!other.filesetListValue_.isEmpty()) {
                         if (filesetListValue_.isEmpty()) {
                             filesetListValue_ = other.filesetListValue_;
-                            bitField0_ = (bitField0_ & ~0x00000800);
+                            bitField0_ = (bitField0_ & ~0x00001000);
                         } else {
                             ensureFilesetListValueIsMutable();
                             filesetListValue_.addAll(other.filesetListValue_);
@@ -18123,7 +18258,7 @@ public final class Build {
                             filesetListValueBuilder_.dispose();
                             filesetListValueBuilder_ = null;
                             filesetListValue_ = other.filesetListValue_;
-                            bitField0_ = (bitField0_ & ~0x00000800);
+                            bitField0_ = (bitField0_ & ~0x00001000);
                             filesetListValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getFilesetListValueFieldBuilder()
@@ -18137,7 +18272,7 @@ public final class Build {
                     if (!other.labelListDictValue_.isEmpty()) {
                         if (labelListDictValue_.isEmpty()) {
                             labelListDictValue_ = other.labelListDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00001000);
+                            bitField0_ = (bitField0_ & ~0x00002000);
                         } else {
                             ensureLabelListDictValueIsMutable();
                             labelListDictValue_.addAll(other.labelListDictValue_);
@@ -18150,7 +18285,7 @@ public final class Build {
                             labelListDictValueBuilder_.dispose();
                             labelListDictValueBuilder_ = null;
                             labelListDictValue_ = other.labelListDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00001000);
+                            bitField0_ = (bitField0_ & ~0x00002000);
                             labelListDictValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getLabelListDictValueFieldBuilder()
@@ -18164,7 +18299,7 @@ public final class Build {
                     if (!other.stringListDictValue_.isEmpty()) {
                         if (stringListDictValue_.isEmpty()) {
                             stringListDictValue_ = other.stringListDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00002000);
+                            bitField0_ = (bitField0_ & ~0x00004000);
                         } else {
                             ensureStringListDictValueIsMutable();
                             stringListDictValue_.addAll(other.stringListDictValue_);
@@ -18177,7 +18312,7 @@ public final class Build {
                             stringListDictValueBuilder_.dispose();
                             stringListDictValueBuilder_ = null;
                             stringListDictValue_ = other.stringListDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00002000);
+                            bitField0_ = (bitField0_ & ~0x00004000);
                             stringListDictValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getStringListDictValueFieldBuilder()
@@ -18190,7 +18325,7 @@ public final class Build {
                 if (!other.intListValue_.isEmpty()) {
                     if (intListValue_.isEmpty()) {
                         intListValue_ = other.intListValue_;
-                        bitField0_ = (bitField0_ & ~0x00004000);
+                        bitField0_ = (bitField0_ & ~0x00008000);
                     } else {
                         ensureIntListValueIsMutable();
                         intListValue_.addAll(other.intListValue_);
@@ -18201,7 +18336,7 @@ public final class Build {
                     if (!other.labelDictUnaryValue_.isEmpty()) {
                         if (labelDictUnaryValue_.isEmpty()) {
                             labelDictUnaryValue_ = other.labelDictUnaryValue_;
-                            bitField0_ = (bitField0_ & ~0x00008000);
+                            bitField0_ = (bitField0_ & ~0x00010000);
                         } else {
                             ensureLabelDictUnaryValueIsMutable();
                             labelDictUnaryValue_.addAll(other.labelDictUnaryValue_);
@@ -18214,7 +18349,7 @@ public final class Build {
                             labelDictUnaryValueBuilder_.dispose();
                             labelDictUnaryValueBuilder_ = null;
                             labelDictUnaryValue_ = other.labelDictUnaryValue_;
-                            bitField0_ = (bitField0_ & ~0x00008000);
+                            bitField0_ = (bitField0_ & ~0x00010000);
                             labelDictUnaryValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getLabelDictUnaryValueFieldBuilder()
@@ -18228,7 +18363,7 @@ public final class Build {
                     if (!other.labelKeyedStringDictValue_.isEmpty()) {
                         if (labelKeyedStringDictValue_.isEmpty()) {
                             labelKeyedStringDictValue_ = other.labelKeyedStringDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00010000);
+                            bitField0_ = (bitField0_ & ~0x00020000);
                         } else {
                             ensureLabelKeyedStringDictValueIsMutable();
                             labelKeyedStringDictValue_.addAll(other.labelKeyedStringDictValue_);
@@ -18241,7 +18376,7 @@ public final class Build {
                             labelKeyedStringDictValueBuilder_.dispose();
                             labelKeyedStringDictValueBuilder_ = null;
                             labelKeyedStringDictValue_ = other.labelKeyedStringDictValue_;
-                            bitField0_ = (bitField0_ & ~0x00010000);
+                            bitField0_ = (bitField0_ & ~0x00020000);
                             labelKeyedStringDictValueBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
                                             ? getLabelKeyedStringDictValueFieldBuilder()
@@ -18257,7 +18392,7 @@ public final class Build {
                 if (!other.dEPRECATEDStringDictUnaryValue_.isEmpty()) {
                     if (dEPRECATEDStringDictUnaryValue_.isEmpty()) {
                         dEPRECATEDStringDictUnaryValue_ = other.dEPRECATEDStringDictUnaryValue_;
-                        bitField0_ = (bitField0_ & ~0x00040000);
+                        bitField0_ = (bitField0_ & ~0x00080000);
                     } else {
                         ensureDEPRECATEDStringDictUnaryValueIsMutable();
                         dEPRECATEDStringDictUnaryValue_.addAll(other.dEPRECATEDStringDictUnaryValue_);
@@ -18348,20 +18483,20 @@ public final class Build {
                                         mergeUnknownVarintField(2, tmpRaw);
                                     } else {
                                         type_ = tmpRaw;
-                                        bitField0_ |= 0x00000008;
+                                        bitField0_ |= 0x00000010;
                                     }
                                     break;
                                 } // case 16
                             case 24:
                                 {
                                     intValue_ = input.readInt32();
-                                    bitField0_ |= 0x00000010;
+                                    bitField0_ |= 0x00000020;
                                     break;
                                 } // case 24
                             case 42:
                                 {
                                     stringValue_ = input.readBytes();
-                                    bitField0_ |= 0x00000020;
+                                    bitField0_ |= 0x00000040;
                                     break;
                                 } // case 42
                             case 50:
@@ -18374,7 +18509,7 @@ public final class Build {
                             case 58:
                                 {
                                     input.readMessage(getLicenseFieldBuilder().getBuilder(), extensionRegistry);
-                                    bitField0_ |= 0x00000200;
+                                    bitField0_ |= 0x00000400;
                                     break;
                                 } // case 58
                             case 66:
@@ -18446,7 +18581,7 @@ public final class Build {
                             case 112:
                                 {
                                     booleanValue_ = input.readBool();
-                                    bitField0_ |= 0x00000040;
+                                    bitField0_ |= 0x00000080;
                                     break;
                                 } // case 112
                             case 120:
@@ -18460,7 +18595,7 @@ public final class Build {
                                         mergeUnknownVarintField(15, tmpRaw);
                                     } else {
                                         tristateValue_ = tmpRaw;
-                                        bitField0_ |= 0x00000080;
+                                        bitField0_ |= 0x00000100;
                                     }
                                     break;
                                 } // case 120
@@ -18513,7 +18648,7 @@ public final class Build {
                             case 170:
                                 {
                                     input.readMessage(getSelectorListFieldBuilder().getBuilder(), extensionRegistry);
-                                    bitField0_ |= 0x00020000;
+                                    bitField0_ |= 0x00040000;
                                     break;
                                 } // case 170
                             case 178:
@@ -18532,6 +18667,12 @@ public final class Build {
                                     }
                                     break;
                                 } // case 178
+                            case 186:
+                                {
+                                    sourceAspectName_ = input.readBytes();
+                                    bitField0_ |= 0x00000008;
+                                    break;
+                                } // case 186
                             default:
                                 {
                                     if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -18816,6 +18957,133 @@ public final class Build {
                 return this;
             }
 
+            private java.lang.Object sourceAspectName_ = "";
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @return Whether the sourceAspectName field is set.
+             */
+            public boolean hasSourceAspectName() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @return The sourceAspectName.
+             */
+            public java.lang.String getSourceAspectName() {
+                java.lang.Object ref = sourceAspectName_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        sourceAspectName_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @return The bytes for sourceAspectName.
+             */
+            public com.google.protobuf.ByteString getSourceAspectNameBytes() {
+                java.lang.Object ref = sourceAspectName_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+                    sourceAspectName_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @param value The sourceAspectName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSourceAspectName(java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                sourceAspectName_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearSourceAspectName() {
+                sourceAspectName_ = getDefaultInstance().getSourceAspectName();
+                bitField0_ = (bitField0_ & ~0x00000008);
+                onChanged();
+                return this;
+            }
+            /**
+             *
+             *
+             * <pre>
+             * Represents the aspect that this attribute comes from. It is set to an
+             * empty string if it does not come from an aspect.
+             * </pre>
+             *
+             * <code>optional string source_aspect_name = 23;</code>
+             *
+             * @param value The bytes for sourceAspectName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSourceAspectNameBytes(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                sourceAspectName_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
             private int type_ = 1;
             /**
              *
@@ -18832,7 +19100,7 @@ public final class Build {
              */
             @java.lang.Override
             public boolean hasType() {
-                return ((bitField0_ & 0x00000008) != 0);
+                return ((bitField0_ & 0x00000010) != 0);
             }
             /**
              *
@@ -18875,7 +19143,7 @@ public final class Build {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 type_ = value.getNumber();
                 onChanged();
                 return this;
@@ -18894,7 +19162,7 @@ public final class Build {
              * @return This builder for chaining.
              */
             public Builder clearType() {
-                bitField0_ = (bitField0_ & ~0x00000008);
+                bitField0_ = (bitField0_ & ~0x00000010);
                 type_ = 1;
                 onChanged();
                 return this;
@@ -18916,7 +19184,7 @@ public final class Build {
              */
             @java.lang.Override
             public boolean hasIntValue() {
-                return ((bitField0_ & 0x00000010) != 0);
+                return ((bitField0_ & 0x00000020) != 0);
             }
             /**
              *
@@ -18952,7 +19220,7 @@ public final class Build {
             public Builder setIntValue(int value) {
 
                 intValue_ = value;
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000020;
                 onChanged();
                 return this;
             }
@@ -18970,7 +19238,7 @@ public final class Build {
              * @return This builder for chaining.
              */
             public Builder clearIntValue() {
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000020);
                 intValue_ = 0;
                 onChanged();
                 return this;
@@ -18991,7 +19259,7 @@ public final class Build {
              * @return Whether the stringValue field is set.
              */
             public boolean hasStringValue() {
-                return ((bitField0_ & 0x00000020) != 0);
+                return ((bitField0_ & 0x00000040) != 0);
             }
             /**
              *
@@ -19062,7 +19330,7 @@ public final class Build {
                     throw new NullPointerException();
                 }
                 stringValue_ = value;
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -19081,7 +19349,7 @@ public final class Build {
              */
             public Builder clearStringValue() {
                 stringValue_ = getDefaultInstance().getStringValue();
-                bitField0_ = (bitField0_ & ~0x00000020);
+                bitField0_ = (bitField0_ & ~0x00000040);
                 onChanged();
                 return this;
             }
@@ -19104,7 +19372,7 @@ public final class Build {
                     throw new NullPointerException();
                 }
                 stringValue_ = value;
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000040;
                 onChanged();
                 return this;
             }
@@ -19123,7 +19391,7 @@ public final class Build {
              */
             @java.lang.Override
             public boolean hasBooleanValue() {
-                return ((bitField0_ & 0x00000040) != 0);
+                return ((bitField0_ & 0x00000080) != 0);
             }
             /**
              *
@@ -19155,7 +19423,7 @@ public final class Build {
             public Builder setBooleanValue(boolean value) {
 
                 booleanValue_ = value;
-                bitField0_ |= 0x00000040;
+                bitField0_ |= 0x00000080;
                 onChanged();
                 return this;
             }
@@ -19171,7 +19439,7 @@ public final class Build {
              * @return This builder for chaining.
              */
             public Builder clearBooleanValue() {
-                bitField0_ = (bitField0_ & ~0x00000040);
+                bitField0_ = (bitField0_ & ~0x00000080);
                 booleanValue_ = false;
                 onChanged();
                 return this;
@@ -19191,7 +19459,7 @@ public final class Build {
              */
             @java.lang.Override
             public boolean hasTristateValue() {
-                return ((bitField0_ & 0x00000080) != 0);
+                return ((bitField0_ & 0x00000100) != 0);
             }
             /**
              *
@@ -19230,7 +19498,7 @@ public final class Build {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000080;
+                bitField0_ |= 0x00000100;
                 tristateValue_ = value.getNumber();
                 onChanged();
                 return this;
@@ -19247,7 +19515,7 @@ public final class Build {
              * @return This builder for chaining.
              */
             public Builder clearTristateValue() {
-                bitField0_ = (bitField0_ & ~0x00000080);
+                bitField0_ = (bitField0_ & ~0x00000100);
                 tristateValue_ = 0;
                 onChanged();
                 return this;
@@ -19256,9 +19524,9 @@ public final class Build {
             private com.google.protobuf.LazyStringList stringListValue_ = com.google.protobuf.LazyStringArrayList.EMPTY;
 
             private void ensureStringListValueIsMutable() {
-                if (!((bitField0_ & 0x00000100) != 0)) {
+                if (!((bitField0_ & 0x00000200) != 0)) {
                     stringListValue_ = new com.google.protobuf.LazyStringArrayList(stringListValue_);
-                    bitField0_ |= 0x00000100;
+                    bitField0_ |= 0x00000200;
                 }
             }
             /**
@@ -19401,7 +19669,7 @@ public final class Build {
              */
             public Builder clearStringListValue() {
                 stringListValue_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-                bitField0_ = (bitField0_ & ~0x00000100);
+                bitField0_ = (bitField0_ & ~0x00000200);
                 onChanged();
                 return this;
             }
@@ -19446,7 +19714,7 @@ public final class Build {
              * @return Whether the license field is set.
              */
             public boolean hasLicense() {
-                return ((bitField0_ & 0x00000200) != 0);
+                return ((bitField0_ & 0x00000400) != 0);
             }
             /**
              *
@@ -19486,7 +19754,7 @@ public final class Build {
                 } else {
                     licenseBuilder_.setMessage(value);
                 }
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -19506,7 +19774,7 @@ public final class Build {
                 } else {
                     licenseBuilder_.setMessage(builderForValue.build());
                 }
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -19521,7 +19789,7 @@ public final class Build {
              */
             public Builder mergeLicense(com.google.devtools.build.lib.query2.proto.proto2api.Build.License value) {
                 if (licenseBuilder_ == null) {
-                    if (((bitField0_ & 0x00000200) != 0)
+                    if (((bitField0_ & 0x00000400) != 0)
                             && license_ != null
                             && license_
                                     != com.google.devtools.build.lib.query2.proto.proto2api.Build.License
@@ -19533,7 +19801,7 @@ public final class Build {
                 } else {
                     licenseBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return this;
             }
@@ -19547,7 +19815,7 @@ public final class Build {
              * <code>optional .blaze_query.License license = 7;</code>
              */
             public Builder clearLicense() {
-                bitField0_ = (bitField0_ & ~0x00000200);
+                bitField0_ = (bitField0_ & ~0x00000400);
                 license_ = null;
                 if (licenseBuilder_ != null) {
                     licenseBuilder_.dispose();
@@ -19566,7 +19834,7 @@ public final class Build {
              * <code>optional .blaze_query.License license = 7;</code>
              */
             public com.google.devtools.build.lib.query2.proto.proto2api.Build.License.Builder getLicenseBuilder() {
-                bitField0_ |= 0x00000200;
+                bitField0_ |= 0x00000400;
                 onChanged();
                 return getLicenseFieldBuilder().getBuilder();
             }
@@ -19618,12 +19886,12 @@ public final class Build {
                     stringDictValue_ = java.util.Collections.emptyList();
 
             private void ensureStringDictValueIsMutable() {
-                if (!((bitField0_ & 0x00000400) != 0)) {
+                if (!((bitField0_ & 0x00000800) != 0)) {
                     stringDictValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.StringDictEntry>(
                                     stringDictValue_);
-                    bitField0_ |= 0x00000400;
+                    bitField0_ |= 0x00000800;
                 }
             }
 
@@ -19852,7 +20120,7 @@ public final class Build {
             public Builder clearStringDictValue() {
                 if (stringDictValueBuilder_ == null) {
                     stringDictValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000400);
+                    bitField0_ = (bitField0_ & ~0x00000800);
                     onChanged();
                 } else {
                     stringDictValueBuilder_.clear();
@@ -19987,7 +20255,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .StringDictEntryOrBuilder>(
                                     stringDictValue_,
-                                    ((bitField0_ & 0x00000400) != 0),
+                                    ((bitField0_ & 0x00000800) != 0),
                                     getParentForChildren(),
                                     isClean());
                     stringDictValue_ = null;
@@ -19999,12 +20267,12 @@ public final class Build {
                     filesetListValue_ = java.util.Collections.emptyList();
 
             private void ensureFilesetListValueIsMutable() {
-                if (!((bitField0_ & 0x00000800) != 0)) {
+                if (!((bitField0_ & 0x00001000) != 0)) {
                     filesetListValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.FilesetEntry>(
                                     filesetListValue_);
-                    bitField0_ |= 0x00000800;
+                    bitField0_ |= 0x00001000;
                 }
             }
 
@@ -20240,7 +20508,7 @@ public final class Build {
             public Builder clearFilesetListValue() {
                 if (filesetListValueBuilder_ == null) {
                     filesetListValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000800);
+                    bitField0_ = (bitField0_ & ~0x00001000);
                     onChanged();
                 } else {
                     filesetListValueBuilder_.clear();
@@ -20380,7 +20648,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.FilesetEntry.Builder,
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.FilesetEntryOrBuilder>(
                                     filesetListValue_,
-                                    ((bitField0_ & 0x00000800) != 0),
+                                    ((bitField0_ & 0x00001000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     filesetListValue_ = null;
@@ -20392,12 +20660,12 @@ public final class Build {
                     labelListDictValue_ = java.util.Collections.emptyList();
 
             private void ensureLabelListDictValueIsMutable() {
-                if (!((bitField0_ & 0x00001000) != 0)) {
+                if (!((bitField0_ & 0x00002000) != 0)) {
                     labelListDictValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.LabelListDictEntry>(
                                     labelListDictValue_);
-                    bitField0_ |= 0x00001000;
+                    bitField0_ |= 0x00002000;
                 }
             }
 
@@ -20627,7 +20895,7 @@ public final class Build {
             public Builder clearLabelListDictValue() {
                 if (labelListDictValueBuilder_ == null) {
                     labelListDictValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00001000);
+                    bitField0_ = (bitField0_ & ~0x00002000);
                     onChanged();
                 } else {
                     labelListDictValueBuilder_.clear();
@@ -20764,7 +21032,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .LabelListDictEntryOrBuilder>(
                                     labelListDictValue_,
-                                    ((bitField0_ & 0x00001000) != 0),
+                                    ((bitField0_ & 0x00002000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     labelListDictValue_ = null;
@@ -20776,12 +21044,12 @@ public final class Build {
                     stringListDictValue_ = java.util.Collections.emptyList();
 
             private void ensureStringListDictValueIsMutable() {
-                if (!((bitField0_ & 0x00002000) != 0)) {
+                if (!((bitField0_ & 0x00004000) != 0)) {
                     stringListDictValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.StringListDictEntry>(
                                     stringListDictValue_);
-                    bitField0_ |= 0x00002000;
+                    bitField0_ |= 0x00004000;
                 }
             }
 
@@ -21011,7 +21279,7 @@ public final class Build {
             public Builder clearStringListDictValue() {
                 if (stringListDictValueBuilder_ == null) {
                     stringListDictValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00002000);
+                    bitField0_ = (bitField0_ & ~0x00004000);
                     onChanged();
                 } else {
                     stringListDictValueBuilder_.clear();
@@ -21149,7 +21417,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .StringListDictEntryOrBuilder>(
                                     stringListDictValue_,
-                                    ((bitField0_ & 0x00002000) != 0),
+                                    ((bitField0_ & 0x00004000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     stringListDictValue_ = null;
@@ -21160,9 +21428,9 @@ public final class Build {
             private com.google.protobuf.Internal.IntList intListValue_ = emptyIntList();
 
             private void ensureIntListValueIsMutable() {
-                if (!((bitField0_ & 0x00004000) != 0)) {
+                if (!((bitField0_ & 0x00008000) != 0)) {
                     intListValue_ = mutableCopy(intListValue_);
-                    bitField0_ |= 0x00004000;
+                    bitField0_ |= 0x00008000;
                 }
             }
             /**
@@ -21177,7 +21445,7 @@ public final class Build {
              * @return A list containing the intListValue.
              */
             public java.util.List<java.lang.Integer> getIntListValueList() {
-                return ((bitField0_ & 0x00004000) != 0)
+                return ((bitField0_ & 0x00008000) != 0)
                         ? java.util.Collections.unmodifiableList(intListValue_)
                         : intListValue_;
             }
@@ -21280,7 +21548,7 @@ public final class Build {
              */
             public Builder clearIntListValue() {
                 intListValue_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00004000);
+                bitField0_ = (bitField0_ & ~0x00008000);
                 onChanged();
                 return this;
             }
@@ -21289,12 +21557,12 @@ public final class Build {
                     labelDictUnaryValue_ = java.util.Collections.emptyList();
 
             private void ensureLabelDictUnaryValueIsMutable() {
-                if (!((bitField0_ & 0x00008000) != 0)) {
+                if (!((bitField0_ & 0x00010000) != 0)) {
                     labelDictUnaryValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build.LabelDictUnaryEntry>(
                                     labelDictUnaryValue_);
-                    bitField0_ |= 0x00008000;
+                    bitField0_ |= 0x00010000;
                 }
             }
 
@@ -21524,7 +21792,7 @@ public final class Build {
             public Builder clearLabelDictUnaryValue() {
                 if (labelDictUnaryValueBuilder_ == null) {
                     labelDictUnaryValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00008000);
+                    bitField0_ = (bitField0_ & ~0x00010000);
                     onChanged();
                 } else {
                     labelDictUnaryValueBuilder_.clear();
@@ -21662,7 +21930,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .LabelDictUnaryEntryOrBuilder>(
                                     labelDictUnaryValue_,
-                                    ((bitField0_ & 0x00008000) != 0),
+                                    ((bitField0_ & 0x00010000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     labelDictUnaryValue_ = null;
@@ -21674,12 +21942,12 @@ public final class Build {
                     labelKeyedStringDictValue_ = java.util.Collections.emptyList();
 
             private void ensureLabelKeyedStringDictValueIsMutable() {
-                if (!((bitField0_ & 0x00010000) != 0)) {
+                if (!((bitField0_ & 0x00020000) != 0)) {
                     labelKeyedStringDictValue_ =
                             new java.util.ArrayList<
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .LabelKeyedStringDictEntry>(labelKeyedStringDictValue_);
-                    bitField0_ |= 0x00010000;
+                    bitField0_ |= 0x00020000;
                 }
             }
 
@@ -21913,7 +22181,7 @@ public final class Build {
             public Builder clearLabelKeyedStringDictValue() {
                 if (labelKeyedStringDictValueBuilder_ == null) {
                     labelKeyedStringDictValue_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00010000);
+                    bitField0_ = (bitField0_ & ~0x00020000);
                     onChanged();
                 } else {
                     labelKeyedStringDictValueBuilder_.clear();
@@ -22055,7 +22323,7 @@ public final class Build {
                                     com.google.devtools.build.lib.query2.proto.proto2api.Build
                                             .LabelKeyedStringDictEntryOrBuilder>(
                                     labelKeyedStringDictValue_,
-                                    ((bitField0_ & 0x00010000) != 0),
+                                    ((bitField0_ & 0x00020000) != 0),
                                     getParentForChildren(),
                                     isClean());
                     labelKeyedStringDictValue_ = null;
@@ -22083,7 +22351,7 @@ public final class Build {
              * @return Whether the selectorList field is set.
              */
             public boolean hasSelectorList() {
-                return ((bitField0_ & 0x00020000) != 0);
+                return ((bitField0_ & 0x00040000) != 0);
             }
             /**
              *
@@ -22129,7 +22397,7 @@ public final class Build {
                 } else {
                     selectorListBuilder_.setMessage(value);
                 }
-                bitField0_ |= 0x00020000;
+                bitField0_ |= 0x00040000;
                 onChanged();
                 return this;
             }
@@ -22152,7 +22420,7 @@ public final class Build {
                 } else {
                     selectorListBuilder_.setMessage(builderForValue.build());
                 }
-                bitField0_ |= 0x00020000;
+                bitField0_ |= 0x00040000;
                 onChanged();
                 return this;
             }
@@ -22170,7 +22438,7 @@ public final class Build {
             public Builder mergeSelectorList(
                     com.google.devtools.build.lib.query2.proto.proto2api.Build.Attribute.SelectorList value) {
                 if (selectorListBuilder_ == null) {
-                    if (((bitField0_ & 0x00020000) != 0)
+                    if (((bitField0_ & 0x00040000) != 0)
                             && selectorList_ != null
                             && selectorList_
                                     != com.google.devtools.build.lib.query2.proto.proto2api.Build.Attribute.SelectorList
@@ -22182,7 +22450,7 @@ public final class Build {
                 } else {
                     selectorListBuilder_.mergeFrom(value);
                 }
-                bitField0_ |= 0x00020000;
+                bitField0_ |= 0x00040000;
                 onChanged();
                 return this;
             }
@@ -22198,7 +22466,7 @@ public final class Build {
              * <code>optional .blaze_query.Attribute.SelectorList selector_list = 21;</code>
              */
             public Builder clearSelectorList() {
-                bitField0_ = (bitField0_ & ~0x00020000);
+                bitField0_ = (bitField0_ & ~0x00040000);
                 selectorList_ = null;
                 if (selectorListBuilder_ != null) {
                     selectorListBuilder_.dispose();
@@ -22220,7 +22488,7 @@ public final class Build {
              */
             public com.google.devtools.build.lib.query2.proto.proto2api.Build.Attribute.SelectorList.Builder
                     getSelectorListBuilder() {
-                bitField0_ |= 0x00020000;
+                bitField0_ |= 0x00040000;
                 onChanged();
                 return getSelectorListFieldBuilder().getBuilder();
             }
@@ -22280,10 +22548,10 @@ public final class Build {
                     java.util.Collections.emptyList();
 
             private void ensureDEPRECATEDStringDictUnaryValueIsMutable() {
-                if (!((bitField0_ & 0x00040000) != 0)) {
+                if (!((bitField0_ & 0x00080000) != 0)) {
                     dEPRECATEDStringDictUnaryValue_ =
                             new java.util.ArrayList<com.google.protobuf.ByteString>(dEPRECATEDStringDictUnaryValue_);
-                    bitField0_ |= 0x00040000;
+                    bitField0_ |= 0x00080000;
                 }
             }
             /**
@@ -22292,7 +22560,7 @@ public final class Build {
              * @return A list containing the dEPRECATEDStringDictUnaryValue.
              */
             public java.util.List<com.google.protobuf.ByteString> getDEPRECATEDStringDictUnaryValueList() {
-                return ((bitField0_ & 0x00040000) != 0)
+                return ((bitField0_ & 0x00080000) != 0)
                         ? java.util.Collections.unmodifiableList(dEPRECATEDStringDictUnaryValue_)
                         : dEPRECATEDStringDictUnaryValue_;
             }
@@ -22364,7 +22632,7 @@ public final class Build {
              */
             public Builder clearDEPRECATEDStringDictUnaryValue() {
                 dEPRECATEDStringDictUnaryValue_ = java.util.Collections.emptyList();
-                bitField0_ = (bitField0_ & ~0x00040000);
+                bitField0_ = (bitField0_ & ~0x00080000);
                 onChanged();
                 return this;
             }
@@ -48669,126 +48937,127 @@ public final class Build {
                     + "xclude\030\004 \003(\t\022I\n\020symlink_behavior\030\005 \001(\0162)"
                     + ".blaze_query.FilesetEntry.SymlinkBehavio"
                     + "r:\004COPY\022\024\n\014strip_prefix\030\006 \001(\t\",\n\017Symlink"
-                    + "Behavior\022\010\n\004COPY\020\001\022\017\n\013DEREFERENCE\020\002\"\250\021\n\t"
+                    + "Behavior\022\010\n\004COPY\020\001\022\017\n\013DEREFERENCE\020\002\"\304\021\n\t"
                     + "Attribute\022\014\n\004name\030\001 \002(\t\022\034\n\024explicitly_sp"
-                    + "ecified\030\r \001(\010\022\r\n\005nodep\030\024 \001(\010\0222\n\004type\030\002 \002"
-                    + "(\0162$.blaze_query.Attribute.Discriminator"
-                    + "\022\021\n\tint_value\030\003 \001(\005\022\024\n\014string_value\030\005 \001("
-                    + "\t\022\025\n\rboolean_value\030\016 \001(\010\0227\n\016tristate_val"
-                    + "ue\030\017 \001(\0162\037.blaze_query.Attribute.Tristat"
-                    + "e\022\031\n\021string_list_value\030\006 \003(\t\022%\n\007license\030"
-                    + "\007 \001(\0132\024.blaze_query.License\0227\n\021string_di"
-                    + "ct_value\030\010 \003(\0132\034.blaze_query.StringDictE"
-                    + "ntry\0225\n\022fileset_list_value\030\t \003(\0132\031.blaze"
-                    + "_query.FilesetEntry\022>\n\025label_list_dict_v"
-                    + "alue\030\n \003(\0132\037.blaze_query.LabelListDictEn"
-                    + "try\022@\n\026string_list_dict_value\030\013 \003(\0132 .bl"
-                    + "aze_query.StringListDictEntry\022\026\n\016int_lis"
-                    + "t_value\030\021 \003(\005\022@\n\026label_dict_unary_value\030"
-                    + "\023 \003(\0132 .blaze_query.LabelDictUnaryEntry\022"
-                    + "M\n\035label_keyed_string_dict_value\030\026 \003(\0132&"
-                    + ".blaze_query.LabelKeyedStringDictEntry\022:"
-                    + "\n\rselector_list\030\025 \001(\0132#.blaze_query.Attr"
-                    + "ibute.SelectorList\022*\n\"DEPRECATED_string_"
-                    + "dict_unary_value\030\022 \003(\014\032\300\005\n\rSelectorEntry"
-                    + "\022\r\n\005label\030\001 \001(\t\022\030\n\020is_default_value\030\020 \001("
-                    + "\010\022\021\n\tint_value\030\002 \001(\005\022\024\n\014string_value\030\003 \001"
-                    + "(\t\022\025\n\rboolean_value\030\004 \001(\010\0227\n\016tristate_va"
-                    + "lue\030\005 \001(\0162\037.blaze_query.Attribute.Trista"
-                    + "te\022\031\n\021string_list_value\030\006 \003(\t\022%\n\007license"
-                    + "\030\007 \001(\0132\024.blaze_query.License\0227\n\021string_d"
-                    + "ict_value\030\010 \003(\0132\034.blaze_query.StringDict"
-                    + "Entry\0225\n\022fileset_list_value\030\t \003(\0132\031.blaz"
-                    + "e_query.FilesetEntry\022>\n\025label_list_dict_"
-                    + "value\030\n \003(\0132\037.blaze_query.LabelListDictE"
-                    + "ntry\022@\n\026string_list_dict_value\030\013 \003(\0132 .b"
-                    + "laze_query.StringListDictEntry\022\026\n\016int_li"
-                    + "st_value\030\r \003(\005\022@\n\026label_dict_unary_value"
-                    + "\030\017 \003(\0132 .blaze_query.LabelDictUnaryEntry"
-                    + "\022M\n\035label_keyed_string_dict_value\030\021 \003(\0132"
-                    + "&.blaze_query.LabelKeyedStringDictEntry\022"
-                    + "*\n\"DEPRECATED_string_dict_unary_value\030\016 "
-                    + "\003(\014J\004\010\014\020\r\032t\n\010Selector\0225\n\007entries\030\001 \003(\0132$"
-                    + ".blaze_query.Attribute.SelectorEntry\022\031\n\021"
-                    + "has_default_value\030\002 \001(\010\022\026\n\016no_match_erro"
-                    + "r\030\003 \001(\t\032u\n\014SelectorList\0222\n\004type\030\001 \001(\0162$."
-                    + "blaze_query.Attribute.Discriminator\0221\n\010e"
-                    + "lements\030\002 \003(\0132\037.blaze_query.Attribute.Se"
-                    + "lector\"\212\003\n\rDiscriminator\022\013\n\007INTEGER\020\001\022\n\n"
-                    + "\006STRING\020\002\022\t\n\005LABEL\020\003\022\n\n\006OUTPUT\020\004\022\017\n\013STRI"
-                    + "NG_LIST\020\005\022\016\n\nLABEL_LIST\020\006\022\017\n\013OUTPUT_LIST"
-                    + "\020\007\022\024\n\020DISTRIBUTION_SET\020\010\022\013\n\007LICENSE\020\t\022\017\n"
-                    + "\013STRING_DICT\020\n\022\026\n\022FILESET_ENTRY_LIST\020\013\022\023"
-                    + "\n\017LABEL_LIST_DICT\020\014\022\024\n\020STRING_LIST_DICT\020"
-                    + "\r\022\013\n\007BOOLEAN\020\016\022\014\n\010TRISTATE\020\017\022\020\n\014INTEGER_"
-                    + "LIST\020\020\022\013\n\007UNKNOWN\020\022\022\024\n\020LABEL_DICT_UNARY\020"
-                    + "\023\022\021\n\rSELECTOR_LIST\020\024\022\033\n\027LABEL_KEYED_STRI"
-                    + "NG_DICT\020\025\022 \n\034DEPRECATED_STRING_DICT_UNAR"
-                    + "Y\020\021\"%\n\010Tristate\022\006\n\002NO\020\000\022\007\n\003YES\020\001\022\010\n\004AUTO"
-                    + "\020\002J\004\010\014\020\rJ\004\010\020\020\021\"\227\003\n\004Rule\022\014\n\004name\030\001 \002(\t\022\022\n"
-                    + "\nrule_class\030\002 \002(\t\022\020\n\010location\030\003 \001(\t\022)\n\ta"
-                    + "ttribute\030\004 \003(\0132\026.blaze_query.Attribute\022\022"
-                    + "\n\nrule_input\030\005 \003(\t\022?\n\025configured_rule_in"
-                    + "put\030\017 \003(\0132 .blaze_query.ConfiguredRuleIn"
-                    + "put\022\023\n\013rule_output\030\006 \003(\t\022\027\n\017default_sett"
-                    + "ing\030\007 \003(\t\022$\n\034DEPRECATED_public_by_defaul"
-                    + "t\030\t \001(\010\022\035\n\025DEPRECATED_is_skylark\030\n \001(\010\022%"
-                    + "\n\035skylark_environment_hash_code\030\014 \001(\t\022\033\n"
-                    + "\023instantiation_stack\030\r \003(\t\022\030\n\020definition"
-                    + "_stack\030\016 \003(\tJ\004\010\010\020\tJ\004\010\013\020\014\"^\n\023ConfiguredRu"
-                    + "leInput\022\r\n\005label\030\001 \001(\t\022\036\n\026configuration_"
-                    + "checksum\030\002 \001(\t\022\030\n\020configuration_id\030\003 \001(\r"
-                    + "\"g\n\013RuleSummary\022\037\n\004rule\030\001 \002(\0132\021.blaze_qu"
-                    + "ery.Rule\022%\n\ndependency\030\002 \003(\0132\021.blaze_que"
-                    + "ry.Rule\022\020\n\010location\030\003 \001(\t\"]\n\014PackageGrou"
-                    + "p\022\014\n\004name\030\001 \002(\t\022\031\n\021contained_package\030\002 \003"
-                    + "(\t\022\036\n\026included_package_group\030\003 \003(\tJ\004\010\004\020\005"
-                    + "\"F\n\020EnvironmentGroup\022\014\n\004name\030\001 \002(\t\022\023\n\013en"
-                    + "vironment\030\002 \003(\t\022\017\n\007default\030\003 \003(\t\"\320\001\n\nSou"
-                    + "rceFile\022\014\n\004name\030\001 \002(\t\022\020\n\010location\030\002 \001(\t\022"
-                    + "\022\n\nsubinclude\030\003 \003(\t\022\025\n\rpackage_group\030\004 \003"
-                    + "(\t\022\030\n\020visibility_label\030\005 \003(\t\022\017\n\007feature\030"
-                    + "\006 \003(\t\022%\n\007license\030\010 \001(\0132\024.blaze_query.Lic"
-                    + "ense\022\037\n\027package_contains_errors\030\t \001(\010J\004\010"
-                    + "\007\020\010\"H\n\rGeneratedFile\022\014\n\004name\030\001 \002(\t\022\027\n\017ge"
-                    + "nerating_rule\030\002 \002(\t\022\020\n\010location\030\003 \001(\t\"\222\003"
-                    + "\n\006Target\022/\n\004type\030\001 \002(\0162!.blaze_query.Tar"
-                    + "get.Discriminator\022\037\n\004rule\030\002 \001(\0132\021.blaze_"
-                    + "query.Rule\022,\n\013source_file\030\003 \001(\0132\027.blaze_"
-                    + "query.SourceFile\0222\n\016generated_file\030\004 \001(\013"
-                    + "2\032.blaze_query.GeneratedFile\0220\n\rpackage_"
-                    + "group\030\005 \001(\0132\031.blaze_query.PackageGroup\0228"
-                    + "\n\021environment_group\030\006 \001(\0132\035.blaze_query."
-                    + "EnvironmentGroup\"h\n\rDiscriminator\022\010\n\004RUL"
-                    + "E\020\001\022\017\n\013SOURCE_FILE\020\002\022\022\n\016GENERATED_FILE\020\003"
-                    + "\022\021\n\rPACKAGE_GROUP\020\004\022\025\n\021ENVIRONMENT_GROUP"
-                    + "\020\005\"2\n\013QueryResult\022#\n\006target\030\001 \003(\0132\023.blaz"
-                    + "e_query.Target\"\246\001\n\024AllowedRuleClassInfo\022"
-                    + "D\n\006policy\030\001 \002(\01624.blaze_query.AllowedRul"
-                    + "eClassInfo.AllowedRuleClasses\022\032\n\022allowed"
-                    + "_rule_class\030\002 \003(\t\",\n\022AllowedRuleClasses\022"
-                    + "\007\n\003ANY\020\001\022\r\n\tSPECIFIED\020\002\"\356\002\n\023AttributeDef"
-                    + "inition\022\014\n\004name\030\001 \002(\t\0222\n\004type\030\002 \002(\0162$.bl"
-                    + "aze_query.Attribute.Discriminator\022\021\n\tman"
-                    + "datory\030\003 \001(\010\022?\n\024allowed_rule_classes\030\004 \001"
-                    + "(\0132!.blaze_query.AllowedRuleClassInfo\022\025\n"
-                    + "\rdocumentation\030\005 \001(\t\022\023\n\013allow_empty\030\006 \001("
-                    + "\010\022\031\n\021allow_single_file\030\007 \001(\010\022,\n\007default\030"
-                    + "\t \001(\0132\033.blaze_query.AttributeValue\022\022\n\nex"
-                    + "ecutable\030\n \001(\010\022\024\n\014configurable\030\013 \001(\010\022\r\n\005"
-                    + "nodep\030\014 \001(\010\022\023\n\013cfg_is_host\030\r \001(\010\"\341\001\n\016Att"
-                    + "ributeValue\022\013\n\003int\030\001 \001(\005\022\016\n\006string\030\002 \001(\t"
-                    + "\022\014\n\004bool\030\003 \001(\010\022)\n\004list\030\004 \003(\0132\033.blaze_que"
-                    + "ry.AttributeValue\0223\n\004dict\030\005 \003(\0132%.blaze_"
-                    + "query.AttributeValue.DictEntry\032D\n\tDictEn"
-                    + "try\022\013\n\003key\030\001 \002(\t\022*\n\005value\030\002 \002(\0132\033.blaze_"
-                    + "query.AttributeValue\"y\n\016RuleDefinition\022\014"
-                    + "\n\004name\030\001 \002(\t\0223\n\tattribute\030\002 \003(\0132 .blaze_"
-                    + "query.AttributeDefinition\022\025\n\rdocumentati"
-                    + "on\030\003 \001(\t\022\r\n\005label\030\004 \001(\t\":\n\rBuildLanguage"
-                    + "\022)\n\004rule\030\001 \003(\0132\033.blaze_query.RuleDefinit"
-                    + "ionB6\n4com.google.devtools.build.lib.que"
-                    + "ry2.proto.proto2api"
+                    + "ecified\030\r \001(\010\022\r\n\005nodep\030\024 \001(\010\022\032\n\022source_a"
+                    + "spect_name\030\027 \001(\t\0222\n\004type\030\002 \002(\0162$.blaze_q"
+                    + "uery.Attribute.Discriminator\022\021\n\tint_valu"
+                    + "e\030\003 \001(\005\022\024\n\014string_value\030\005 \001(\t\022\025\n\rboolean"
+                    + "_value\030\016 \001(\010\0227\n\016tristate_value\030\017 \001(\0162\037.b"
+                    + "laze_query.Attribute.Tristate\022\031\n\021string_"
+                    + "list_value\030\006 \003(\t\022%\n\007license\030\007 \001(\0132\024.blaz"
+                    + "e_query.License\0227\n\021string_dict_value\030\010 \003"
+                    + "(\0132\034.blaze_query.StringDictEntry\0225\n\022file"
+                    + "set_list_value\030\t \003(\0132\031.blaze_query.Files"
+                    + "etEntry\022>\n\025label_list_dict_value\030\n \003(\0132\037"
+                    + ".blaze_query.LabelListDictEntry\022@\n\026strin"
+                    + "g_list_dict_value\030\013 \003(\0132 .blaze_query.St"
+                    + "ringListDictEntry\022\026\n\016int_list_value\030\021 \003("
+                    + "\005\022@\n\026label_dict_unary_value\030\023 \003(\0132 .blaz"
+                    + "e_query.LabelDictUnaryEntry\022M\n\035label_key"
+                    + "ed_string_dict_value\030\026 \003(\0132&.blaze_query"
+                    + ".LabelKeyedStringDictEntry\022:\n\rselector_l"
+                    + "ist\030\025 \001(\0132#.blaze_query.Attribute.Select"
+                    + "orList\022*\n\"DEPRECATED_string_dict_unary_v"
+                    + "alue\030\022 \003(\014\032\300\005\n\rSelectorEntry\022\r\n\005label\030\001 "
+                    + "\001(\t\022\030\n\020is_default_value\030\020 \001(\010\022\021\n\tint_val"
+                    + "ue\030\002 \001(\005\022\024\n\014string_value\030\003 \001(\t\022\025\n\rboolea"
+                    + "n_value\030\004 \001(\010\0227\n\016tristate_value\030\005 \001(\0162\037."
+                    + "blaze_query.Attribute.Tristate\022\031\n\021string"
+                    + "_list_value\030\006 \003(\t\022%\n\007license\030\007 \001(\0132\024.bla"
+                    + "ze_query.License\0227\n\021string_dict_value\030\010 "
+                    + "\003(\0132\034.blaze_query.StringDictEntry\0225\n\022fil"
+                    + "eset_list_value\030\t \003(\0132\031.blaze_query.File"
+                    + "setEntry\022>\n\025label_list_dict_value\030\n \003(\0132"
+                    + "\037.blaze_query.LabelListDictEntry\022@\n\026stri"
+                    + "ng_list_dict_value\030\013 \003(\0132 .blaze_query.S"
+                    + "tringListDictEntry\022\026\n\016int_list_value\030\r \003"
+                    + "(\005\022@\n\026label_dict_unary_value\030\017 \003(\0132 .bla"
+                    + "ze_query.LabelDictUnaryEntry\022M\n\035label_ke"
+                    + "yed_string_dict_value\030\021 \003(\0132&.blaze_quer"
+                    + "y.LabelKeyedStringDictEntry\022*\n\"DEPRECATE"
+                    + "D_string_dict_unary_value\030\016 \003(\014J\004\010\014\020\r\032t\n"
+                    + "\010Selector\0225\n\007entries\030\001 \003(\0132$.blaze_query"
+                    + ".Attribute.SelectorEntry\022\031\n\021has_default_"
+                    + "value\030\002 \001(\010\022\026\n\016no_match_error\030\003 \001(\t\032u\n\014S"
+                    + "electorList\0222\n\004type\030\001 \001(\0162$.blaze_query."
+                    + "Attribute.Discriminator\0221\n\010elements\030\002 \003("
+                    + "\0132\037.blaze_query.Attribute.Selector\"\212\003\n\rD"
+                    + "iscriminator\022\013\n\007INTEGER\020\001\022\n\n\006STRING\020\002\022\t\n"
+                    + "\005LABEL\020\003\022\n\n\006OUTPUT\020\004\022\017\n\013STRING_LIST\020\005\022\016\n"
+                    + "\nLABEL_LIST\020\006\022\017\n\013OUTPUT_LIST\020\007\022\024\n\020DISTRI"
+                    + "BUTION_SET\020\010\022\013\n\007LICENSE\020\t\022\017\n\013STRING_DICT"
+                    + "\020\n\022\026\n\022FILESET_ENTRY_LIST\020\013\022\023\n\017LABEL_LIST"
+                    + "_DICT\020\014\022\024\n\020STRING_LIST_DICT\020\r\022\013\n\007BOOLEAN"
+                    + "\020\016\022\014\n\010TRISTATE\020\017\022\020\n\014INTEGER_LIST\020\020\022\013\n\007UN"
+                    + "KNOWN\020\022\022\024\n\020LABEL_DICT_UNARY\020\023\022\021\n\rSELECTO"
+                    + "R_LIST\020\024\022\033\n\027LABEL_KEYED_STRING_DICT\020\025\022 \n"
+                    + "\034DEPRECATED_STRING_DICT_UNARY\020\021\"%\n\010Trist"
+                    + "ate\022\006\n\002NO\020\000\022\007\n\003YES\020\001\022\010\n\004AUTO\020\002J\004\010\014\020\rJ\004\010\020"
+                    + "\020\021\"\227\003\n\004Rule\022\014\n\004name\030\001 \002(\t\022\022\n\nrule_class\030"
+                    + "\002 \002(\t\022\020\n\010location\030\003 \001(\t\022)\n\tattribute\030\004 \003"
+                    + "(\0132\026.blaze_query.Attribute\022\022\n\nrule_input"
+                    + "\030\005 \003(\t\022?\n\025configured_rule_input\030\017 \003(\0132 ."
+                    + "blaze_query.ConfiguredRuleInput\022\023\n\013rule_"
+                    + "output\030\006 \003(\t\022\027\n\017default_setting\030\007 \003(\t\022$\n"
+                    + "\034DEPRECATED_public_by_default\030\t \001(\010\022\035\n\025D"
+                    + "EPRECATED_is_skylark\030\n \001(\010\022%\n\035skylark_en"
+                    + "vironment_hash_code\030\014 \001(\t\022\033\n\023instantiati"
+                    + "on_stack\030\r \003(\t\022\030\n\020definition_stack\030\016 \003(\t"
+                    + "J\004\010\010\020\tJ\004\010\013\020\014\"^\n\023ConfiguredRuleInput\022\r\n\005l"
+                    + "abel\030\001 \001(\t\022\036\n\026configuration_checksum\030\002 \001"
+                    + "(\t\022\030\n\020configuration_id\030\003 \001(\r\"g\n\013RuleSumm"
+                    + "ary\022\037\n\004rule\030\001 \002(\0132\021.blaze_query.Rule\022%\n\n"
+                    + "dependency\030\002 \003(\0132\021.blaze_query.Rule\022\020\n\010l"
+                    + "ocation\030\003 \001(\t\"]\n\014PackageGroup\022\014\n\004name\030\001 "
+                    + "\002(\t\022\031\n\021contained_package\030\002 \003(\t\022\036\n\026includ"
+                    + "ed_package_group\030\003 \003(\tJ\004\010\004\020\005\"F\n\020Environm"
+                    + "entGroup\022\014\n\004name\030\001 \002(\t\022\023\n\013environment\030\002 "
+                    + "\003(\t\022\017\n\007default\030\003 \003(\t\"\320\001\n\nSourceFile\022\014\n\004n"
+                    + "ame\030\001 \002(\t\022\020\n\010location\030\002 \001(\t\022\022\n\nsubinclud"
+                    + "e\030\003 \003(\t\022\025\n\rpackage_group\030\004 \003(\t\022\030\n\020visibi"
+                    + "lity_label\030\005 \003(\t\022\017\n\007feature\030\006 \003(\t\022%\n\007lic"
+                    + "ense\030\010 \001(\0132\024.blaze_query.License\022\037\n\027pack"
+                    + "age_contains_errors\030\t \001(\010J\004\010\007\020\010\"H\n\rGener"
+                    + "atedFile\022\014\n\004name\030\001 \002(\t\022\027\n\017generating_rul"
+                    + "e\030\002 \002(\t\022\020\n\010location\030\003 \001(\t\"\222\003\n\006Target\022/\n\004"
+                    + "type\030\001 \002(\0162!.blaze_query.Target.Discrimi"
+                    + "nator\022\037\n\004rule\030\002 \001(\0132\021.blaze_query.Rule\022,"
+                    + "\n\013source_file\030\003 \001(\0132\027.blaze_query.Source"
+                    + "File\0222\n\016generated_file\030\004 \001(\0132\032.blaze_que"
+                    + "ry.GeneratedFile\0220\n\rpackage_group\030\005 \001(\0132"
+                    + "\031.blaze_query.PackageGroup\0228\n\021environmen"
+                    + "t_group\030\006 \001(\0132\035.blaze_query.EnvironmentG"
+                    + "roup\"h\n\rDiscriminator\022\010\n\004RULE\020\001\022\017\n\013SOURC"
+                    + "E_FILE\020\002\022\022\n\016GENERATED_FILE\020\003\022\021\n\rPACKAGE_"
+                    + "GROUP\020\004\022\025\n\021ENVIRONMENT_GROUP\020\005\"2\n\013QueryR"
+                    + "esult\022#\n\006target\030\001 \003(\0132\023.blaze_query.Targ"
+                    + "et\"\246\001\n\024AllowedRuleClassInfo\022D\n\006policy\030\001 "
+                    + "\002(\01624.blaze_query.AllowedRuleClassInfo.A"
+                    + "llowedRuleClasses\022\032\n\022allowed_rule_class\030"
+                    + "\002 \003(\t\",\n\022AllowedRuleClasses\022\007\n\003ANY\020\001\022\r\n\t"
+                    + "SPECIFIED\020\002\"\356\002\n\023AttributeDefinition\022\014\n\004n"
+                    + "ame\030\001 \002(\t\0222\n\004type\030\002 \002(\0162$.blaze_query.At"
+                    + "tribute.Discriminator\022\021\n\tmandatory\030\003 \001(\010"
+                    + "\022?\n\024allowed_rule_classes\030\004 \001(\0132!.blaze_q"
+                    + "uery.AllowedRuleClassInfo\022\025\n\rdocumentati"
+                    + "on\030\005 \001(\t\022\023\n\013allow_empty\030\006 \001(\010\022\031\n\021allow_s"
+                    + "ingle_file\030\007 \001(\010\022,\n\007default\030\t \001(\0132\033.blaz"
+                    + "e_query.AttributeValue\022\022\n\nexecutable\030\n \001"
+                    + "(\010\022\024\n\014configurable\030\013 \001(\010\022\r\n\005nodep\030\014 \001(\010\022"
+                    + "\023\n\013cfg_is_host\030\r \001(\010\"\341\001\n\016AttributeValue\022"
+                    + "\013\n\003int\030\001 \001(\005\022\016\n\006string\030\002 \001(\t\022\014\n\004bool\030\003 \001"
+                    + "(\010\022)\n\004list\030\004 \003(\0132\033.blaze_query.Attribute"
+                    + "Value\0223\n\004dict\030\005 \003(\0132%.blaze_query.Attrib"
+                    + "uteValue.DictEntry\032D\n\tDictEntry\022\013\n\003key\030\001"
+                    + " \002(\t\022*\n\005value\030\002 \002(\0132\033.blaze_query.Attrib"
+                    + "uteValue\"y\n\016RuleDefinition\022\014\n\004name\030\001 \002(\t"
+                    + "\0223\n\tattribute\030\002 \003(\0132 .blaze_query.Attrib"
+                    + "uteDefinition\022\025\n\rdocumentation\030\003 \001(\t\022\r\n\005"
+                    + "label\030\004 \001(\t\":\n\rBuildLanguage\022)\n\004rule\030\001 \003"
+                    + "(\0132\033.blaze_query.RuleDefinitionB6\n4com.g"
+                    + "oogle.devtools.build.lib.query2.proto.pr"
+                    + "oto2api"
         };
         descriptor =
                 com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -48856,6 +49125,7 @@ public final class Build {
                             "Name",
                             "ExplicitlySpecified",
                             "Nodep",
+                            "SourceAspectName",
                             "Type",
                             "IntValue",
                             "StringValue",
