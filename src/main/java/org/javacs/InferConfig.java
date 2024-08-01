@@ -10,8 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class InferConfig {
@@ -256,7 +258,13 @@ class InferConfig {
         if (targets.size() == 0) {
             return false;
         }
-        bazelDryRunBuild(targets);
+
+        AtomicInteger count = new AtomicInteger();
+        targets.stream()
+          .collect(Collectors.groupingBy(t -> count.getAndIncrement() / 200))
+          .values()
+          .forEach(this::bazelDryRunBuild);
+
         return true;
     }
 
@@ -316,7 +324,7 @@ class InferConfig {
         }
     }
 
-    private void bazelDryRunBuild(Set<String> targets) {
+    private void bazelDryRunBuild(List<String> targets) {
         var command = new ArrayList<String>();
         command.add("bazel");
         command.add("build");
