@@ -261,7 +261,7 @@ class InferConfig {
 
         AtomicInteger count = new AtomicInteger();
         targets.stream()
-          .collect(Collectors.groupingBy(t -> count.getAndIncrement() / 200))
+          .collect(Collectors.groupingBy(t -> count.getAndIncrement() / 1000))
           .values()
           .forEach(this::bazelDryRunBuild);
 
