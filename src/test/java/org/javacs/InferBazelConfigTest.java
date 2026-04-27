@@ -1,5 +1,6 @@
 package org.javacs;
 
+import java.util.Set;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -11,21 +12,19 @@ import org.junit.Test;
 public class InferBazelConfigTest {
     @Test
     public void bazelClassPath() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project"));
-        var classPath = bazel.classPath();
-        assertThat(classPath, contains(hasToString(endsWith("guava-18.0.jar"))));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project"), Set.of(), false);
+        assertThat(bazel.classPath(), hasItem(hasToString(endsWith("guava-33.4.8-jre.jar"))));
     }
 
     @Test
     public void bazelClassPathInSubdir() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"));
-        var classPath = bazel.classPath();
-        assertThat(classPath, contains(hasToString(endsWith("guava-18.0.jar"))));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"), Set.of(), false);
+        assertThat(bazel.classPath(), hasItem(hasToString(endsWith("guava-33.4.8-jre.jar"))));
     }
 
     @Test
     public void bazelClassPathWithProtos() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-protos-project"));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-protos-project"), Set.of(), false);
         var classPath = bazel.classPath();
         assertThat(classPath, hasItem(hasToString(endsWith("libperson_proto-speed.jar"))));
     }
@@ -38,20 +37,20 @@ public class InferBazelConfigTest {
 
     @Test
     public void bazelDocPath() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project"));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project"), Set.of(), false);
         var docPath = bazel.buildDocPath();
-        assertThat(docPath, contains(hasToString(endsWith("guava-18.0-sources.jar"))));
+        assertThat(docPath, hasItem(hasToString(containsString("processed_guava-33.4.8-jre.jar"))));
     }
 
     @Test
     public void bazelDocPathInSubdir() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"));
-        assertThat(bazel.buildDocPath(), contains(hasToString(endsWith("guava-18.0-sources.jar"))));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"), Set.of(), false);
+        assertThat(bazel.buildDocPath(), hasItem(hasToString(endsWith("processed_guava-33.4.8-jre.jar"))));
     }
 
     @Test
     public void bazelDocPathWithProtos() {
-        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-protos-project"));
+        var bazel = new InferConfig(Paths.get("src/test/examples/bazel-protos-project"), Set.of(), false);
         assertThat(bazel.buildDocPath(), hasItem(hasToString(endsWith("person_proto-speed-src.jar"))));
     }
 }

@@ -408,6 +408,8 @@ public final class ClassPath {
                     if (!entries.containsKey(file)) {
                         entries.put(file, classloader);
                     }
+                } else {
+                    logger.warning(String.format("skipping url=%s", url));
                 }
             }
             return Collections.unmodifiableMap(entries);

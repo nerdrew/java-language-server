@@ -3,60 +3,95 @@ package org.javacs;
 import com.google.devtools.build.lib.analysis.AnalysisProtos;
 import com.google.devtools.build.lib.analysis.AnalysisProtosV2;
 import com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment;
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors; // Added for Collectors.toSet()
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 class InferConfig {
     private static final Logger LOG = Logger.getLogger("main");
 
     /** Root of the workspace that is currently open in VSCode */
     private final Path workspaceRoot;
+
     /** External dependencies specified manually by the user */
     private final Collection<String> externalDependencies;
+
     /** Location of the maven repository, usually ~/.m2 */
     private final Path mavenHome;
+
     /** Location of the gradle cache, usually ~/.gradle */
     private final Path gradleHome;
+
     /** Environment variables, primarily for testing */
     private final Map<String, String> envVars;
+
+    private final String[] protoLib = {"proto_library"};
+    private final String[] javaLib = {
+        "java_library", "java_test", "java_binary",
+        "kt_jvm_library", "kt_jvm_test", "kt_jvm_binary",
+    };
+    private final Path cwd = Paths.get(System.getProperty("user.dir"));
+    private Path bzlOutputBase;
+
+    private boolean protosBuilt = false;
+    private boolean skipProtos = false;
 
     InferConfig(
             Path workspaceRoot,
             Collection<String> externalDependencies,
             Path mavenHome,
             Path gradleHome,
+            boolean skipProtos,
             Map<String, String> envVars) {
         this.workspaceRoot = workspaceRoot;
         this.externalDependencies = externalDependencies;
         this.mavenHome = mavenHome;
         this.gradleHome = gradleHome;
+        this.skipProtos = skipProtos;
         this.envVars = Objects.requireNonNullElseGet(envVars, System::getenv);
     }
 
+    InferConfig(
+            Path workspaceRoot,
+            Collection<String> externalDependencies,
+            Path mavenHome,
+            Path gradleHome,
+            boolean skipProtos) {
+        this(workspaceRoot, externalDependencies, mavenHome, gradleHome, skipProtos, null);
+    }
+
     InferConfig(Path workspaceRoot, Collection<String> externalDependencies, Path mavenHome, Path gradleHome) {
-        this(workspaceRoot, externalDependencies, mavenHome, gradleHome, null); // Null envVars defaults to System.getenv()
+        this(workspaceRoot, externalDependencies, mavenHome, gradleHome, false, null);
+    }
+
+    InferConfig(Path workspaceRoot, Collection<String> externalDependencies, boolean skipProtos) {
+        this(workspaceRoot, externalDependencies, defaultMavenHome(), defaultGradleHome(), skipProtos, null);
     }
 
     InferConfig(Path workspaceRoot, Collection<String> externalDependencies) {
-        this(workspaceRoot, externalDependencies, defaultMavenHome(), defaultGradleHome(), null);
+        this(workspaceRoot, externalDependencies, defaultMavenHome(), defaultGradleHome(), false, null);
     }
 
     InferConfig(Path workspaceRoot) {
-        this(workspaceRoot, Collections.emptySet(), defaultMavenHome(), defaultGradleHome(), null);
+        this(workspaceRoot, Collections.emptySet(), defaultMavenHome(), defaultGradleHome(), false, null);
     }
 
-    // Constructor for testing, allowing envVars injection.
     InferConfig(Path workspaceRoot, Map<String, String> envVars) {
-        this(workspaceRoot, Collections.emptySet(), defaultMavenHome(), defaultGradleHome(), envVars);
+        this(workspaceRoot, Collections.emptySet(), defaultMavenHome(), defaultGradleHome(), false, envVars);
     }
 
     private static Path defaultMavenHome() {
@@ -67,7 +102,10 @@ class InferConfig {
         return Paths.get(System.getProperty("user.home")).resolve(".gradle");
     }
 
-    /** Find .jar files for external dependencies, for examples maven dependencies in ~/.m2 or jars in bazel-genfiles */
+    /**
+     * Find .jar files for external dependencies, for examples maven dependencies in ~/.m2 or jars
+     * in bazel-genfiles
+     */
     Set<Path> classPath() {
         // Check for CLASSPATH environment variable first
         String classPathEnv = this.envVars.get("CLASSPATH");
@@ -86,7 +124,10 @@ class InferConfig {
                 var a = Artifact.parse(id);
                 var found = findAnyJar(a, false);
                 if (found == NOT_FOUND) {
-                    LOG.warning(String.format("Couldn't find jar for %s in %s or %s", a, mavenHome, gradleHome));
+                    LOG.warning(
+                            String.format(
+                                    "Couldn't find jar for %s in %s or %s",
+                                    a, mavenHome, gradleHome));
                     continue;
                 }
                 result.add(found);
@@ -102,7 +143,7 @@ class InferConfig {
 
         // Bazel
         var bazelWorkspaceRoot = bazelWorkspaceRoot();
-        if (Files.exists(bazelWorkspaceRoot.resolve("WORKSPACE"))) {
+        if (Files.exists(bazelWorkspaceRoot.resolve("MODULE.bazel"))) {
             return bazelClasspath(bazelWorkspaceRoot);
         }
 
@@ -111,7 +152,7 @@ class InferConfig {
 
     private Path bazelWorkspaceRoot() {
         for (var current = workspaceRoot; current != null; current = current.getParent()) {
-            if (Files.exists(current.resolve("WORKSPACE"))) {
+            if (Files.exists(current.resolve("MODULE.bazel"))) {
                 return current;
             }
         }
@@ -127,7 +168,10 @@ class InferConfig {
                 var a = Artifact.parse(id);
                 var found = findAnyJar(a, true);
                 if (found == NOT_FOUND) {
-                    LOG.warning(String.format("Couldn't find doc jar for %s in %s or %s", a, mavenHome, gradleHome));
+                    LOG.warning(
+                            String.format(
+                                    "Couldn't find doc jar for %s in %s or %s",
+                                    a, mavenHome, gradleHome));
                     continue;
                 }
                 result.add(found);
@@ -143,7 +187,7 @@ class InferConfig {
 
         // Bazel
         var bazelWorkspaceRoot = bazelWorkspaceRoot();
-        if (Files.exists(bazelWorkspaceRoot.resolve("WORKSPACE"))) {
+        if (Files.exists(bazelWorkspaceRoot.resolve("MODULE.bazel"))) {
             return bazelSourcepath(bazelWorkspaceRoot);
         }
 
@@ -174,7 +218,8 @@ class InferConfig {
     }
 
     private Path findGradleJar(Artifact artifact, boolean source) {
-        // Search for caches/modules-*/files-*/groupId/artifactId/version/*/artifactId-version[-sources].jar
+        // Search for
+        // caches/modules-*/files-*/groupId/artifactId/version/*/artifactId-version[-sources].jar
         var base = gradleHome.resolve("caches");
         var pattern =
                 "glob:"
@@ -204,7 +249,8 @@ class InferConfig {
     static Set<Path> mvnDependencies(Path pomXml, String goal, Map<String, String> envVars) {
         Objects.requireNonNull(pomXml, "pom.xml path is null");
         try {
-            // TODO consider using mvn valide dependency:copy-dependencies -DoutputDirectory=??? instead
+            // TODO consider using mvn valide dependency:copy-dependencies -DoutputDirectory=???
+            // instead
             // Run maven as a subprocess
             String[] command = {
                 getMvnCommand(envVars),
@@ -214,7 +260,6 @@ class InferConfig {
                 "-DincludeScope=test",
                 "-DoutputAbsoluteArtifactFilename=true",
             };
-            var output = Files.createTempFile("java-language-server-maven-output", ".txt");
             LOG.info("Running " + String.join(" ", command) + " ...");
             var workingDirectory = pomXml.toAbsolutePath().getParent().toFile();
             var process =
@@ -222,17 +267,20 @@ class InferConfig {
                             .command(command)
                             .directory(workingDirectory)
                             .redirectError(ProcessBuilder.Redirect.INHERIT)
-                            .redirectOutput(output.toFile())
                             .start();
+
+            var output = process.getInputStream().readAllBytes();
+
             // Wait for process to exit
             var result = process.waitFor();
             if (result != 0) {
                 LOG.severe("`" + String.join(" ", command) + "` returned " + result);
                 return Set.of();
             }
+
             // Read output
             var dependencies = new HashSet<Path>();
-            for (var line : Files.readAllLines(output)) {
+            for (var line : new String(output, StandardCharsets.UTF_8).split("\\R")) {
                 var jar = readDependency(line);
                 if (jar != NOT_FOUND) {
                     dependencies.add(jar);
@@ -286,12 +334,32 @@ class InferConfig {
         return null;
     }
 
-    private boolean buildProtos(Path bazelWorkspaceRoot) {
-        var targets = bazelQuery(bazelWorkspaceRoot, "java_proto_library");
-        if (targets.size() == 0) {
+    private boolean buildProtos() {
+        if (skipProtos) {
             return false;
         }
-        bazelDryRunBuild(bazelWorkspaceRoot, targets);
+
+        if (protosBuilt) {
+            return true;
+        }
+
+        // `...` is relative to the bazel cwd, which is the LSP workspace root (e.g. `app/src/main/java`).
+        // That misses java_proto_library targets defined elsewhere in the monorepo, so query the
+        // transitive deps of `:lib` instead — the same convention used for the java_library sourcepath query.
+        var targets = bazelQuery("kind(java_proto_library, deps(:lib))");
+
+        if (targets.isEmpty()) {
+            return false;
+        }
+
+        AtomicInteger count = new AtomicInteger();
+        targets.stream()
+                .collect(Collectors.groupingBy(t -> count.getAndIncrement() / 1000))
+                .values()
+                .forEach(this::bazelDryRunBuild);
+
+        protosBuilt = true;
+
         return true;
     }
 
@@ -299,32 +367,78 @@ class InferConfig {
         var absolute = new HashSet<Path>();
 
         // Add protos
-        if (buildProtos(bazelWorkspaceRoot)) {
-            for (var relative : bazelAQuery(bazelWorkspaceRoot, "Javac", "--output", "proto_library")) {
+        if (buildProtos()) {
+            for (var relative : bazelAQuery("Javac", "--output", protoLib, workspaceRoot)) {
                 absolute.add(bazelWorkspaceRoot.resolve(relative));
             }
         }
 
         // Add rest of classpath
-        for (var relative :
-                bazelAQuery(bazelWorkspaceRoot, "Javac", "--classpath", "java_library", "java_test", "java_binary")) {
+        for (var relative : bazelAQuery("Javac", "--classpath", javaLib, workspaceRoot)) {
             absolute.add(bazelWorkspaceRoot.resolve(relative));
         }
         return absolute;
     }
 
     private Set<Path> bazelSourcepath(Path bazelWorkspaceRoot) {
-        var absolute = new HashSet<Path>();
-        var outputBase = bazelOutputBase(bazelWorkspaceRoot);
-        for (var relative :
-                bazelAQuery(
-                        bazelWorkspaceRoot, "JavaSourceJar", "--sources", "java_library", "java_test", "java_binary")) {
-            absolute.add(outputBase.resolve(relative));
+        var absolute = new LinkedHashSet<Path>();
+
+        for (var lib : bazelQuery("kind(java_library, deps(:lib, 1))")) {
+            absolute.add(bazelWorkspaceRoot.resolve(lib.substring(2, lib.lastIndexOf(":"))));
+        }
+
+        // Add src jars
+        var unresolvedSources = new HashSet<Path>();
+        for (var relative : bazelAQuery("JavaSingleJar", "--sources", javaLib, cwd)) {
+            var path = bazelOutputBase().resolve(relative);
+            if (Files.exists(path)) {
+                absolute.add(path);
+            } else {
+                unresolvedSources.add(path.getFileName());
+            }
+        }
+
+        if (!unresolvedSources.isEmpty()) {
+            try {
+                Files.walk(bazelOutputBase().resolve("external"))
+                        .forEach(
+                                p -> {
+                                    if (unresolvedSources.remove(p.getFileName())) {
+                                        LOG.fine("Found src jar: " + p);
+                                        absolute.add(p);
+                                    }
+                                });
+                // Files.walkFileTree(bazelOutputBase().resolve("external"), new SimpleFileVisitor<Path>() {
+                //     @Override
+                //     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes _attrs) {
+                //         if (dir.getFileName().toString().startsWith("rules_jvm_external++maven+")) {
+                //             return FileVisitResult.CONTINUE;
+                //         } else {
+                //             return FileVisitResult.SKIP_SUBTREE;
+                //         }
+                //     }
+                //
+                //     @Override
+                //     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                //         if (unresolvedSources.remove(file.getFileName())) {
+                //             LOG.fine("Found src jar: " + file);
+                //             absolute.add(file);
+                //         }
+                //         return FileVisitResult.CONTINUE;
+                //     }
+                // });
+            } catch (IOException __) {
+                LOG.warning("Error finding unresolved sources:\n" + unresolvedSources);
+            }
+        }
+
+        if (!unresolvedSources.isEmpty()) {
+            LOG.warning("Couldn't find source jars:\n" + unresolvedSources);
         }
 
         // Add proto source files
-        if (buildProtos(bazelWorkspaceRoot)) {
-            for (var relative : bazelAQuery(bazelWorkspaceRoot, "Javac", "--source_jars", "proto_library")) {
+        if (buildProtos()) {
+            for (var relative : bazelAQuery("Javac", "--source_jars", protoLib, cwd)) {
                 absolute.add(bazelWorkspaceRoot.resolve(relative));
             }
         }
@@ -332,25 +446,24 @@ class InferConfig {
         return absolute;
     }
 
-    private Path bazelOutputBase(Path bazelWorkspaceRoot) {
+    private Path bazelOutputBase() {
+        if (bzlOutputBase != null) {
+            return bzlOutputBase;
+        }
+
         // Run bazel as a subprocess
-        String[] command = {
-            "bazel", "info", "output_base",
-        };
-        var output = fork(bazelWorkspaceRoot, command, false);
-        if (output == NOT_FOUND) {
+        String[] command = {"bazel", "info", "output_base"};
+        var output = fork(command, workspaceRoot, false);
+        if (output == null) {
             return NOT_FOUND;
         }
-        // Read output
-        try {
-            var out = Files.readString(output).trim();
-            return Paths.get(out);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+        var strOutput = new String(output, StandardCharsets.UTF_8);
+        bzlOutputBase = Paths.get(strOutput.substring(0, strOutput.length() - 1));
+        return bzlOutputBase;
     }
 
-    private void bazelDryRunBuild(Path bazelWorkspaceRoot, Set<String> targets) {
+    private void bazelDryRunBuild(List<String> targets) {
         var command = new ArrayList<String>();
         command.add("bazel");
         command.add("build");
@@ -359,39 +472,21 @@ class InferConfig {
         command.addAll(targets);
         String[] c = new String[command.size()];
         c = command.toArray(c);
-        var output = fork(bazelWorkspaceRoot, c, true);
-        if (output == NOT_FOUND) {
-            return;
-        }
-        return;
+        fork(c, workspaceRoot, true);
     }
 
-    private Set<String> bazelQuery(Path bazelWorkspaceRoot, String filterKind) {
-        String[] command = {"bazel", "query", "--keep_going", "kind(" + filterKind + ",//...)"};
-        var output = fork(bazelWorkspaceRoot, command, true);
-        if (output == NOT_FOUND) {
+    private Set<String> bazelQuery(String query) {
+        String[] command = {"bazel", "query", "--keep_going", query};
+        var output = fork(command, workspaceRoot, true);
+        if (output == null) {
             return Set.of();
         }
-        return readQueryResult(output);
-    }
-
-    private Set<String> readQueryResult(Path output) {
-        try {
-            Stream<String> stream = Files.lines(output);
-            var targets = new HashSet<String>();
-            var i = stream.iterator();
-            while (i.hasNext()) {
-                var t = i.next();
-                targets.add(t);
-            }
-            return targets;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        var outStr = new String(output, StandardCharsets.UTF_8);
+        return new HashSet<String>(Arrays.stream(outStr.split("\\R")).filter(s -> !s.isEmpty()).toList());
     }
 
     private Set<String> bazelAQuery(
-            Path bazelWorkspaceRoot, String filterMnemonic, String filterArgument, String... kinds) {
+            String filterMnemonic, String filterArgument, String[] kinds, Path cmdDir) {
         String kindUnion = "";
         for (var kind : kinds) {
             if (kindUnion.length() > 0) {
@@ -409,27 +504,31 @@ class InferConfig {
             "--allow_analysis_failures",
             "mnemonic(" + filterMnemonic + ", " + kindUnion + ")"
         };
-        var output = fork(bazelWorkspaceRoot, command, true);
-        if (output == NOT_FOUND) {
+        var output = fork(command, cmdDir, true);
+        if (output == null) {
             return Set.of();
         }
         return readActionGraph(output, filterArgument);
     }
 
-    private Set<String> readActionGraph(Path output, String filterArgument) {
+    private Set<String> readActionGraph(byte[] output, String filterArgument) {
         try {
-            var containerV2 = AnalysisProtosV2.ActionGraphContainer.parseFrom(Files.newInputStream(output));
-            if (containerV2.getArtifactsCount() != 0 && containerV2.getArtifactsList().get(0).getId() != 0) {
+            var containerV2 = AnalysisProtosV2.ActionGraphContainer.parseFrom(output);
+            if (containerV2.getArtifactsCount() != 0
+                    && containerV2.getArtifactsList().get(0).getId() != 0) {
                 return readActionGraphFromV2(containerV2, filterArgument);
             }
-            var containerV1 = AnalysisProtos.ActionGraphContainer.parseFrom(Files.newInputStream(output));
+            var containerV1 = AnalysisProtos.ActionGraphContainer.parseFrom(output);
             return readActionGraphFromV1(containerV1, filterArgument);
-        } catch (IOException e) {
+        } catch (InvalidProtocolBufferException e) {
+            LOG.warning("Could not parse proto:\n" + output);
+
             throw new RuntimeException(e);
         }
     }
 
-    private Set<String> readActionGraphFromV1(AnalysisProtos.ActionGraphContainer container, String filterArgument) {
+    private Set<String> readActionGraphFromV1(
+            AnalysisProtos.ActionGraphContainer container, String filterArgument) {
         var argumentPaths = new HashSet<String>();
         var outputIds = new HashSet<String>();
         for (var action : container.getActionsList()) {
@@ -458,15 +557,17 @@ class InferConfig {
                 continue;
             }
             var relative = artifact.getExecPath();
-            LOG.info("...found bazel dependency " + relative);
+            LOG.fine("...found bazel dependency " + relative);
             artifactPaths.add(relative);
         }
         return artifactPaths;
     }
 
-    private Set<String> readActionGraphFromV2(AnalysisProtosV2.ActionGraphContainer container, String filterArgument) {
+    private Set<String> readActionGraphFromV2(
+            AnalysisProtosV2.ActionGraphContainer container, String filterArgument) {
         var argumentPaths = new HashSet<String>();
         var outputIds = new HashSet<Integer>();
+
         for (var action : container.getActionsList()) {
             var isFilterArgument = false;
             for (var argument : action.getArgumentsList()) {
@@ -478,6 +579,10 @@ class InferConfig {
                     isFilterArgument = argument.equals(filterArgument);
                     continue;
                 }
+                var parts = argument.split(",@@");
+                if (parts.length > 1) {
+                    argument = String.join("", Arrays.copyOfRange(parts, 0, parts.length - 1));
+                }
                 argumentPaths.add(argument);
             }
             outputIds.addAll(action.getOutputIdsList());
@@ -488,12 +593,13 @@ class InferConfig {
                 // artifact is the output of another java action
                 continue;
             }
-            var relative = buildPath(container.getPathFragmentsList(), artifact.getPathFragmentId());
+            var relative =
+                    buildPath(container.getPathFragmentsList(), artifact.getPathFragmentId());
             if (!argumentPaths.contains(relative)) {
                 // artifact was not specified by --filterArgument
                 continue;
             }
-            LOG.info("...found bazel dependency " + relative);
+            LOG.fine("...found bazel dependency " + relative);
             artifactPaths.add(relative);
         }
         return artifactPaths;
@@ -511,23 +617,23 @@ class InferConfig {
         throw new RuntimeException();
     }
 
-    private static Path fork(Path workspaceRoot, String[] command, boolean allowNonZeroExit) {
+    private byte[] fork(String[] command, Path cmdDir, boolean allowNonZeroExit) {
         try {
-            LOG.info("Running " + String.join(" ", command) + " ...");
-            var output = Files.createTempFile("java-language-server-bazel-output", ".proto");
+            LOG.info(String.format("Running in %s: %s", cmdDir, String.join(" ", command)));
             var process =
                     new ProcessBuilder()
                             .command(command)
-                            .directory(workspaceRoot.toFile())
+                            .directory(cmdDir.toFile())
                             .redirectError(ProcessBuilder.Redirect.INHERIT)
-                            .redirectOutput(output.toFile())
                             .start();
-            // Wait for process to exit
+
+            var output = process.getInputStream().readAllBytes();
+
             var result = process.waitFor();
             if (result != 0) {
                 LOG.severe("`" + String.join(" ", command) + "` returned " + result);
                 if (!allowNonZeroExit) {
-                    return NOT_FOUND;
+                    return null;
                 }
             }
             return output;

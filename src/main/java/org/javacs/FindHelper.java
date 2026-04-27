@@ -12,7 +12,13 @@ import com.sun.source.tree.Tree;
 import com.sun.source.tree.VariableTree;
 import com.sun.source.util.TreePath;
 import com.sun.source.util.Trees;
+import java.io.File;
 import java.io.IOException;
+import java.net.JarURLConnection;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.jar.JarFile;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.ExecutableElement;
@@ -22,6 +28,7 @@ import org.javacs.lsp.Position;
 import org.javacs.lsp.Range;
 
 public class FindHelper {
+    private static final Logger LOG = Logger.getLogger(FindHelper.class.getName());
 
     public static String[] erasedParameterTypes(CompileTask task, ExecutableElement method) {
         var types = task.task.getTypes();
@@ -149,7 +156,27 @@ public class FindHelper {
         var endColumn = (int) lines.getColumnNumber(end);
         var endPos = new Position(endLine - 1, endColumn - 1);
         var range = new Range(startPos, endPos);
-        var uri = path.getCompilationUnit().getSourceFile().toUri();
+        var sourceFile = path.getCompilationUnit().getSourceFile();
+        var uri = sourceFile.toUri();
+        if (uri.getScheme().equals("jar")) {
+            try {
+                var url = uri.toURL();
+                var urlConnection = (JarURLConnection) url.openConnection();
+                var root = new File(System.getProperty("java.io.tmpdir"), "java-language-server");
+                root.deleteOnExit();
+                root.mkdir();
+                var file = new File(root, urlConnection.getEntryName());
+                var parent = file.getParentFile();
+                parent.mkdirs();
+                file.deleteOnExit();
+                String contents = new String(urlConnection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+                Files.writeString(file.toPath(), contents);
+                uri = file.toURI();
+            } catch (IOException e) {
+                LOG.severe("Error creating temp file for: " + uri);
+                throw new RuntimeException(e);
+            }
+        }
         return new Location(uri, range);
     }
 

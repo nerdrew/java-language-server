@@ -4,6 +4,7 @@ import com.sun.source.util.Trees;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeKind;
@@ -29,15 +30,18 @@ public class DefinitionProvider {
     }
 
     public List<Location> find() {
+      LOG.fine(String.format("file=", file));
         try (var task = compiler.compile(file)) {
             var element = NavigationHelper.findElement(task, file, line, column);
             if (element == null) return NOT_SUPPORTED;
             if (element.asType().getKind() == TypeKind.ERROR) {
+                LOG.fine(String.format("could not find file=%s", file));
                 task.close();
                 return findError(element);
             }
             // TODO instead of checking isLocal, just try to resolve the location, fall back to searching
             if (NavigationHelper.isLocal(element)) {
+                LOG.fine(String.format("found file=%s element=%s", file, element));
                 return findDefinitions(task, element);
             }
             var className = className(element);
@@ -45,6 +49,7 @@ public class DefinitionProvider {
             var otherFile = compiler.findAnywhere(className);
             if (otherFile.isEmpty()) return List.of();
             if (otherFile.get().toUri().equals(file.toUri())) {
+                LOG.fine(String.format("found otherFile=%s className=%s element=%s", otherFile, className, element));
                 return findDefinitions(task, element);
             }
             task.close();
@@ -99,6 +104,7 @@ public class DefinitionProvider {
     }
 
     private List<Location> findRemoteDefinitions(JavaFileObject otherFile) {
+        LOG.fine(String.format("otherFile=%s file=%s", otherFile, file));
         try (var task = compiler.compile(List.of(new SourceFileObject(file), otherFile))) {
             var element = NavigationHelper.findElement(task, file, line, column);
             return findDefinitions(task, element);
@@ -106,13 +112,18 @@ public class DefinitionProvider {
     }
 
     private List<Location> findDefinitions(CompileTask task, Element element) {
+        LOG.fine(String.format("element=%s", element));
         var trees = Trees.instance(task.task);
         var path = trees.getPath(element);
         if (path == null) {
             return List.of();
         }
+        var sf = path.getCompilationUnit().getSourceFile();
+        LOG.fine(String.format("element=%s path=%s", element, sf));
         var name = element.getSimpleName();
         if (name.contentEquals("<init>")) name = element.getEnclosingElement().getSimpleName();
         return List.of(FindHelper.location(task, path, name));
     }
+
+    private static final Logger LOG = Logger.getLogger("main");
 }

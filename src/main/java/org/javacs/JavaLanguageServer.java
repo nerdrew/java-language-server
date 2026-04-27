@@ -5,13 +5,6 @@ import static org.javacs.JsonHelper.GSON;
 import com.google.gson.*;
 import com.sun.source.util.Trees;
 import com.sun.tools.javac.tree.JCTree;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.*;
-import java.util.logging.Logger;
-import javax.lang.model.element.*;
 import org.javacs.action.CodeActionProvider;
 import org.javacs.completion.CompletionProvider;
 import org.javacs.completion.SignatureProvider;
@@ -25,6 +18,13 @@ import org.javacs.markup.ErrorProvider;
 import org.javacs.navigation.DefinitionProvider;
 import org.javacs.navigation.ReferenceProvider;
 import org.javacs.rewrite.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.*;
+import java.util.logging.Logger;
+import javax.lang.model.element.*;
 
 class JavaLanguageServer extends LanguageServer {
     // TODO allow multiple workspace roots
@@ -33,7 +33,10 @@ class JavaLanguageServer extends LanguageServer {
     private JavaCompilerService cacheCompiler;
     private JsonObject cacheSettings;
     private JsonObject settings = new JsonObject();
+    private boolean skipProtos = false;
     private boolean modifiedBuild = true;
+    private String progressToken = UUID.randomUUID().toString();
+    private final Path cwd = Paths.get(System.getProperty("user.dir"));
 
     JavaCompilerService compiler() {
         if (needsCompiler()) {
@@ -73,23 +76,17 @@ class JavaLanguageServer extends LanguageServer {
         }
     }
 
-    private void javaStartProgress(JavaStartProgressParams params) {
-        client.customNotification("java/startProgress", GSON.toJsonTree(params));
-    }
-
-    private void javaReportProgress(JavaReportProgressParams params) {
-        client.customNotification("java/reportProgress", GSON.toJsonTree(params));
-    }
-
-    private void javaEndProgress() {
-        client.customNotification("java/endProgress", JsonNull.INSTANCE);
+    private void javaReportProgress(JavaProgressParams params) {
+        client.customNotification("$/progress", GSON.toJsonTree(params));
     }
 
     private JavaCompilerService createCompiler() {
-        Objects.requireNonNull(workspaceRoot, "Can't create compiler because workspaceRoot has not been initialized");
+        Objects.requireNonNull(
+                workspaceRoot,
+                "Can't create compiler because workspaceRoot has not been initialized");
 
-        javaStartProgress(new JavaStartProgressParams("Configure javac"));
-        javaReportProgress(new JavaReportProgressParams("Finding source roots"));
+        javaReportProgress(JavaProgressParams.begin(progressToken, "Configure javac"));
+        javaReportProgress(JavaProgressParams.report(progressToken, "Finding source roots"));
 
         var externalDependencies = externalDependencies();
         var classPath = classPath();
@@ -97,20 +94,20 @@ class JavaLanguageServer extends LanguageServer {
         var addExports = addExports();
         // If classpath is specified by the user, don't infer anything
         if (!classPath.isEmpty()) {
-            javaEndProgress();
+            javaReportProgress(JavaProgressParams.end(progressToken, "Done"));
             return new JavaCompilerService(classPath, docPath(), addExports, extraArgs);
         }
         // Otherwise, combine inference with user-specified external dependencies
         else {
-            var infer = new InferConfig(workspaceRoot, externalDependencies);
+            var infer = new InferConfig(workspaceRoot, externalDependencies, skipProtos);
 
-            javaReportProgress(new JavaReportProgressParams("Inferring class path"));
+            javaReportProgress(JavaProgressParams.report(progressToken, "Inferring class path"));
             classPath = infer.classPath();
 
-            javaReportProgress(new JavaReportProgressParams("Inferring doc path"));
+            javaReportProgress(JavaProgressParams.report(progressToken, "Inferring doc path"));
             var docPath = infer.buildDocPath();
 
-            javaEndProgress();
+            javaReportProgress(JavaProgressParams.end(progressToken, "Done"));
             return new JavaCompilerService(classPath, docPath, addExports, extraArgs);
         }
     }
@@ -171,8 +168,25 @@ class JavaLanguageServer extends LanguageServer {
 
     @Override
     public InitializeResult initialize(InitializeParams params) {
-        this.workspaceRoot = Paths.get(params.rootUri);
-        FileStore.setWorkspaceRoots(Set.of(Paths.get(params.rootUri)));
+        Path tmpRoot;
+        if (params.rootUri != null) {
+            tmpRoot = Paths.get(params.rootUri);
+        } else {
+            LOG.warning("rootUri not set, use cwd=" + cwd);
+            tmpRoot = cwd;
+        }
+
+        workspaceRoot = tmpRoot;
+        FileStore.setWorkspaceRoots(Set.of(workspaceRoot));
+
+        if (params.initializationOptions != null) {
+            var initializationOptions = params.initializationOptions.getAsJsonObject();
+            if (initializationOptions.has("skipProtos")
+                    && initializationOptions.get("skipProtos").getAsBoolean()) {
+                modifiedBuild = true;
+                skipProtos = true;
+            }
+        }
 
         var c = new JsonObject();
         c.addProperty("textDocumentSync", 2); // Incremental
@@ -206,7 +220,7 @@ class JavaLanguageServer extends LanguageServer {
     }
 
     private static final String[] watchFiles = {
-        "**/*.java", "**/pom.xml", "**/BUILD", "**/javaconfig.json", "**/WORKSPACE"
+        "**/*.java", "**/pom.xml", "**/BUILD", "**/javaconfig.json", "**/MODULE.bazel"
     };
 
     @Override
@@ -321,6 +335,7 @@ class JavaLanguageServer extends LanguageServer {
         var file = Paths.get(position.textDocument.uri);
         var line = position.position.line + 1;
         var column = position.position.character + 1;
+        LOG.info(String.format("file=%s line=%s column=%s", file, line, column));
         var found = new DefinitionProvider(compiler(), file, line, column).find();
         if (found == DefinitionProvider.NOT_SUPPORTED) {
             return Optional.empty();
@@ -451,7 +466,8 @@ class JavaLanguageServer extends LanguageServer {
         var file = Paths.get(params.textDocument.uri);
         try (var task = compiler().compile(file)) {
             var lines = task.root().getLineMap();
-            var position = lines.getPosition(params.position.line + 1, params.position.character + 1);
+            var position =
+                    lines.getPosition(params.position.line + 1, params.position.character + 1);
             var path = new FindNameAt(task).scan(task.root(), position);
             if (path == null) return Rewrite.NOT_SUPPORTED;
             var el = Trees.instance(task.task).getElement(path);
@@ -489,11 +505,14 @@ class JavaLanguageServer extends LanguageServer {
         return new RenameField(className, fieldName, newName);
     }
 
-    private RenameVariable renameVariable(CompileTask task, VariableElement variable, String newName) {
+    private RenameVariable renameVariable(
+            CompileTask task, VariableElement variable, String newName) {
         var trees = Trees.instance(task.task);
         var path = trees.getPath(variable);
         var file = Paths.get(path.getCompilationUnit().getSourceFile().toUri());
-        var position = trees.getSourcePositions().getStartPosition(path.getCompilationUnit(), path.getLeaf());
+        var position =
+                trees.getSourcePositions()
+                        .getStartPosition(path.getCompilationUnit(), path.getLeaf());
         return new RenameVariable(file, (int) position, newName);
     }
 
@@ -539,7 +558,8 @@ class JavaLanguageServer extends LanguageServer {
 
         if (FileStore.isJavaFile(params.textDocument.uri)) {
             // Clear diagnostics
-            client.publishDiagnostics(new PublishDiagnosticsParams(params.textDocument.uri, List.of()));
+            client.publishDiagnostics(
+                    new PublishDiagnosticsParams(params.textDocument.uri, List.of()));
         }
     }
 

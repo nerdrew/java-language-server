@@ -16,9 +16,9 @@ public class InferConfigTest {
     private Path mavenHome = Paths.get("src/test/examples/home-dir/.m2");
     private Path gradleHome = Paths.get("src/test/examples/home-dir/.gradle");
     private Set<String> externalDependencies = Set.of("com.external:external-library:1.2");
-    private InferConfig both = new InferConfig(workspaceRoot, externalDependencies, mavenHome, gradleHome);
-    private InferConfig gradle = new InferConfig(workspaceRoot, externalDependencies, Paths.get("nowhere"), gradleHome);
-    private InferConfig thisProject = new InferConfig(Paths.get("."), (Map<String, String>) null); // Use null to get System.getenv()
+    private InferConfig both = new InferConfig(workspaceRoot, externalDependencies, mavenHome, gradleHome, false);
+    private InferConfig gradle = new InferConfig(workspaceRoot, externalDependencies, Paths.get("nowhere"), gradleHome, false);
+    private InferConfig thisProject = new InferConfig(Paths.get("."), Set.of(), false);
 
     @Test
     public void classpathFromEnvironmentVariable() {
@@ -28,11 +28,7 @@ public class InferConfigTest {
 
         Map<String, String> mockEnv = new HashMap<>();
         mockEnv.put("CLASSPATH", classpathValue);
-        // We also need to provide a PATH, otherwise findExecutableOnPath might fail if it's called by getMvnCommand
-        // which could be called if externalDependencies is empty and CLASSPATH is also empty (though not in this specific test case)
-        // For safety, let's provide a minimal PATH.
         mockEnv.put("PATH", "/usr/bin:/bin");
-
 
         InferConfig inferConfig = new InferConfig(Paths.get("."), mockEnv);
         Set<Path> expectedPaths = Set.of(Paths.get(dummyPath1), Paths.get(dummyPath2));
@@ -57,6 +53,12 @@ public class InferConfigTest {
                         gradleHome.resolve(
                                 "caches/modules-2/files-2.1/com.external/external-library/1.2/xxx/external-library-1.2.jar")));
         // v1.1 should be ignored
+    }
+
+    @Test
+    public void bazelClassPathSubdir() {
+        InferConfig bazelSubdir = new InferConfig(Paths.get("src/test/examples/bazel-project/hello"), Set.of(), false);
+        assertThat(bazelSubdir.classPath(), hasItem(hasToString(endsWith("header_guava-33.4.8-jre.jar"))));
     }
 
     @Test

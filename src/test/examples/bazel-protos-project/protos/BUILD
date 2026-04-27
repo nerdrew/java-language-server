@@ -37,7 +37,7 @@ proto_library(
         # A list of all @com_google_protobuf well known protos can
         # seen with:
         # `bazel query 'kind(proto_library, @com_google_protobuf//:all)'`
-        "@com_google_protobuf//:any_proto",
+        "@protobuf//:any_proto",
     ],
 )
 

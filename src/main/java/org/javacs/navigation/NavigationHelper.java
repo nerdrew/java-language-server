@@ -2,6 +2,7 @@ package org.javacs.navigation;
 
 import com.sun.source.util.Trees;
 import java.nio.file.Path;
+import java.util.logging.Logger;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import org.javacs.CompileTask;
@@ -11,6 +12,7 @@ class NavigationHelper {
 
     static Element findElement(CompileTask task, Path file, int line, int column) {
         for (var root : task.roots) {
+            LOG.fine(String.format("checking root=%s", root.getSourceFile().toUri()));
             if (root.getSourceFile().toUri().equals(file.toUri())) {
                 var trees = Trees.instance(task.task);
                 var cursor = root.getLineMap().getPosition(line, column);
@@ -60,4 +62,6 @@ class NavigationHelper {
                 return false;
         }
     }
+
+    private static final Logger LOG = Logger.getLogger("main");
 }

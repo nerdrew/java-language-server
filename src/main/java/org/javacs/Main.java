@@ -1,9 +1,10 @@
 package org.javacs;
 
+import org.javacs.lsp.*;
 import java.util.Arrays;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.javacs.lsp.*;
 
 public class Main {
     private static final Logger LOG = Logger.getLogger("main");
@@ -18,13 +19,16 @@ public class Main {
 
     public static void main(String[] args) {
         boolean quiet = Arrays.stream(args).anyMatch("--quiet"::equals);
+        boolean verbose = Arrays.stream(args).anyMatch("--verbose"::equals);
 
         if (quiet) {
             LOG.setLevel(Level.OFF);
+        } else if (verbose) {
+            LOG.setLevel(Level.FINE);
         }
 
         try {
-            // Logger.getLogger("").addHandler(new FileHandler("javacs.%u.log", false));
+            Logger.getLogger("").addHandler(new FileHandler("javacs.%u.log", false));
             setRootFormat();
 
             LSP.connect(JavaLanguageServer::new, System.in, System.out);

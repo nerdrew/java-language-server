@@ -2,6 +2,7 @@ package org.javacs.lsp;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -110,13 +111,16 @@ public class LSP {
             params = option.orElse(null);
         }
         var jsonText = toJson(params);
-        var messageText = String.format("{\"jsonrpc\":\"2.0\",\"id\":%d,\"result\":%s}", requestId, jsonText);
+        var messageText =
+                String.format("{\"jsonrpc\":\"2.0\",\"id\":%d,\"result\":%s}", requestId, jsonText);
+        // LOG.fine(String.format("respond='%s'", messageText));
         writeClient(client, messageText);
     }
 
     static void error(OutputStream client, int requestId, ResponseError error) {
         var jsonText = toJson(error);
-        var messageText = String.format("{\"jsonrpc\":\"2.0\",\"id\":%d,\"error\":%s}", requestId, jsonText);
+        var messageText =
+                String.format("{\"jsonrpc\":\"2.0\",\"id\":%d,\"error\":%s}", requestId, jsonText);
         writeClient(client, messageText);
     }
 
@@ -127,7 +131,10 @@ public class LSP {
             params = option.orElse(null);
         }
         var jsonText = toJson(params);
-        var messageText = String.format("{\"jsonrpc\":\"2.0\",\"method\":\"%s\",\"params\":%s}", method, jsonText);
+        var messageText =
+                String.format(
+                        "{\"jsonrpc\":\"2.0\",\"method\":\"%s\",\"params\":%s}", method, jsonText);
+        LOG.info(String.format("notifyClient: %s", messageText));
         writeClient(client, messageText);
     }
 
@@ -158,7 +165,8 @@ public class LSP {
             params.registrations.add(registration);
             var jsonText = toJson(params);
             var requestMethod = "client/registerCapability";
-            // The request should contain the id param. Otherwise, it will be considered a notification.
+            // The request should contain the id param. Otherwise, it will be considered a
+            // notification.
             var id = new Random().nextInt();
             var messageText =
                     String.format(
@@ -174,7 +182,9 @@ public class LSP {
     }
 
     public static void connect(
-            Function<LanguageClient, LanguageServer> serverFactory, InputStream receive, OutputStream send) {
+            Function<LanguageClient, LanguageServer> serverFactory,
+            InputStream receive,
+            OutputStream send) {
         var server = serverFactory.apply(new RealClient(send));
         var pending = new ArrayBlockingQueue<Message>(10);
         var endOfStream = new Message();
@@ -185,8 +195,16 @@ public class LSP {
                 if ("$/cancelRequest".equals(message.method)) {
                     var params = gson.fromJson(message.params, CancelParams.class);
                     var removed = pending.removeIf(r -> r.id != null && r.id.equals(params.id));
-                    if (removed) LOG.info(String.format("Cancelled request %d, which had not yet started", params.id));
-                    else LOG.info(String.format("Cannot cancel request %d because it has already started", params.id));
+                    if (removed)
+                        LOG.info(
+                                String.format(
+                                        "Cancelled request %d, which had not yet started",
+                                        params.id));
+                    else
+                        LOG.info(
+                                String.format(
+                                        "Cannot cancel request %d because it has already started",
+                                        params.id));
                 }
             }
 
@@ -196,7 +214,10 @@ public class LSP {
                     pending.put(endOfStream);
                     return true;
                 } catch (Exception e) {
-                    LOG.log(Level.SEVERE, "Failed to put kill message onto queue, will try again...", e);
+                    LOG.log(
+                            Level.SEVERE,
+                            "Failed to put kill message onto queue, will try again...",
+                            e);
                     return false;
                 }
             }
@@ -249,8 +270,18 @@ public class LSP {
                 }
                 continue;
             }
+            if (r.method == null) {
+                LOG.info("Ignoring message missing method=" + r);
+                if (hasAsyncWork) {
+                    server.doAsyncWork();
+                    hasAsyncWork = false;
+                }
+                continue;
+            }
             // Otherwise, process the new message
             hasAsyncWork = true;
+
+            // LOG.fine(String.format("method=%s params=%s", r.method, r.params));
             try {
                 if (r.method == null) {
                     LOG.fine("Ignoring client message without method");
@@ -282,13 +313,15 @@ public class LSP {
                         }
                     case "workspace/didChangeWorkspaceFolders":
                         {
-                            var params = gson.fromJson(r.params, DidChangeWorkspaceFoldersParams.class);
+                            var params =
+                                    gson.fromJson(r.params, DidChangeWorkspaceFoldersParams.class);
                             server.didChangeWorkspaceFolders(params);
                             break;
                         }
                     case "workspace/didChangeConfiguration":
                         {
-                            var params = gson.fromJson(r.params, DidChangeConfigurationParams.class);
+                            var params =
+                                    gson.fromJson(r.params, DidChangeConfigurationParams.class);
                             server.didChangeConfiguration(params);
                             break;
                         }
@@ -451,12 +484,16 @@ public class LSP {
                         // Already handled in peek(message)
                         break;
                     default:
-                        LOG.warning(String.format("Don't know what to do with method `%s`", r.method));
+                        LOG.warning(
+                                String.format("Don't know what to do with method `%s`", r.method));
                 }
             } catch (Exception e) {
                 LOG.log(Level.SEVERE, e.getMessage(), e);
                 if (r.id != null) {
-                    error(send, r.id, new ResponseError(ErrorCodes.InternalError, e.getMessage(), null));
+                    error(
+                            send,
+                            r.id,
+                            new ResponseError(ErrorCodes.InternalError, e.getMessage(), null));
                 }
             }
         }

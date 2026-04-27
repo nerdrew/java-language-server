@@ -55,7 +55,7 @@ public class BenchmarkPruner {
 
             var workspaceRoot = Paths.get(".").normalize().toAbsolutePath();
             FileStore.setWorkspaceRoots(Set.of(workspaceRoot));
-            var classPath = new InferConfig(workspaceRoot).classPath();
+            var classPath = new InferConfig(workspaceRoot, Set.of(), false).classPath();
             return new JavaCompilerService(classPath, Collections.emptySet(), Collections.emptySet(), List.of());
         }
 
